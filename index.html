@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal — Proline Tinting · Perth WA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#07070B;
+  --bg2:#0C0C12;
+  --surface:#101018;
+  --surface2:#17171F;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --border3:rgba(255,255,255,0.22);
+  --text:#EEEEF4;
+  --muted:rgba(238,238,244,0.5);
+  --dim:rgba(238,238,244,0.22);
+  --accent:#C8FF47;
+  --accent-bg:rgba(200,255,71,0.09);
+  --accent-dim:rgba(200,255,71,0.05);
+  --ink:#0F1A00;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
+
+/* ── TYPE ── */
+.d{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,7.5vw,7rem);line-height:.92;letter-spacing:-.035em}
+.h1{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.05;letter-spacing:-.025em}
+.h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.2rem,2.2vw,1.75rem);line-height:1.1;letter-spacing:-.015em}
+.label{font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.body{font-size:.9rem;line-height:1.82;color:var(--muted);font-weight:300}
+.accent{color:var(--accent)}
+.muted{color:var(--muted)}
+
+/* ── LAYOUT ── */
+.c{max-width:1160px;margin:0 auto;padding:0 2.5rem}
+section{padding:6rem 0}
+.sh{margin-bottom:3.5rem}
+
+/* ── PILL ── */
+.pill{display:inline-block;font-family:'Syne',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .85rem;border-radius:999px;background:var(--accent-bg);color:var(--accent);border:1px solid rgba(200,255,71,.2);margin-bottom:1.3rem}
+
+/* ── RULE ── */
+.rule{width:1.5rem;height:2px;background:var(--accent);border-radius:2px;margin:1.1rem 0}
+
+/* ── GRID BG ── */
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.2,.8,.35,1),transform .65s cubic-bezier(.2,.8,.35,1)}
+.rv.d1{transition-delay:.07s}.rv.d2{transition-delay:.14s}.rv.d3{transition-delay:.21s}.rv.d4{transition-delay:.28s}.rv.d5{transition-delay:.35s}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* ── BUTTONS ── */
+.btn-p{display:inline-flex;align-items:center;gap:.45rem;padding:.8rem 1.75rem;background:var(--accent);color:var(--ink);font-family:'Syne',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:8px;border:none;cursor:pointer;transition:opacity .18s,transform .18s}
+.btn-p:hover{opacity:.85;transform:translateY(-2px)}
+.btn-g{display:inline-flex;align-items:center;gap:.45rem;padding:.8rem 1.5rem;background:transparent;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:8px;border:1px solid var(--border2);cursor:pointer;transition:all .18s}
+.btn-g:hover{color:var(--text);border-color:var(--border3)}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+#hero{min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hero-topbar{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(7,7,11,.88);backdrop-filter:blur(16px)}
+.hero-topbar-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+.hero-topbar-meta{font-size:.62rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.hero-body{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 2.5rem 4rem;max-width:1160px;margin:0 auto;width:100%;position:relative}
+.hero-glow{position:absolute;top:-10%;right:-5%;width:55vw;height:55vw;background:radial-gradient(ellipse,rgba(200,255,71,.06) 0%,transparent 62%);pointer-events:none}
+.hero-counter{font-family:'Syne',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.2em;color:var(--accent);display:flex;align-items:center;gap:.55rem;margin-bottom:2rem}
+.hero-counter::before{content:'';width:28px;height:1.5px;background:var(--accent)}
+.hero-desc{max-width:480px;margin-top:1.5rem}
+.hero-ctas{display:flex;gap:.85rem;margin-top:2.5rem;flex-wrap:wrap}
+.hero-right{}
+
+/* Browser frame – hero */
+.bf{background:var(--surface);border:1px solid var(--border2);border-radius:14px;overflow:hidden;box-shadow:0 36px 72px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.03);transform:perspective(1200px) rotateY(-5deg) rotateX(2deg);transition:transform .4s ease}
+.bf:hover{transform:perspective(1200px) rotateY(-2deg) rotateX(1deg)}
+.bf-bar{background:var(--surface2);padding:.65rem 1rem;display:flex;align-items:center;gap:.7rem;border-bottom:1px solid var(--border)}
+.bf-dots{display:flex;gap:5px}
+.bf-dot{width:9px;height:9px;border-radius:50%}
+.bf-dot.r{background:#FF5F57}.bf-dot.y{background:#FFBD2E}.bf-dot.g{background:#28C840}
+.bf-url{flex:1;background:var(--bg);border-radius:4px;padding:.28rem .6rem;font-size:.6rem;color:var(--dim);text-align:center;font-family:'DM Sans',sans-serif}
+
+/* Mini site */
+.ms{background:#060609;overflow:hidden}
+.ms-nav{display:flex;justify-content:space-between;align-items:center;padding:.7rem 1rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.ms-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.06em}
+.ms-links{display:flex;gap:.65rem}
+.ms-link{font-size:.56rem;color:rgba(255,255,255,.35);font-family:'DM Sans',sans-serif}
+.ms-cta-b{background:var(--accent);color:var(--ink);font-size:.52rem;font-weight:700;font-family:'Syne',sans-serif;padding:.28rem .65rem;border-radius:4px}
+.ms-hero{display:grid;grid-template-columns:1fr 38%;min-height:220px}
+.ms-left{padding:1.4rem 1rem 1rem}
+.ms-eyebrow{font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.5rem}
+.ms-hl{font-family:'Syne',sans-serif;font-weight:800;font-size:1.55rem;line-height:.92;letter-spacing:-.03em;color:#fff;margin-bottom:.55rem}
+.ms-sub{font-size:.58rem;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;line-height:1.55;margin-bottom:.7rem}
+.ms-btns{display:flex;gap:.4rem}
+.ms-bp{background:var(--accent);color:var(--ink);font-size:.5rem;font-weight:700;font-family:'Syne',sans-serif;padding:.3rem .65rem;border-radius:4px}
+.ms-bs{border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-size:.5rem;font-family:'DM Sans',sans-serif;padding:.3rem .65rem;border-radius:4px}
+.ms-img{background:linear-gradient(135deg,#0d0d14 0%,#12121a 50%,#090910 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.ms-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,6,9,.9) 0%,transparent 30%)}
+.ms-car{position:relative;z-index:1}
+.ms-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;padding:.75rem 1rem .85rem}
+.ms-card{background:rgba(255,255,255,.038);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:.65rem .6rem}
+.ms-card-ico{width:14px;height:14px;background:rgba(200,255,71,.14);border-radius:3px;margin-bottom:.38rem}
+.ms-card-n{font-size:.5rem;font-weight:700;font-family:'Syne',sans-serif;color:#fff;margin-bottom:.15rem}
+.ms-card-p{font-size:.46rem;color:rgba(255,255,255,.35);font-family:'DM Sans',sans-serif}
+
+/* ══════════════════════════════════════════
+   STATS STRIP
+══════════════════════════════════════════ */
+#stats{padding:2.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:1.8rem 2rem;border-right:1px solid var(--border);text-align:center}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:2.8rem;line-height:1;letter-spacing:-.04em}
+.stat-n sup{font-size:1.2rem;color:var(--accent);vertical-align:super}
+.stat-l{font-size:.72rem;color:var(--muted);margin-top:.35rem;font-weight:300}
+
+/* ══════════════════════════════════════════
+   SERVICES
+══════════════════════════════════════════ */
+#services{}
+.svc-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:3rem}
+.svc{padding:2rem 1.5rem;border-right:1px solid var(--border);transition:background .25s;position:relative;overflow:hidden;cursor:default}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.2,.8,.35,1)}
+.svc:hover::before{transform:scaleX(1)}
+.svc:hover{background:var(--accent-dim)}
+.svc:last-child{border-right:none}
+.svc-num{font-family:'Syne',sans-serif;font-weight:800;font-size:.58rem;letter-spacing:.16em;color:var(--dim);margin-bottom:1.4rem}
+.svc-ico{width:34px;height:34px;background:var(--accent-bg);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.svc-ico svg{width:16px;height:16px}
+.svc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.025em;margin-bottom:.48rem}
+.svc-desc{font-size:.7rem;color:var(--muted);line-height:1.65}
+
+/* ══════════════════════════════════════════
+   PREVIEW — INTERACTIVE MOCKUPS
+══════════════════════════════════════════ */
+#preview{background:var(--bg2);position:relative;overflow:hidden}
+.preview-bg-num{position:absolute;right:-2%;bottom:-8%;font-family:'Syne',sans-serif;font-weight:800;font-size:20vw;color:rgba(255,255,255,.018);line-height:1;pointer-events:none;user-select:none}
+
+.tabs{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content;margin-bottom:2.5rem}
+.tab{padding:.62rem 1.6rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;border-right:1px solid var(--border)}
+.tab:last-child{border-right:none}
+.tab.a{background:var(--accent);color:var(--ink)}
+.tab:not(.a):hover{color:var(--text);background:rgba(255,255,255,.035)}
+
+.tp{display:none;animation:fadeUp .4s cubic-bezier(.2,.8,.35,1)}
+.tp.a{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* — WEB TAB — */
+.web-wrap{background:var(--surface);border:1px solid var(--border2);border-radius:16px;overflow:hidden}
+.web-bf-bar{background:var(--surface2);padding:.8rem 1.2rem;display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border)}
+.web-full-site{background:#060609;overflow:hidden;position:relative}
+.wfs-nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;background:rgba(6,6,9,.95);backdrop-filter:blur(12px);z-index:5}
+.wfs-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.06em}
+.wfs-links{display:flex;gap:2rem}
+.wfs-link{font-size:.75rem;color:rgba(255,255,255,.5);font-family:'DM Sans',sans-serif;cursor:pointer;transition:color .2s}
+.wfs-link:hover{color:#fff}
+.wfs-book{background:var(--accent);color:var(--ink);font-size:.72rem;font-weight:700;font-family:'Syne',sans-serif;padding:.45rem 1.1rem;border-radius:6px;cursor:pointer}
+.wfs-hero{display:grid;grid-template-columns:1fr 1fr;min-height:360px}
+.wfs-hl{padding:3.5rem 2.5rem 2.5rem}
+.wfs-eyebrow{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.1rem}
+.wfs-title{font-family:'Syne',sans-serif;font-weight:800;font-size:3.2rem;line-height:.9;letter-spacing:-.04em;color:#fff;margin-bottom:1rem}
+.wfs-sub{font-size:.82rem;color:rgba(255,255,255,.45);font-family:'DM Sans',sans-serif;line-height:1.7;max-width:380px;margin-bottom:1.5rem}
+.wfs-btns{display:flex;gap:.75rem}
+.wfs-bp{background:var(--accent);color:var(--ink);font-size:.72rem;font-weight:700;font-family:'Syne',sans-serif;padding:.65rem 1.4rem;border-radius:6px;cursor:pointer}
+.wfs-bs{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.65);font-size:.72rem;font-family:'DM Sans',sans-serif;padding:.65rem 1.2rem;border-radius:6px;cursor:pointer;transition:all .2s}
+.wfs-bs:hover{border-color:rgba(255,255,255,.35);color:#fff}
+.wfs-img{background:linear-gradient(135deg,#0e0e16 0%,#1a1a24 45%,#0a0a0f 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.wfs-img::before{content:'';position:absolute;left:0;top:0;width:40%;height:100%;background:linear-gradient(90deg,rgba(6,6,9,1) 0%,transparent 100%)}
+.wfs-car-svg{position:relative;z-index:1;opacity:.7}
+.wfs-services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.06)}
+.wfs-svc{background:#060609;padding:1.6rem 2rem;transition:background .2s;cursor:pointer}
+.wfs-svc:hover{background:rgba(255,255,255,.03)}
+.wfs-svc-tag{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.5rem}
+.wfs-svc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:#fff;margin-bottom:.3rem}
+.wfs-svc-price{font-size:.75rem;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif}
+.wfs-svc-arrow{font-size:.9rem;color:var(--accent);float:right;margin-top:-.1rem}
+.wfs-ba{border-top:1px solid rgba(255,255,255,.05);padding:2rem 2.5rem}
+.wfs-ba-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1rem}
+.wfs-ba-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.wfs-ba-item{background:rgba(255,255,255,.038);border:1px solid rgba(255,255,255,.06);border-radius:8px;overflow:hidden;aspect-ratio:16/10;position:relative;cursor:pointer;transition:transform .2s}
+.wfs-ba-item:hover{transform:scale(1.02)}
+.wfs-ba-before{position:absolute;inset:0;background:linear-gradient(135deg,#151515,#0a0a0a)}
+.wfs-ba-after{position:absolute;inset:0;background:linear-gradient(135deg,#0d1408,#1a2408);transition:opacity .3s}
+.wfs-ba-item:hover .wfs-ba-after{opacity:0}
+.wfs-ba-tag{position:absolute;bottom:6px;left:6px;font-size:.46rem;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,.7);color:rgba(255,255,255,.6);padding:.15rem .4rem;border-radius:3px;z-index:2}
+.wfs-ba-item:hover .wfs-ba-tag::before{content:'AFTER — '}
+
+/* — DASHBOARD TAB — */
+.dash-wrap{background:var(--surface);border:1px solid var(--border2);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:220px 1fr;height:580px}
+.dash-sb{background:var(--bg2);border-right:1px solid var(--border);padding:1.4rem 1rem;display:flex;flex-direction:column;gap:.25rem}
+.dash-sb-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.88rem;letter-spacing:.05em;padding:.4rem .5rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+.dash-sb-logo-dot{width:22px;height:22px;background:var(--accent);border-radius:5px;flex-shrink:0}
+.dsn{display:flex;align-items:center;gap:.6rem;padding:.52rem .65rem;border-radius:7px;font-size:.73rem;color:var(--muted);cursor:pointer;transition:all .18s;font-weight:400}
+.dsn svg{width:15px;height:15px;stroke:currentColor;flex-shrink:0;opacity:.65}
+.dsn:hover{background:var(--surface);color:var(--text)}
+.dsn.a{background:var(--accent-bg);color:var(--accent);font-weight:500}
+.dsn.a svg{opacity:1}
+.dsb-section{font-family:'Syne',sans-serif;font-weight:700;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);padding:.4rem .65rem;margin-top:.7rem}
+.dash-main{padding:1.6rem;overflow-y:auto;background:var(--surface)}
+.dash-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.4rem}
+.dash-hdr-l{}
+.dash-greeting{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;line-height:1}
+.dash-date{font-size:.68rem;color:var(--muted);margin-top:.2rem}
+.dash-today-btn{background:var(--accent);color:var(--ink);font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.45rem .9rem;border-radius:6px;border:none;cursor:pointer}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.1rem}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:.95rem 1rem}
+.kpi-l{font-family:'Syne',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:.35rem}
+.kpi-v{font-family:'Syne',sans-serif;font-weight:800;font-size:1.28rem;line-height:1;letter-spacing:-.02em}
+.kpi-c{font-size:.6rem;color:var(--accent);margin-top:.25rem;font-weight:500}
+.kpi-c.neg{color:#FF6B6B}
+.dash-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:.75rem}
+.dc{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:1rem 1.1rem}
+.dc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.04em;margin-bottom:.9rem;display:flex;justify-content:space-between;align-items:center}
+.dc-period{font-size:.6rem;color:var(--muted);font-weight:300;font-family:'DM Sans',sans-serif}
+/* Chart */
+.chart{display:flex;align-items:flex-end;gap:5px;height:110px;padding-bottom:.5rem}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%}
+.bar-track{flex:1;display:flex;align-items:flex-end;width:100%}
+.bar{width:100%;border-radius:3px 3px 0 0;min-height:4px;transition:opacity .2s,filter .2s;cursor:pointer}
+.bar:hover{opacity:.75;filter:brightness(1.15)}
+.bar-day{font-size:.54rem;color:var(--dim);font-family:'DM Sans',sans-serif}
+.bar-val{font-size:.5rem;color:var(--dim);font-family:'Syne',sans-serif;font-weight:600}
+/* Appts */
+.appt{display:flex;align-items:center;gap:.65rem;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.71rem}
+.appt:last-child{border-bottom:none}
+.appt-time{color:var(--dim);font-size:.62rem;min-width:42px;font-family:'Syne',sans-serif;font-weight:600}
+.appt-avatar{width:26px;height:26px;border-radius:50%;font-size:.6rem;font-weight:700;font-family:'Syne',sans-serif;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.appt-client{font-weight:500;flex:1}
+.appt-car{color:var(--muted);font-size:.62rem}
+.badge{font-size:.55rem;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:.06em;padding:.18rem .5rem;border-radius:5px;white-space:nowrap}
+.badge-done{background:rgba(200,255,71,.1);color:var(--accent)}
+.badge-prog{background:rgba(96,165,250,.1);color:#60A5FA}
+.badge-wait{background:rgba(255,255,255,.06);color:var(--muted)}
+.badge-canc{background:rgba(255,107,107,.1);color:#FF6B6B}
+/* Revenue summary */
+.rev-bar{margin-bottom:.7rem}
+.rev-bar-label{display:flex;justify-content:space-between;font-size:.65rem;color:var(--muted);margin-bottom:.3rem}
+.rev-bar-label span:last-child{color:var(--text);font-weight:500}
+.rev-track{background:var(--surface);height:4px;border-radius:999px;overflow:hidden}
+.rev-fill{height:100%;border-radius:999px;background:var(--accent);transition:width .6s cubic-bezier(.2,.8,.35,1)}
+
+/* — INSTAGRAM TAB — */
+.ig-wrap{display:flex;gap:3.5rem;align-items:flex-start;background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:2.5rem 3rem}
+.phone{width:290px;flex-shrink:0}
+.phone-shell{background:#0a0a10;border-radius:42px;padding:13px;border:1.5px solid rgba(255,255,255,.12);box-shadow:0 30px 60px rgba(0,0,0,.55)}
+.phone-notch{width:78px;height:9px;background:rgba(255,255,255,.09);border-radius:999px;margin:0 auto 11px}
+.phone-screen{background:#000;border-radius:30px;overflow:hidden}
+.ig-sb{background:#000;padding:.35rem .9rem .15rem;display:flex;justify-content:space-between;font-size:.48rem;color:#fff;font-family:'DM Sans',sans-serif}
+.ig-hb{background:#000;padding:.35rem .8rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.09)}
+.ig-handle{font-size:.7rem;font-weight:700;color:#fff;font-family:'DM Sans',sans-serif;letter-spacing:-.01em}
+.ig-icons{display:flex;gap:.4rem}
+.ig-i{width:13px;height:13px;background:rgba(255,255,255,.3);border-radius:2px}
+.ig-profile{background:#000;padding:.65rem .8rem .5rem}
+.ig-ptop{display:flex;align-items:center;gap:.7rem;margin-bottom:.4rem}
+.ig-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#86efac);border:2px solid rgba(255,255,255,.2);flex-shrink:0}
+.ig-pstats{display:flex;flex:1;justify-content:space-around}
+.ig-ps{text-align:center}
+.ig-ps-n{font-size:.62rem;font-weight:700;color:#fff;font-family:'DM Sans',sans-serif}
+.ig-ps-l{font-size:.5rem;color:rgba(255,255,255,.45)}
+.ig-bio-name{font-size:.63rem;font-weight:700;color:#fff;font-family:'DM Sans',sans-serif;margin-bottom:.1rem}
+.ig-bio-text{font-size:.58rem;color:rgba(255,255,255,.6);line-height:1.4;font-family:'DM Sans',sans-serif}
+.ig-follow{display:block;width:100%;background:#0095F6;color:#fff;text-align:center;font-size:.6rem;font-weight:700;padding:.3rem;border-radius:5px;margin-top:.45rem;font-family:'DM Sans',sans-serif}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.08)}
+.ig-p{aspect-ratio:1;position:relative;overflow:hidden;cursor:pointer}
+.ig-p:hover::after{opacity:1}
+.ig-p::after{content:'';position:absolute;inset:0;background:rgba(200,255,71,.1);opacity:0;transition:opacity .2s}
+.ig-p:nth-child(1){background:linear-gradient(135deg,#0e0e16 0%,#1c1c26 55%,#0a0a10 100%)}
+.ig-p:nth-child(2){background:linear-gradient(160deg,#111118 0%,#1f1f28 50%,#0d0d12 100%)}
+.ig-p:nth-child(3){background:linear-gradient(135deg,#0c0c14 0%,#181820 55%,#08080f 100%)}
+.ig-p:nth-child(4){background:radial-gradient(ellipse at 40% 40%,#1a1a24,#080810)}
+.ig-p:nth-child(5){background:linear-gradient(45deg,#101018,#1e1e28,#0c0c14)}
+.ig-p:nth-child(6){background:linear-gradient(160deg,#0d0d16,#191924,#090910)}
+.ig-p:nth-child(7){background:linear-gradient(135deg,#0f0f18,#1b1b25,#0b0b12)}
+.ig-p:nth-child(8){background:radial-gradient(ellipse at 70% 70%,#1d1d28,#090910)}
+.ig-p:nth-child(9){background:linear-gradient(135deg,#0c0c14,#17171f,#08080e)}
+/* Accent shapes on posts */
+.ig-p:nth-child(1) .ig-shape{position:absolute;left:15%;top:45%;width:70%;height:1px;background:rgba(200,255,71,.25)}
+.ig-p:nth-child(3) .ig-shape{position:absolute;right:10%;top:10%;width:45%;height:45%;border:1px solid rgba(200,255,71,.18);border-radius:50%}
+.ig-p:nth-child(5) .ig-shape{position:absolute;inset:20%;border:1px solid rgba(200,255,71,.18)}
+.ig-p:nth-child(7) .ig-shape{position:absolute;bottom:15%;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(200,255,71,.3),transparent)}
+.ig-p-tag{position:absolute;bottom:5px;left:5px;right:5px;font-size:.4rem;color:rgba(255,255,255,.6);font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.06em;z-index:3}
+.ig-p-tag::before{content:'';position:absolute;inset:-2px -3px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);border-radius:2px;z-index:-1}
+/* Right: post detail */
+.ig-detail{flex:1;min-width:0}
+.ig-d-hdr{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.ig-d-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#86efac);flex-shrink:0}
+.ig-d-name{font-weight:600;font-size:.85rem}
+.ig-d-time{font-size:.68rem;color:var(--muted)}
+.ig-d-img{background:linear-gradient(135deg,#0d0d15 0%,#181820 35%,#0e0e16 65%,#131318 100%);border-radius:10px;overflow:hidden;position:relative;aspect-ratio:4/3;max-height:240px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.ig-d-img-txt{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;color:rgba(255,255,255,.06);text-align:center;line-height:.85;letter-spacing:-.04em}
+.ig-d-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,255,71,.035) 0%,transparent 55%)}
+.ig-d-img-acc{position:absolute;left:15%;top:50%;width:70%;height:1px;background:linear-gradient(90deg,transparent,rgba(200,255,71,.22),transparent)}
+.ig-d-caption{font-size:.82rem;line-height:1.65;color:var(--muted);margin-bottom:.7rem}
+.ig-d-caption strong{color:var(--text);font-weight:500}
+.ig-d-tags{font-size:.78rem;color:#60A5FA}
+.ig-d-meta{display:flex;gap:1.2rem;margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--border);font-size:.7rem;color:var(--muted)}
+.ig-d-meta span{display:flex;align-items:center;gap:.3rem}
+.ig-d-meta strong{color:var(--text);font-weight:500}
+/* Caption examples tabs */
+.cap-tabs{display:flex;gap:.5rem;margin-bottom:.8rem;flex-wrap:wrap}
+.cap-tab{font-size:.58rem;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .6rem;border-radius:5px;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .18s}
+.cap-tab.a{background:var(--accent-bg);color:var(--accent);border-color:rgba(200,255,71,.25)}
+.cap-tab:hover:not(.a){color:var(--text)}
+.cap-content{display:none}.cap-content.a{display:block}
+
+/* ══════════════════════════════════════════
+   DETAIL CARDS
+══════════════════════════════════════════ */
+#details{background:var(--bg2)}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:3rem}
+.dcard{background:var(--surface);padding:2rem 1.8rem;transition:background .25s}
+.dcard:hover{background:var(--surface2)}
+.dcard.full{grid-column:1/-1}
+.dcard-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.1rem;display:flex;align-items:center;gap:.55rem}
+.dcard-ttl::before{content:'';width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.flist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.3rem 1.8rem}
+.flist.one{grid-template-columns:1fr}
+.flist li{font-size:.76rem;color:var(--muted);padding:.32rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
+.flist li:last-child{border-bottom:none}
+.flist li::before{content:'';width:3px;height:3px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+/* ══════════════════════════════════════════
+   PRICING
+══════════════════════════════════════════ */
+#pricing{}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.2rem 1.8rem;transition:border-color .28s,transform .28s}
+.pc:hover{border-color:var(--border3);transform:translateY(-5px)}
+.pc.feat{border-color:rgba(200,255,71,.28);background:linear-gradient(155deg,rgba(200,255,71,.035) 0%,transparent 55%),var(--surface)}
+.pc.feat:hover{border-color:rgba(200,255,71,.55)}
+.pc-badge{display:inline-block;font-family:'Syne',sans-serif;font-weight:700;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;padding:.26rem .75rem;border-radius:999px;margin-bottom:1.4rem}
+.pc-badge.def{background:var(--surface2);color:var(--muted);border:1px solid var(--border2)}
+.pc-badge.pop{background:var(--accent);color:var(--ink)}
+.pc-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;letter-spacing:-.03em;line-height:1;margin-bottom:.3rem}
+.pc-tag{font-size:.76rem;color:var(--muted);margin-bottom:1.8rem;line-height:1.45}
+.pc-price{font-family:'Syne',sans-serif;font-weight:800;font-size:3.2rem;letter-spacing:-.05em;line-height:1;display:flex;align-items:baseline;gap:.15rem;margin-bottom:.3rem}
+.pc-curr{font-size:1.1rem;font-weight:600;color:var(--muted);align-self:flex-start;margin-top:.3rem}
+.pc-note{font-size:.65rem;color:var(--dim);margin-bottom:1.8rem}
+.pc-hr{height:1px;background:var(--border);margin:1.2rem 0}
+.pcf{list-style:none}
+.pcf li{font-size:.76rem;color:var(--muted);padding:.38rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:.55rem;line-height:1.38}
+.pcf li.y::before{content:'✓';color:var(--accent);font-size:.66rem;font-weight:700;flex-shrink:0;margin-top:.04rem}
+.pcf li.n{opacity:.27}
+.pcf li.n::before{content:'—';font-size:.66rem;flex-shrink:0;margin-top:.04rem}
+.pc-btn{display:block;width:100%;margin-top:1.8rem;padding:.82rem;text-align:center;font-family:'Syne',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:8px;border:1px solid var(--border2);color:var(--muted);background:transparent;cursor:pointer;transition:all .2s}
+.pc-btn:hover{background:var(--surface2);color:var(--text)}
+.pc-btn.prim{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.pc-btn.prim:hover{opacity:.85}
+.addons{margin-top:1.4rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.8rem}
+.addons-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1rem}
+.ao{}
+.ao-n{font-size:.76rem;color:var(--text);margin-bottom:.15rem;font-weight:400}
+.ao-p{font-size:.68rem;color:var(--accent);font-family:'Syne',sans-serif;font-weight:700}
+
+/* ══════════════════════════════════════════
+   CONFIGURATOR
+══════════════════════════════════════════ */
+.cfg-wrap{margin-top:4rem;border:1px solid var(--border2);border-radius:16px;overflow:hidden;background:var(--surface)}
+.cfg-hdr{padding:1.8rem 2rem 1.4rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(200,255,71,.025),transparent)}
+.cfg-hdr-l{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cfg-hdr h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-.02em;margin-top:.45rem}
+.cfg-hdr-r{font-size:.72rem;color:var(--muted);line-height:1.6;max-width:300px}
+.cfg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.cfg-group{background:var(--surface);padding:1.5rem 1.7rem}
+.cfg-group-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem;display:flex;align-items:center;gap:.5rem}
+.cfg-group-ttl::before{content:'';width:5px;height:5px;background:var(--accent);border-radius:50%}
+.cfg-opt{display:flex;align-items:center;gap:.85rem;padding:.6rem .65rem;margin:0 -.65rem;border-radius:7px;cursor:pointer;transition:background .18s;position:relative}
+.cfg-opt:hover{background:rgba(255,255,255,.025)}
+.cfg-opt input{position:absolute;opacity:0;pointer-events:none}
+.cfg-cbox{width:18px;height:18px;border:1.5px solid var(--border3);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;background:transparent}
+.cfg-cbox::after{content:'';width:8px;height:8px;background:var(--ink);border-radius:1.5px;opacity:0;transform:scale(.5);transition:all .2s}
+.cfg-opt input:checked ~ .cfg-cbox{background:var(--accent);border-color:var(--accent)}
+.cfg-opt input:checked ~ .cfg-cbox::after{opacity:1;transform:scale(1)}
+.cfg-opt-txt{flex:1;font-size:.78rem;color:var(--text);font-weight:400;line-height:1.4}
+.cfg-opt input:checked ~ .cfg-opt-txt{color:var(--text);font-weight:500}
+.cfg-opt-sub{font-size:.65rem;color:var(--dim);display:block;margin-top:.12rem;font-weight:300}
+.cfg-price{font-family:'Syne',sans-serif;font-weight:700;font-size:.72rem;color:var(--accent);white-space:nowrap;letter-spacing:-.005em}
+.cfg-bar{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2rem;background:var(--bg2);border-top:1px solid var(--border2);gap:1.5rem;flex-wrap:wrap;position:sticky;bottom:0;backdrop-filter:blur(14px);z-index:50}
+.cfg-bar-l{display:flex;flex-direction:column;gap:.15rem;min-width:0;flex:1}
+.cfg-bar-lbl{font-family:'Syne',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.cfg-bar-v{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.03em;line-height:1;display:flex;align-items:baseline;gap:.3rem;transition:transform .25s cubic-bezier(.2,.8,.35,1)}
+.cfg-bar-v.pulse{transform:scale(1.08);color:var(--accent)}
+.cfg-bar-curr{font-size:.85rem;color:var(--muted);font-weight:600}
+.cfg-bar-note{font-size:.6rem;color:var(--dim);margin-top:.2rem}
+.cfg-bar-monthly{font-size:.65rem;color:var(--muted);margin-top:.15rem}
+.cfg-bar-monthly strong{color:var(--accent);font-weight:600;font-family:'Syne',sans-serif}
+.cfg-reset{font-family:'Syne',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--border2);border-radius:6px;padding:.55rem 1rem;cursor:pointer;transition:all .18s}
+.cfg-reset:hover{color:var(--text);border-color:var(--border3)}
+.cfg-monthly-section{padding:1.3rem 1.7rem;background:linear-gradient(180deg,transparent,rgba(255,255,255,.012));border-top:1px solid var(--border)}
+.cfg-monthly-section .cfg-group-ttl{margin-bottom:.9rem}
+
+/* ══════════════════════════════════════════
+   TIMELINE
+══════════════════════════════════════════ */
+#timeline{}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-top:3.5rem}
+.tl::before{content:'';position:absolute;top:.45rem;left:12.5%;width:75%;height:1.5px;background:linear-gradient(90deg,var(--accent),rgba(200,255,71,.3),transparent)}
+.tl-step{padding:0 1.2rem}
+.tl-dot{width:11px;height:11px;border-radius:50%;background:var(--accent);margin-bottom:1.8rem;position:relative;z-index:1;box-shadow:0 0 0 3px rgba(200,255,71,.14),0 0 0 6px rgba(200,255,71,.05)}
+.tl-wk{font-family:'Syne',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.tl-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:.65rem;line-height:1.2}
+.tl-list{list-style:none}
+.tl-list li{font-size:.7rem;color:var(--muted);padding:.17rem 0;padding-left:.65rem;border-left:1px solid var(--border);line-height:1.4}
+
+/* ══════════════════════════════════════════
+   CTA
+══════════════════════════════════════════ */
+#cta{background:var(--bg2);text-align:center;padding:9rem 0 8rem;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:350px;background:radial-gradient(ellipse,rgba(200,255,71,.06) 0%,transparent 65%);pointer-events:none}
+.cta-btns{display:flex;justify-content:center;gap:.85rem;margin-top:2.5rem;flex-wrap:wrap}
+.cta-note{font-size:.6rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;margin-top:3rem;font-family:'Syne',sans-serif;font-weight:600}
+footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-family:'Syne',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:1024px){
+  .hero-body{grid-template-columns:1fr}.bf{display:none}
+  .cfg-grid{grid-template-columns:1fr}
+  .cfg-bar{padding:1.1rem 1.3rem}
+  .cfg-bar-v{font-size:1.65rem}
+  .price-grid{grid-template-columns:1fr;gap:.9rem}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc{border-right:none;border-bottom:1px solid var(--border)}
+  .svc:nth-child(odd){border-right:1px solid var(--border)}
+  .detail-grid{grid-template-columns:1fr}
+  .dcard.full{grid-column:1}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .tl{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .tl::before{display:none}
+  .addons-grid{grid-template-columns:1fr 1fr}
+  .ig-wrap{flex-direction:column;align-items:center}
+  .dash-wrap{grid-template-columns:1fr;height:auto}
+  .dash-sb{display:none}
+  .kpis{grid-template-columns:1fr 1fr}
+  .dash-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:.4rem;text-align:center}
+}
+@media(max-width:640px){
+  .c{padding:0 1.2rem}
+  section{padding:4rem 0}
+  .tl{grid-template-columns:1fr}
+  .flist{grid-template-columns:1fr}
+  .wfs-hero{grid-template-columns:1fr}
+  .wfs-img{display:none}
+  .wfs-services{grid-template-columns:1fr}
+  .wfs-ba-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ HERO ════════════ -->
+<div class="hero-topbar">
+  <div class="hero-topbar-logo">AXY Studio — Confidential Proposal</div>
+  <div class="hero-topbar-meta">Perth WA · May 2026 · Prepared for Proline Tinting</div>
+</div>
+
+<section id="hero">
+  <div class="hero-body">
+    <div class="grid-bg"></div>
+    <div class="hero-glow"></div>
+
+    <!-- Left text -->
+    <div class="rv">
+      <div class="hero-counter">2026 COMMERCIAL PROPOSAL</div>
+      <h1 class="d">Your brand,<br><span class="accent">next level.</span></h1>
+      <div class="rule" style="margin:1.8rem 0"></div>
+      <p class="body hero-desc">A complete strategic proposal to position <strong style="color:var(--text);font-weight:500">Proline Tinting</strong> as Perth's reference brand for tinting, paint protection and signage — from brand identity to a 24/7 AI-powered digital ecosystem.</p>
+      <div class="hero-ctas">
+        <a href="#pricing" class="btn-p">See packages ↓</a>
+        <a href="#preview" class="btn-g">View mockups →</a>
+      </div>
+    </div>
+
+    <!-- Right: browser mockup -->
+    <div class="hero-right rv d3">
+      <div class="bf">
+        <div class="bf-bar">
+          <div class="bf-dots"><div class="bf-dot r"></div><div class="bf-dot y"></div><div class="bf-dot g"></div></div>
+          <div class="bf-url">nomebusiness.com.au</div>
+        </div>
+        <div class="ms">
+          <div class="ms-nav">
+            <div class="ms-logo">PROLINE</div>
+            <div class="ms-links"><span class="ms-link">Services</span><span class="ms-link">Gallery</span><span class="ms-link">About</span></div>
+            <div class="ms-cta-b">Book Now</div>
+          </div>
+          <div class="ms-hero">
+            <div class="ms-left">
+              <div class="ms-eyebrow">Perth Premium Tinting</div>
+              <div class="ms-hl">TINT BEYOND<br>THE STANDARD</div>
+              <div class="ms-sub">High-end window tinting, paint protection &amp; wrapping. Cars, homes, businesses.</div>
+              <div class="ms-btns"><div class="ms-bp">Get a quote</div><div class="ms-bs">Explore</div></div>
+            </div>
+            <div class="ms-img">
+              <svg class="ms-car" width="90" height="36" viewBox="0 0 90 36" fill="none">
+                <path d="M6 26 Q16 10 32 10 L56 10 Q70 10 76 18 L84 18 L84 26 Z" stroke="rgba(200,255,71,0.35)" stroke-width="1.2" fill="none"/>
+                <circle cx="22" cy="26" r="7" fill="none" stroke="rgba(200,255,71,0.28)" stroke-width="1.2"/>
+                <circle cx="66" cy="26" r="7" fill="none" stroke="rgba(200,255,71,0.28)" stroke-width="1.2"/>
+                <line x1="36" y1="10" x2="34" y2="3" stroke="rgba(200,255,71,0.15)" stroke-width="1"/>
+                <line x1="58" y1="10" x2="60" y2="3" stroke="rgba(200,255,71,0.15)" stroke-width="1"/>
+              </svg>
+            </div>
+          </div>
+          <div class="ms-cards">
+            <div class="ms-card"><div class="ms-card-ico"></div><div class="ms-card-n">Auto Tint</div><div class="ms-card-p">from $350</div></div>
+            <div class="ms-card"><div class="ms-card-ico"></div><div class="ms-card-n">Paint Protection</div><div class="ms-card-p">from $1,200</div></div>
+            <div class="ms-card"><div class="ms-card-ico"></div><div class="ms-card-n">Vehicle Wrap</div><div class="ms-card-p">from $2,800</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ STATS ════════════ -->
+<section id="stats">
+  <div class="c">
+    <div class="stats-grid">
+      <div class="stat rv d1"><div class="stat-n"><span>5</span></div><div class="stat-l">Service pillars</div></div>
+      <div class="stat rv d2"><div class="stat-n">3</div><div class="stat-l">Tailored packages</div></div>
+      <div class="stat rv d3"><div class="stat-n">6 <span style="font-size:1.4rem;color:var(--accent)">wk</span></div><div class="stat-l">From signature to launch</div></div>
+      <div class="stat rv d4"><div class="stat-n">24<span>/7</span></div><div class="stat-l">AI live for your customers</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ SERVICES ════════════ -->
+<section id="services">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">02 — What's inside</div>
+      <h2 class="h1">Five pillars of your ecosystem</h2>
+    </div>
+    <div class="svc-grid rv d1">
+      <div class="svc">
+        <div class="svc-num">01</div>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="svc-name">Brand Identity</div>
+        <div class="svc-desc">Logo, palette, typography, guidelines and a visual system that travels across vehicles, signage and digital.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-num">02</div>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="svc-name">Website</div>
+        <div class="svc-desc">Premium site with instant quote calculator, before/after gallery and Perth-focused local SEO.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="svc-name">Marketing</div>
+        <div class="svc-desc">Google &amp; Meta Ads with retargeting, plus a content strategy for Instagram and TikTok reels.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-num">04</div>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div class="svc-name">AI &amp; Automation</div>
+        <div class="svc-desc">WhatsApp + web chatbot that quotes tinting jobs and books installs 24/7. Follow-ups on autopilot.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-num">05</div>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="svc-name">Dashboard</div>
+        <div class="svc-desc">Custom panel for installs, materials inventory, revenue and client history — works on your phone.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PREVIEW MOCKUPS ════════════ -->
+<section id="preview">
+  <div class="preview-bg-num">SAMPLE</div>
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">03 — Sample &amp; Preview</div>
+      <h2 class="h1">Here's how your system will look</h2>
+      <p class="body" style="margin-top:.9rem;max-width:520px">Three interactive previews — website, operations dashboard and Instagram feed. All built around your brand.</p>
+    </div>
+
+    <div class="tabs rv d1">
+      <button class="tab a" data-tab="web" onclick="switchTab('web')">🌐 &nbsp;Website</button>
+      <button class="tab" data-tab="dash" onclick="switchTab('dash')">📊 &nbsp;Dashboard</button>
+      <button class="tab" data-tab="ig" onclick="switchTab('ig')">📱 &nbsp;Instagram</button>
+    </div>
+
+    <!-- ── TAB: WEBSITE ── -->
+    <div class="tp a" id="tab-web">
+      <div class="web-wrap rv">
+        <div class="web-bf-bar">
+          <div class="bf-dots"><div class="bf-dot r"></div><div class="bf-dot y"></div><div class="bf-dot g"></div></div>
+          <div class="bf-url" style="font-size:.65rem">nomebusiness.com.au</div>
+        </div>
+        <div class="web-full-site">
+          <div class="wfs-nav">
+            <div class="wfs-logo">PROLINE TINTING</div>
+            <div class="wfs-links"><span class="wfs-link">Services</span><span class="wfs-link">Gallery</span><span class="wfs-link">About</span><span class="wfs-link">Contact</span></div>
+            <div class="wfs-book">Get a Quote →</div>
+          </div>
+          <div class="wfs-hero">
+            <div class="wfs-hl">
+              <div class="wfs-eyebrow">Perth's Premier Tinting Studio</div>
+              <div class="wfs-title">TINT ·<br>WRAP ·<br>PROTECT</div>
+              <div class="wfs-sub">Premium tinting &amp; vehicle finishing for Perth's discerning owners — cars, homes, fleets.</div>
+              <div class="wfs-btns"><div class="wfs-bp">Get a Quote</div><div class="wfs-bs">Explore Services</div></div>
+            </div>
+            <div class="wfs-img">
+              <svg class="wfs-car-svg" width="200" height="80" viewBox="0 0 200 80" fill="none">
+                <path d="M15 58 Q35 22 70 22 L128 22 Q158 22 170 42 L188 42 L188 58 Z" stroke="rgba(200,255,71,0.3)" stroke-width="1.5" fill="rgba(200,255,71,0.04)"/>
+                <circle cx="50" cy="58" r="16" fill="none" stroke="rgba(200,255,71,0.25)" stroke-width="1.5"/>
+                <circle cx="50" cy="58" r="8" fill="none" stroke="rgba(200,255,71,0.15)" stroke-width="1"/>
+                <circle cx="150" cy="58" r="16" fill="none" stroke="rgba(200,255,71,0.25)" stroke-width="1.5"/>
+                <circle cx="150" cy="58" r="8" fill="none" stroke="rgba(200,255,71,0.15)" stroke-width="1"/>
+                <path d="M80 22 L75 5 L125 5 L120 22" stroke="rgba(200,255,71,0.15)" stroke-width="1" fill="none"/>
+                <path d="M88 22 L86 8 L114 8 L112 22" stroke="rgba(200,255,71,0.1)" stroke-width="1" fill="rgba(200,255,71,0.02)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="wfs-services">
+            <div class="wfs-svc"><div class="wfs-svc-tag">Most popular</div><div class="wfs-svc-name">Auto Window Tinting <span class="wfs-svc-arrow">→</span></div><div class="wfs-svc-price">from AUD 350 · 2–3 hrs</div></div>
+            <div class="wfs-svc"><div class="wfs-svc-tag">Premium service</div><div class="wfs-svc-name">Paint Protection Film <span class="wfs-svc-arrow">→</span></div><div class="wfs-svc-price">from AUD 1,200 · 1 day</div></div>
+            <div class="wfs-svc"><div class="wfs-svc-tag">Signature build</div><div class="wfs-svc-name">Vehicle Wrapping <span class="wfs-svc-arrow">→</span></div><div class="wfs-svc-price">from AUD 2,800 · 2–4 days</div></div>
+          </div>
+          <div class="wfs-ba">
+            <div class="wfs-ba-label">Before &amp; After — real installs</div>
+            <div class="wfs-ba-grid">
+              <div class="wfs-ba-item"><div class="wfs-ba-before"></div><div class="wfs-ba-after"></div><div class="wfs-ba-tag">TESLA TINT · hover for After</div></div>
+              <div class="wfs-ba-item"><div class="wfs-ba-before" style="background:linear-gradient(225deg,#151515,#0c0c0c)"></div><div class="wfs-ba-after" style="background:linear-gradient(225deg,#0e1408,#141e08)"></div><div class="wfs-ba-tag">OFFICE TINT · hover for After</div></div>
+              <div class="wfs-ba-item"><div class="wfs-ba-before" style="background:linear-gradient(135deg,#111,#0a0a0a)"></div><div class="wfs-ba-after" style="background:linear-gradient(135deg,#0d1208,#16200a)"></div><div class="wfs-ba-tag">HILUX WRAP · hover for After</div></div>
+              <div class="wfs-ba-item"><div class="wfs-ba-before" style="background:linear-gradient(160deg,#141414,#0d0d0d)"></div><div class="wfs-ba-after" style="background:linear-gradient(160deg,#0f1808,#1c2a0a)"></div><div class="wfs-ba-tag">PPF PORSCHE · hover for After</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TAB: DASHBOARD ── -->
+    <div class="tp" id="tab-dash">
+      <div class="dash-wrap rv">
+        <!-- Sidebar -->
+        <div class="dash-sb">
+          <div class="dash-sb-logo"><div class="dash-sb-logo-dot"></div>Proline Studio</div>
+          <div class="dsb-section">Main</div>
+          <div class="dsn a">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Dashboard
+          </div>
+          <div class="dsn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Bookings
+          </div>
+          <div class="dsn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+            Clients
+          </div>
+          <div class="dsb-section">Finance</div>
+          <div class="dsn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Revenue
+          </div>
+          <div class="dsn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Analytics
+          </div>
+          <div class="dsb-section">System</div>
+          <div class="dsn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            Settings
+          </div>
+        </div>
+        <!-- Main -->
+        <div class="dash-main">
+          <div class="dash-hdr">
+            <div class="dash-hdr-l">
+              <div class="dash-greeting">Good morning, Daniel 👋</div>
+              <div class="dash-date">Monday, 18 May 2026 · Perth, WA</div>
+            </div>
+            <button class="dash-today-btn">+ New booking</button>
+          </div>
+          <!-- KPIs -->
+          <div class="kpis">
+            <div class="kpi"><div class="kpi-l">Revenue Today</div><div class="kpi-v">$1,840</div><div class="kpi-c">↑ 12% vs yesterday</div></div>
+            <div class="kpi"><div class="kpi-l">This Month</div><div class="kpi-v">$28,400</div><div class="kpi-c">↑ 8% vs last</div></div>
+            <div class="kpi"><div class="kpi-l">Bookings Today</div><div class="kpi-v">4</div><div class="kpi-c">2 completed</div></div>
+            <div class="kpi"><div class="kpi-l">Avg Ticket</div><div class="kpi-v">$680</div><div class="kpi-c neg">↓ 3% vs last</div></div>
+          </div>
+          <!-- Grid: chart + appointments -->
+          <div class="dash-grid">
+            <!-- Revenue chart -->
+            <div class="dc">
+              <div class="dc-title">Weekly Revenue <span class="dc-period">12 May — today</span></div>
+              <div class="chart">
+                <div class="bar-col"><div class="bar-val">$1.2k</div><div class="bar-track"><div class="bar" style="height:29%;background:rgba(200,255,71,.3)"></div></div><div class="bar-day">Mon</div></div>
+                <div class="bar-col"><div class="bar-val">$2.4k</div><div class="bar-track"><div class="bar" style="height:59%;background:rgba(200,255,71,.45)"></div></div><div class="bar-day">Tue</div></div>
+                <div class="bar-col"><div class="bar-val">$0.8k</div><div class="bar-track"><div class="bar" style="height:20%;background:rgba(200,255,71,.3)"></div></div><div class="bar-day">Wed</div></div>
+                <div class="bar-col"><div class="bar-val">$3.2k</div><div class="bar-track"><div class="bar" style="height:78%;background:rgba(200,255,71,.5)"></div></div><div class="bar-day">Thu</div></div>
+                <div class="bar-col"><div class="bar-val">$2.8k</div><div class="bar-track"><div class="bar" style="height:68%;background:rgba(200,255,71,.45)"></div></div><div class="bar-day">Fri</div></div>
+                <div class="bar-col"><div class="bar-val">$4.1k</div><div class="bar-track"><div class="bar" style="height:100%;background:var(--accent)"></div></div><div class="bar-day">Sat</div></div>
+                <div class="bar-col"><div class="bar-val">$1.8k</div><div class="bar-track"><div class="bar" style="height:44%;background:rgba(200,255,71,.38)"></div></div><div class="bar-day">Sun</div></div>
+              </div>
+              <div style="margin-top:1rem">
+                <div class="rev-bar"><div class="rev-bar-label"><span>Auto Tinting</span><span>$9,400</span></div><div class="rev-track"><div class="rev-fill" style="width:78%"></div></div></div>
+                <div class="rev-bar"><div class="rev-bar-label"><span>Paint Protection Film</span><span>$12,000</span></div><div class="rev-track"><div class="rev-fill" style="width:100%"></div></div></div>
+                <div class="rev-bar"><div class="rev-bar-label"><span>Vehicle Wrapping</span><span>$7,000</span></div><div class="rev-track"><div class="rev-fill" style="width:58%"></div></div></div>
+              </div>
+            </div>
+            <!-- Appointments -->
+            <div class="dc">
+              <div class="dc-title">Today's Bookings</div>
+              <div class="appt">
+                <div class="appt-time">08:30</div>
+                <div class="appt-avatar" style="background:rgba(200,255,71,.12);color:var(--accent)">JW</div>
+                <div><div class="appt-client">James W.</div><div class="appt-car">Tesla Model 3 · Full Tint</div></div>
+                <div class="badge badge-done">Done</div>
+              </div>
+              <div class="appt">
+                <div class="appt-time">11:00</div>
+                <div class="appt-avatar" style="background:rgba(96,165,250,.1);color:#60A5FA">SK</div>
+                <div><div class="appt-client">Sarah K.</div><div class="appt-car">Office Building · Commercial Tint</div></div>
+                <div class="badge badge-prog">In progress</div>
+              </div>
+              <div class="appt">
+                <div class="appt-time">14:00</div>
+                <div class="appt-avatar" style="background:rgba(255,255,255,.06);color:var(--muted)">MD</div>
+                <div><div class="appt-client">Mike D.</div><div class="appt-car">Hilux Ute · Full Wrap</div></div>
+                <div class="badge badge-wait">Booked</div>
+              </div>
+              <div class="appt">
+                <div class="appt-time">16:30</div>
+                <div class="appt-avatar" style="background:rgba(255,255,255,.06);color:var(--muted)">EH</div>
+                <div><div class="appt-client">Emma H.</div><div class="appt-car">Porsche Cayenne · PPF Front</div></div>
+                <div class="badge badge-wait">Booked</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TAB: INSTAGRAM ── -->
+    <div class="tp" id="tab-ig">
+      <div class="ig-wrap rv">
+        <!-- Phone -->
+        <div class="phone">
+          <div class="phone-shell">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="ig-sb"><span>9:41</span><span style="display:flex;gap:3px"><span style="width:10px;height:6px;background:#fff;border-radius:1px;opacity:.7"></span><span style="width:8px;height:6px;background:#fff;border-radius:1px;opacity:.5"></span></span></div>
+              <div class="ig-hb">
+                <div class="ig-handle">@prolinetinting</div>
+                <div class="ig-icons"><div class="ig-i"></div><div class="ig-i"></div></div>
+              </div>
+              <div class="ig-profile">
+                <div class="ig-ptop">
+                  <div class="ig-av"></div>
+                  <div class="ig-pstats">
+                    <div class="ig-ps"><div class="ig-ps-n">142</div><div class="ig-ps-l">Posts</div></div>
+                    <div class="ig-ps"><div class="ig-ps-n">4.1K</div><div class="ig-ps-l">Followers</div></div>
+                    <div class="ig-ps"><div class="ig-ps-n">312</div><div class="ig-ps-l">Following</div></div>
+                  </div>
+                </div>
+                <div class="ig-bio-name">Proline Tinting</div>
+                <div class="ig-bio-text">✦ Premium Tinting · Perth WA<br>Auto · Residential · Commercial<br>📞 Book → link in bio</div>
+                <div class="ig-follow">Follow</div>
+              </div>
+              <div class="ig-grid">
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">TESLA TINT</div></div>
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">PPF FRONT</div></div>
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">HILUX WRAP</div></div>
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">BEFORE/AFTER</div></div>
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">OFFICE TINT</div></div>
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">SIGNAGE</div></div>
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">CERAMIC FILM</div></div>
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">SHOP</div></div>
+                <div class="ig-p"><div class="ig-shape"></div><div class="ig-p-tag">INSTALL DAY</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post detail -->
+        <div class="ig-detail">
+          <div class="ig-d-hdr">
+            <div class="ig-d-av"></div>
+            <div><div class="ig-d-name">@prolinetinting</div><div class="ig-d-time">2 hours ago · Perth, WA</div></div>
+          </div>
+          <div class="cap-tabs">
+            <div class="cap-tab a" onclick="switchCap('detail')">Install Post</div>
+            <div class="cap-tab" onclick="switchCap('before')">Before/After</div>
+            <div class="cap-tab" onclick="switchCap('edu')">Educational</div>
+          </div>
+          <div class="cap-content a" id="cap-detail">
+            <div class="ig-d-img"><div class="ig-d-img-txt">TESLA<br>TINT</div><div class="ig-d-img-acc"></div></div>
+            <div class="ig-d-caption"><strong>Cool inside, sharp outside.</strong> Tesla Model 3 Performance — full ceramic tint package, 99% UV rejection, 80% IR heat reduction. Daniel handled the install personally. 🏁</div>
+            <div class="ig-d-tags">#windowtinting #perth #tesla #ceramictint #perthcars #autotint #prolinetinting #balcatta</div>
+          </div>
+          <div class="cap-content" id="cap-before">
+            <div class="ig-d-img"><div class="ig-d-img-txt">HILUX<br>PPF</div><div class="ig-d-img-acc"></div></div>
+            <div class="ig-d-caption"><strong>The difference is everything.</strong> Toyota Hilux — full front-end PPF install. From gravel rash and rock chips to flawless self-healing protection in a single day. ✨</div>
+            <div class="ig-d-tags">#beforeafter #ppf #paintprotection #hilux #perth #4x4 #perthcars #prolinetinting</div>
+          </div>
+          <div class="cap-content" id="cap-edu">
+            <div class="ig-d-img"><div class="ig-d-img-txt">WHY<br>CERAMIC?</div><div class="ig-d-img-acc"></div></div>
+            <div class="ig-d-caption"><strong>Why ceramic tint beats standard film.</strong> 3 reasons: ① 99% UV rejection ② 80% IR heat reduction ③ never fades, never goes purple. Get a free quote — link in bio. 👇</div>
+            <div class="ig-d-tags">#ceramictint #windowtinting #perth #autocare #carcare #heatrejection #prolinetinting</div>
+          </div>
+          <div class="ig-d-meta">
+            <span>❤️ <strong>412</strong> likes</span>
+            <span>💬 <strong>34</strong> comments</span>
+            <span>📤 <strong>62</strong> shares</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ DETAILS ════════════ -->
+<section id="details">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">04 — In detail</div>
+      <h2 class="h1">Everything you get</h2>
+    </div>
+    <div class="detail-grid rv d1">
+      <div class="dcard">
+        <div class="dcard-ttl">Brand Identity Kit</div>
+        <ul class="flist">
+          <li>Primary logo + variants (.ai .svg .png)</li><li>Full colour palette</li>
+          <li>Licensed typography selection</li><li>Branded patterns &amp; textures</li>
+          <li>Brand guidelines PDF</li><li>Vehicle livery &amp; signage templates</li>
+          <li>Social media templates (Canva)</li><li>Business card &amp; invoice templates</li>
+        </ul>
+      </div>
+      <div class="dcard">
+        <div class="dcard-ttl">Premium Website</div>
+        <ul class="flist">
+          <li>100% custom design — zero templates</li><li>5 pages: Home, Services, Gallery, About, Contact</li>
+          <li>Instant tint quote calculator</li><li>Interactive before/after gallery</li>
+          <li>Local SEO optimised for Perth</li><li>Google Business Profile setup</li>
+          <li>Mobile-first &amp; 90+ Lighthouse score</li><li>Hosting + domain 1 year included</li>
+        </ul>
+      </div>
+      <div class="dcard">
+        <div class="dcard-ttl">Marketing Setup</div>
+        <ul class="flist">
+          <li>Google Ads — local intent campaigns</li><li>Meta Ads setup + first campaigns</li>
+          <li>Retargeting site visitors</li><li>Facebook Pixel + GA4 configured</li>
+          <li>Analytics &amp; conversion tracking</li><li>Instagram content strategy (1 month)</li>
+        </ul>
+      </div>
+      <div class="dcard">
+        <div class="dcard-ttl">AI &amp; Automation</div>
+        <ul class="flist">
+          <li>WhatsApp + web AI chatbot (24/7)</li><li>Instant tint quotes by photo</li>
+          <li>Booking confirmation emails</li><li>48h appointment reminders</li>
+          <li>Follow-up + Google review request</li><li>Lapsed client re-engagement flow</li>
+        </ul>
+      </div>
+      <div class="dcard full">
+        <div class="dcard-ttl">Custom Operations Dashboard</div>
+        <ul class="flist">
+          <li>Visual booking calendar</li><li>Job status: queued / in progress / done</li>
+          <li>Daily &amp; monthly revenue tracking</li><li>Revenue by service line (tint / PPF / wrap)</li>
+          <li>Materials inventory per film SKU</li><li>Fleet client repeat-job tracking</li>
+          <li>Automated booking alerts</li><li>Works on any device — phone, tablet, desktop</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PRICING ════════════ -->
+<section id="pricing">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">05 — Investment</div>
+      <h2 class="h1">Three growth tiers, or build your own</h2>
+      <p class="body" style="margin-top:.8rem;max-width:540px">All prices in AUD, GST excl. Payment terms 50% on kick-off — 50% on delivery. Start from a preset, then tweak it to fit Proline.</p>
+    </div>
+    <div class="price-grid">
+      <div class="pc rv d1">
+        <div class="pc-badge def">Foundation</div>
+        <div class="pc-name">Essentials</div>
+        <div class="pc-tag">Brand + Site. The premium baseline.</div>
+        <div class="pc-price"><span class="pc-curr">AUD</span>3,000</div>
+        <div class="pc-note">one-off · 3-week delivery</div>
+        <div class="pc-hr"></div>
+        <ul class="pcf">
+          <li class="y">Full Brand Identity Kit</li>
+          <li class="y">5-page custom website</li>
+          <li class="y">Online booking widget</li>
+          <li class="y">Local SEO Perth</li>
+          <li class="y">Google Business Profile</li>
+          <li class="y">Hosting + domain (1 year)</li>
+          <li class="n">Google &amp; Meta Ads</li>
+          <li class="n">AI Chatbot</li>
+          <li class="n">Operations dashboard</li>
+          <li class="n">WhatsApp automation</li>
+        </ul>
+        <button class="pc-btn" data-preset="essentials">Load Essentials ↓</button>
+      </div>
+      <div class="pc feat rv d2">
+        <div class="pc-badge pop">⭑ Most picked</div>
+        <div class="pc-name">Premium</div>
+        <div class="pc-tag">Marketing live + AI. Growth from day one.</div>
+        <div class="pc-price"><span class="pc-curr">AUD</span>5,000</div>
+        <div class="pc-note">one-off · 4-week delivery · optional monthly</div>
+        <div class="pc-hr"></div>
+        <ul class="pcf">
+          <li class="y">Everything in Essentials</li>
+          <li class="y">Google Ads — local intent</li>
+          <li class="y">Meta Ads setup</li>
+          <li class="y">Website AI Chatbot (24/7)</li>
+          <li class="y">Bookings dashboard</li>
+          <li class="y">Analytics &amp; conversion tracking</li>
+          <li class="n">WhatsApp automation</li>
+          <li class="n">Revenue + CRM dashboard</li>
+          <li class="n">AI email autoresponder</li>
+          <li class="n">Instant quote calculator</li>
+        </ul>
+        <button class="pc-btn prim" data-preset="premium">Load Premium ↓</button>
+      </div>
+      <div class="pc rv d3">
+        <div class="pc-badge def">Full Stack</div>
+        <div class="pc-name">Prestige</div>
+        <div class="pc-tag">The complete ecosystem. All in.</div>
+        <div class="pc-price"><span class="pc-curr">AUD</span>8,000</div>
+        <div class="pc-note">one-off · 6-week delivery · priority support</div>
+        <div class="pc-hr"></div>
+        <ul class="pcf">
+          <li class="y">Everything in Premium</li>
+          <li class="y">WhatsApp Business automation</li>
+          <li class="y">AI email autoresponder</li>
+          <li class="y">Revenue + CRM dashboard</li>
+          <li class="y">Instant tint quote calculator</li>
+          <li class="y">Booking email automations</li>
+          <li class="y">Training &amp; onboarding (2h live)</li>
+          <li class="y">Priority support — first 30 days</li>
+          <li class="y">Dashboard updates 1 year</li>
+          <li class="y">Performance reports (monthly)</li>
+        </ul>
+        <button class="pc-btn" data-preset="prestige">Load Prestige ↓</button>
+      </div>
+    </div>
+
+    <!-- ── PRICING CONFIGURATOR ── -->
+    <div id="configurator" class="cfg-wrap rv d3">
+      <div class="cfg-hdr">
+        <div class="cfg-hdr-l">
+          <div>
+            <span class="label">Build your own package</span>
+            <h3>Pick exactly what you need</h3>
+          </div>
+          <div class="cfg-hdr-r">Tick the features you want — the total updates live. Start blank, or click a preset above to pre-fill the configuration.</div>
+        </div>
+      </div>
+      <div class="cfg-grid">
+        <!-- Brand -->
+        <div class="cfg-group">
+          <div class="cfg-group-ttl">Brand &amp; Identity</div>
+          <label class="cfg-opt"><input type="checkbox" data-price="1200" data-id="brand_kit"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Full Brand Identity Kit<span class="cfg-opt-sub">Logo, palette, typography, guidelines, templates</span></span><span class="cfg-price">AUD 1,200</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="400" data-id="livery"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Vehicle livery &amp; signage templates<span class="cfg-opt-sub">Branded designs for ute, van, shop signage</span></span><span class="cfg-price">AUD 400</span></label>
+        </div>
+        <!-- Website -->
+        <div class="cfg-group">
+          <div class="cfg-group-ttl">Website</div>
+          <label class="cfg-opt"><input type="checkbox" data-price="1000" data-id="site_5"><span class="cfg-cbox"></span><span class="cfg-opt-txt">5-page custom website<span class="cfg-opt-sub">Home, Services, Gallery, About, Contact</span></span><span class="cfg-price">AUD 1,000</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="500" data-id="site_7"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Upgrade to 7-page site<span class="cfg-opt-sub">Adds Pricing &amp; Testimonials pages</span></span><span class="cfg-price">AUD 500</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="300" data-id="booking"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Online booking widget<span class="cfg-opt-sub">Calendar with auto-confirmation</span></span><span class="cfg-price">AUD 300</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="300" data-id="quote_calc"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Instant tint quote calculator<span class="cfg-opt-sub">By vehicle size &amp; film type</span></span><span class="cfg-price">AUD 300</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="200" data-id="gallery"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Before/after interactive gallery<span class="cfg-opt-sub">Slider, filters, lightbox</span></span><span class="cfg-price">AUD 200</span></label>
+        </div>
+        <!-- SEO -->
+        <div class="cfg-group">
+          <div class="cfg-group-ttl">SEO &amp; Local</div>
+          <label class="cfg-opt"><input type="checkbox" data-price="300" data-id="seo"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Local SEO — Perth<span class="cfg-opt-sub">Schema, geo-targeting, page optimisation</span></span><span class="cfg-price">AUD 300</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="200" data-id="gbp"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Google Business Profile setup<span class="cfg-opt-sub">Listings, photos, review automation</span></span><span class="cfg-price">AUD 200</span></label>
+        </div>
+        <!-- Marketing -->
+        <div class="cfg-group">
+          <div class="cfg-group-ttl">Marketing</div>
+          <label class="cfg-opt"><input type="checkbox" data-price="500" data-id="gads"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Google Ads setup<span class="cfg-opt-sub">Local intent campaigns, tracking</span></span><span class="cfg-price">AUD 500</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="500" data-id="mads"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Meta Ads setup<span class="cfg-opt-sub">Instagram + Facebook campaigns</span></span><span class="cfg-price">AUD 500</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="400" data-id="retarget"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Retargeting setup<span class="cfg-opt-sub">Re-engage site visitors via Meta/Google</span></span><span class="cfg-price">AUD 400</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="300" data-id="analytics"><span class="cfg-cbox"></span><span class="cfg-opt-txt">GA4 + Pixel tracking<span class="cfg-opt-sub">Conversion + behaviour analytics</span></span><span class="cfg-price">AUD 300</span></label>
+        </div>
+        <!-- AI -->
+        <div class="cfg-group">
+          <div class="cfg-group-ttl">AI &amp; Automation</div>
+          <label class="cfg-opt"><input type="checkbox" data-price="700" data-id="ai_chat"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Website AI Chatbot (24/7)<span class="cfg-opt-sub">Answers, books, qualifies leads</span></span><span class="cfg-price">AUD 700</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="1000" data-id="wa_auto"><span class="cfg-cbox"></span><span class="cfg-opt-txt">WhatsApp Business automation<span class="cfg-opt-sub">AI receptionist on WhatsApp</span></span><span class="cfg-price">AUD 1,000</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="500" data-id="ai_email"><span class="cfg-cbox"></span><span class="cfg-opt-txt">AI email autoresponder<span class="cfg-opt-sub">Smart replies to quote requests</span></span><span class="cfg-price">AUD 500</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="400" data-id="email_auto"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Booking email automations<span class="cfg-opt-sub">Confirm, remind, follow-up, review</span></span><span class="cfg-price">AUD 400</span></label>
+        </div>
+        <!-- Dashboard -->
+        <div class="cfg-group">
+          <div class="cfg-group-ttl">Operations Dashboard</div>
+          <label class="cfg-opt"><input type="checkbox" data-price="300" data-id="dash_appt"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Bookings module<span class="cfg-opt-sub">Calendar, statuses, alerts</span></span><span class="cfg-price">AUD 300</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="800" data-id="dash_revenue"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Revenue + CRM module<span class="cfg-opt-sub">Daily/monthly KPIs, client history</span></span><span class="cfg-price">AUD 800</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="500" data-id="inventory"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Materials inventory<span class="cfg-opt-sub">Track film/PPF/wrap stock per SKU</span></span><span class="cfg-price">AUD 500</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="300" data-id="training"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Training &amp; onboarding (2h live)<span class="cfg-opt-sub">Walkthrough + dedicated Q&amp;A</span></span><span class="cfg-price">AUD 300</span></label>
+        </div>
+      </div>
+      <!-- Monthly add-ons -->
+      <div class="cfg-monthly-section">
+        <div class="cfg-group-ttl">Monthly retainers (optional)</div>
+        <div class="cfg-grid" style="grid-template-columns:repeat(2,1fr);background:transparent;gap:0;padding:0;border:none">
+          <label class="cfg-opt"><input type="checkbox" data-monthly="600" data-id="ads_mgmt_mo"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Ads management<span class="cfg-opt-sub">Optimisation, A/B, monthly report</span></span><span class="cfg-price">AUD 600/mo</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-monthly="400" data-id="social_mo"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Social content management<span class="cfg-opt-sub">8 posts + 4 reels per month</span></span><span class="cfg-price">AUD 400/mo</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-monthly="200" data-id="maint_mo"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Site maintenance &amp; updates<span class="cfg-opt-sub">Security, backups, content edits</span></span><span class="cfg-price">AUD 200/mo</span></label>
+          <label class="cfg-opt"><input type="checkbox" data-price="800" data-id="photo"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Professional photo shoot<span class="cfg-opt-sub">One-off · half-day on site</span></span><span class="cfg-price">AUD 800</span></label>
+        </div>
+      </div>
+      <!-- Sticky total bar -->
+      <div class="cfg-bar">
+        <div class="cfg-bar-l">
+          <div class="cfg-bar-lbl">Your configuration</div>
+          <div class="cfg-bar-v" id="cfg-total-wrap"><span class="cfg-bar-curr">AUD</span><span id="cfg-total">0</span></div>
+          <div class="cfg-bar-monthly" id="cfg-monthly-line" style="display:none">+ <strong id="cfg-monthly">0</strong> AUD per month (optional retainers)</div>
+          <div class="cfg-bar-note">One-off project cost · GST excl. · payment 50/50</div>
+        </div>
+        <button class="cfg-reset" id="cfg-reset">Clear all</button>
+        <a href="#cta" class="btn-p">Lock &amp; book a call →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ TIMELINE ════════════ -->
+<section id="timeline">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">06 — Roadmap</div>
+      <h2 class="h1">From zero to live in 6 weeks</h2>
+    </div>
+    <div class="tl rv d1">
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-wk">Week 1–2</div><div class="tl-ttl">Discovery &amp; Brand</div><ul class="tl-list"><li>Strategic brief</li><li>Logo development</li><li>Brand guidelines</li><li>Visual sign-off</li></ul></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-wk">Week 3–4</div><div class="tl-ttl">Site &amp; Content</div><ul class="tl-list"><li>Design &amp; wireframes</li><li>Website build</li><li>Copywriting</li><li>Quote calculator setup</li></ul></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-wk">Week 5</div><div class="tl-ttl">AI &amp; Automation</div><ul class="tl-list"><li>Email flows setup</li><li>Chatbot training</li><li>Dashboard config</li><li>End-to-end testing</li></ul></div>
+      <div class="tl-step"><div class="tl-dot"></div><div class="tl-wk">Week 6</div><div class="tl-ttl">Launch &amp; Ads</div><ul class="tl-list"><li>Site goes live</li><li>Ads activation</li><li>Training &amp; onboarding</li><li>Monitoring setup</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CTA ════════════ -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="c" style="position:relative;z-index:1">
+    <div class="rv">
+      <div class="pill cta-pill">Next step</div>
+      <h2 class="d" style="font-size:clamp(2.5rem,6vw,5.5rem)">Ready when<br><span class="accent">you are.</span></h2>
+      <div class="rule" style="margin:1.8rem auto;background:var(--accent)"></div>
+      <p class="body" style="max-width:440px;margin:0 auto;text-align:center">Book a free 30-minute call to discuss the right configuration for <strong style="color:var(--text);font-weight:500">Proline Tinting</strong>.</p>
+      <div class="cta-btns">
+        <a href="mailto:bookings@prolinetinting.com.au?subject=AXY%20Studio%20Proposal%20-%20Book%20a%20call" class="btn-p">Book a free call →</a>
+        <a href="mailto:bookings@prolinetinting.com.au?subject=AXY%20Studio%20Proposal%20-%20Message" class="btn-g">Send a message</a>
+      </div>
+      <div class="cta-note">Proposal valid 30 days · Confidential</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 · Confidential proposal</span>
+  <span>Proline Tinting · Tint · Wrap · Protect · Perth WA</span>
+  <span>Prepared with care by AXY Studio</span>
+</footer>
+
+<script>
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('a'));
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('a'));
+  document.querySelector('[data-tab="'+t+'"]').classList.add('a');
+  document.getElementById('tab-'+t).classList.add('a');
+}
+function switchCap(t){
+  document.querySelectorAll('.cap-tab').forEach(b=>b.classList.remove('a'));
+  document.querySelectorAll('.cap-content').forEach(c=>c.classList.remove('a'));
+  document.getElementById('cap-'+t).classList.add('a');
+  event.currentTarget.classList.add('a');
+}
+const obs=new IntersectionObserver(e=>{
+  e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('on');obs.unobserve(el.target)}});
+},{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── PRICING CONFIGURATOR ──
+const PRESETS = {
+  essentials: ['brand_kit','site_5','booking','seo','gbp'],
+  premium:    ['brand_kit','site_5','booking','seo','gbp','gads','mads','ai_chat','dash_appt'],
+  prestige:   ['brand_kit','site_5','booking','seo','gbp','gads','mads','ai_chat','dash_appt','wa_auto','ai_email','dash_revenue','email_auto','quote_calc']
+};
+const totalEl = document.getElementById('cfg-total');
+const totalWrap = document.getElementById('cfg-total-wrap');
+const monthlyEl = document.getElementById('cfg-monthly');
+const monthlyLine = document.getElementById('cfg-monthly-line');
+function recalc(){
+  const oneOff = [...document.querySelectorAll('.cfg-wrap input[data-price]:checked')]
+    .reduce((s,cb)=>s+parseInt(cb.dataset.price,10),0);
+  const monthly = [...document.querySelectorAll('.cfg-wrap input[data-monthly]:checked')]
+    .reduce((s,cb)=>s+parseInt(cb.dataset.monthly,10),0);
+  totalEl.textContent = oneOff.toLocaleString('en-US');
+  monthlyEl.textContent = monthly.toLocaleString('en-US');
+  monthlyLine.style.display = monthly > 0 ? 'block' : 'none';
+  totalWrap.classList.add('pulse');
+  setTimeout(()=>totalWrap.classList.remove('pulse'),250);
+}
+function loadPreset(name){
+  const ids = PRESETS[name] || [];
+  document.querySelectorAll('.cfg-wrap input[type=checkbox]').forEach(cb=>{
+    cb.checked = ids.includes(cb.dataset.id);
+  });
+  recalc();
+  document.getElementById('configurator').scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.querySelectorAll('.cfg-wrap input[type=checkbox]').forEach(cb=>cb.addEventListener('change', recalc));
+document.querySelectorAll('.pc-btn[data-preset]').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.preventDefault();
+    loadPreset(btn.dataset.preset);
+  });
+});
+document.getElementById('cfg-reset').addEventListener('click', ()=>{
+  document.querySelectorAll('.cfg-wrap input[type=checkbox]').forEach(cb=>cb.checked=false);
+  recalc();
+});
+</script>
+</body>
+</html>
