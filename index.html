@@ -397,6 +397,124 @@ section{padding:6rem 0}
 .cfg-monthly-section .cfg-group-ttl{margin-bottom:.9rem}
 
 /* ══════════════════════════════════════════
+   DAY COMPARISON (Today vs With AXY)
+══════════════════════════════════════════ */
+#day-cmp{background:var(--bg2);position:relative;overflow:hidden}
+.day-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:3rem}
+.day-col{background:var(--surface);padding:2rem 1.8rem}
+.day-col.good{background:linear-gradient(165deg,rgba(200,255,71,.03) 0%,var(--surface) 60%)}
+.day-col-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.day-col-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;letter-spacing:-.01em}
+.day-col-tag{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;font-family:'Syne',sans-serif;font-weight:700;padding:.22rem .55rem;border-radius:4px}
+.day-col-tag.bad{background:rgba(255,107,107,.1);color:#FF8A8A}
+.day-col-tag.good{background:var(--accent);color:var(--ink)}
+.day-row{display:grid;grid-template-columns:55px 1fr;gap:.95rem;padding:.85rem 0;border-bottom:1px solid var(--border)}
+.day-row:last-child{border-bottom:none}
+.day-time{font-family:'Syne',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.05em;color:var(--accent);padding-top:.18rem}
+.day-text{font-size:.78rem;line-height:1.55;color:var(--muted)}
+.day-text strong{color:var(--text);font-weight:500}
+.day-col.good .day-text{color:var(--text)}
+.day-col.good .day-text em{color:var(--accent);font-style:normal;font-weight:500}
+
+/* ══════════════════════════════════════════
+   CALCULATORS (ROI + Time)
+══════════════════════════════════════════ */
+#calc{background:var(--bg)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:3rem}
+.calc-card{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.9rem 1.9rem 1.7rem}
+.calc-card.feat{border-color:rgba(200,255,71,.22);background:linear-gradient(165deg,rgba(200,255,71,.025) 0%,var(--surface) 55%)}
+.calc-eyebrow{font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.calc-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.4rem}
+.calc-input-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.65rem 0;border-bottom:1px solid var(--border)}
+.calc-input-label{font-size:.78rem;color:var(--muted);flex:1;line-height:1.4}
+.calc-input{background:var(--bg2);border:1px solid var(--border2);color:var(--text);font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;text-align:right;padding:.42rem .7rem;border-radius:6px;width:90px;outline:none;transition:border-color .18s}
+.calc-input:focus{border-color:var(--accent)}
+.calc-input::-webkit-outer-spin-button,.calc-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.calc-out{margin-top:1.4rem;padding-top:1.3rem;border-top:1px dashed var(--border2)}
+.calc-out-row{display:flex;justify-content:space-between;align-items:baseline;padding:.45rem 0}
+.calc-out-lbl{font-size:.72rem;color:var(--muted)}
+.calc-out-val{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--text)}
+.calc-out-big{margin-top:.7rem;padding:1rem 1.1rem;background:var(--accent-bg);border:1px solid rgba(200,255,71,.18);border-radius:9px;display:flex;justify-content:space-between;align-items:baseline}
+.calc-out-big-lbl{font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.calc-out-big-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;color:var(--accent);letter-spacing:-.025em;line-height:1}
+.calc-out-big-val .cur{font-size:.85rem;margin-right:.18rem}
+.calc-payback{margin-top:.85rem;padding:.7rem 1rem;background:var(--surface2);border-radius:7px;font-size:.72rem;color:var(--muted);text-align:center}
+.calc-payback strong{color:var(--accent);font-family:'Syne',sans-serif;font-weight:700}
+.calc-note{font-size:.62rem;color:var(--dim);margin-top:.85rem;text-align:center;line-height:1.5}
+
+/* ══════════════════════════════════════════
+   MARKET RATE + PAYMENT PLAN
+══════════════════════════════════════════ */
+.market-rate{font-family:'Syne',sans-serif;font-weight:600;font-size:.66rem;letter-spacing:.05em;color:var(--dim);margin-bottom:.4rem;text-decoration:line-through;text-decoration-thickness:1.5px;text-decoration-color:rgba(255,107,107,.55)}
+.market-rate .lbl{color:var(--muted);font-weight:500;letter-spacing:.16em;text-transform:uppercase;font-size:.55rem;text-decoration:none;display:inline-block;margin-right:.4rem;letter-spacing:.18em}
+.market-rate-saved{display:inline-block;font-family:'Syne',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--accent-bg);padding:.2rem .5rem;border-radius:4px;margin-top:.55rem;text-decoration:none}
+.payment-plan-line{font-size:.65rem;color:var(--muted);margin-top:.5rem;line-height:1.5;padding-top:.55rem;border-top:1px dashed var(--border)}
+.payment-plan-line strong{color:var(--text);font-weight:500}
+
+/* ══════════════════════════════════════════
+   STOP-DOING LIST
+══════════════════════════════════════════ */
+#stop{background:var(--bg2)}
+.stop-wrap{margin-top:2.8rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem 2rem}
+.stop-item{display:flex;align-items:flex-start;gap:.75rem;padding:.9rem 0;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.5}
+.stop-item-ico{flex-shrink:0;width:22px;height:22px;background:rgba(255,107,107,.1);border-radius:50%;color:#FF6B6B;font-family:'Syne',sans-serif;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.75rem;margin-top:.05rem}
+.stop-item-txt{color:var(--text);font-weight:300}
+.stop-item-txt strong{color:var(--muted);font-weight:300;text-decoration:line-through;text-decoration-color:rgba(255,107,107,.35)}
+
+/* ══════════════════════════════════════════
+   COMPARISON TABLE (Manual vs AXY)
+══════════════════════════════════════════ */
+.cmp-table{margin-top:2.5rem;border:1px solid var(--border2);border-radius:14px;overflow:hidden}
+.cmp-row{display:grid;grid-template-columns:1.4fr 1fr 1fr .7fr;align-items:center;padding:1.05rem 1.5rem;border-bottom:1px solid var(--border);font-size:.82rem;transition:background .2s}
+.cmp-row:last-child{border-bottom:none}
+.cmp-row.hdr{background:var(--bg2);font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:.85rem 1.5rem}
+.cmp-row:not(.hdr):hover{background:rgba(255,255,255,.018)}
+.cmp-metric{color:var(--text);font-weight:400}
+.cmp-today{color:var(--muted)}
+.cmp-axy{color:var(--text);font-weight:500}
+.cmp-axy::before{content:'';display:inline-block;width:5px;height:5px;background:var(--accent);border-radius:50%;margin-right:.5rem;vertical-align:middle}
+.cmp-delta{font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;color:var(--accent);text-align:right}
+
+/* ══════════════════════════════════════════
+   FUTURE-PACE (November 2026)
+══════════════════════════════════════════ */
+#future{background:var(--bg2);position:relative;overflow:hidden}
+.future-bg{position:absolute;right:-8%;bottom:-25%;font-family:'Syne',sans-serif;font-weight:800;font-size:22vw;color:rgba(255,255,255,.014);line-height:1;pointer-events:none;user-select:none;letter-spacing:-.06em}
+.future-intro{font-size:.95rem;color:var(--muted);margin-top:.7rem;max-width:600px;line-height:1.65}
+.future-intro strong{color:var(--accent);font-weight:500}
+.future-list{margin-top:3rem;display:flex;flex-direction:column;gap:1.2rem;position:relative;z-index:1}
+.future-bullet{display:grid;grid-template-columns:42px 1fr;gap:1.4rem;align-items:flex-start;padding:1.4rem 0;border-top:1px solid var(--border)}
+.future-bullet:last-child{border-bottom:1px solid var(--border)}
+.future-arrow{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--accent);line-height:1}
+.future-body{}
+.future-head{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;line-height:1.25;letter-spacing:-.015em;color:var(--text);margin-bottom:.4rem}
+.future-sub{font-size:.78rem;color:var(--muted);line-height:1.6;max-width:560px}
+.future-sub strong{color:var(--text);font-weight:500}
+
+/* ══════════════════════════════════════════
+   ABOUT / FOUNDER + VITRUVIAN CASE
+══════════════════════════════════════════ */
+#about{}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:3rem}
+.about-card{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:2rem 1.9rem;display:flex;flex-direction:column}
+.about-card.feat{border-color:rgba(200,255,71,.22);background:linear-gradient(165deg,rgba(200,255,71,.02) 0%,var(--surface) 55%)}
+.about-eyebrow{font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem}
+.founder-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.1rem}
+.founder-pic{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#86efac);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:var(--ink);font-size:1.1rem;letter-spacing:-.02em}
+.founder-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.015em}
+.founder-role{font-size:.7rem;color:var(--muted);margin-top:.12rem}
+.founder-bio{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;flex:1}
+.founder-bio strong{color:var(--text);font-weight:500}
+.founder-credit{font-size:.66rem;color:var(--dim);padding-top:.85rem;border-top:1px solid var(--border);letter-spacing:.04em;font-family:'Syne',sans-serif;font-weight:600}
+.case-stats{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:1rem 0}
+.case-stat{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.7rem .8rem}
+.case-stat-l{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.2rem}
+.case-stat-v{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-.02em;line-height:1}
+.case-stat-v .accent{color:var(--accent)}
+.case-quote{font-size:.78rem;color:var(--text);font-style:italic;line-height:1.65;padding:1rem 1.1rem;background:var(--bg2);border-left:2px solid var(--accent);border-radius:0 8px 8px 0;margin-top:.5rem}
+.case-quote-by{display:block;font-size:.65rem;color:var(--muted);margin-top:.55rem;font-style:normal;letter-spacing:.05em}
+
+/* ══════════════════════════════════════════
    TIMELINE
 ══════════════════════════════════════════ */
 #timeline{}
@@ -426,6 +544,12 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   .cfg-grid{grid-template-columns:1fr}
   .cfg-bar{padding:1.1rem 1.3rem}
   .cfg-bar-v{font-size:1.65rem}
+  .day-grid{grid-template-columns:1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .stop-wrap{grid-template-columns:1fr;gap:0}
+  .about-grid{grid-template-columns:1fr}
+  .cmp-row{grid-template-columns:1.4fr 1fr 1fr .6fr;padding:.9rem 1.1rem;font-size:.75rem}
+  .future-bullet{grid-template-columns:32px 1fr;gap:1rem}
   .price-grid{grid-template-columns:1fr;gap:.9rem}
   .svc-grid{grid-template-columns:1fr 1fr}
   .svc{border-right:none;border-bottom:1px solid var(--border)}
@@ -452,6 +576,14 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   .wfs-img{display:none}
   .wfs-services{grid-template-columns:1fr}
   .wfs-ba-grid{grid-template-columns:1fr 1fr}
+  .cmp-row{grid-template-columns:1.4fr 1fr 1fr;font-size:.72rem}
+  .cmp-row .cmp-delta{display:none}
+  .cmp-row.hdr .cmp-delta{display:none}
+  .case-stats{grid-template-columns:1fr 1fr}
+  .day-row{grid-template-columns:50px 1fr;gap:.7rem}
+  .calc-card{padding:1.5rem 1.4rem}
+  .calc-input{width:75px;font-size:.85rem}
+  .calc-out-big-val{font-size:1.4rem}
 }
 </style>
 </head>
@@ -529,6 +661,43 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
       <div class="stat rv d2"><div class="stat-n">3</div><div class="stat-l">Tailored packages</div></div>
       <div class="stat rv d3"><div class="stat-n">6 <span style="font-size:1.4rem;color:var(--accent)">wk</span></div><div class="stat-l">From signature to launch</div></div>
       <div class="stat rv d4"><div class="stat-n">24<span>/7</span></div><div class="stat-l">AI live for your customers</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ DAY COMPARISON ════════════ -->
+<section id="day-cmp">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">A day in your business</div>
+      <h2 class="h1">Today vs. four weeks from now</h2>
+      <p class="body" style="margin-top:.9rem;max-width:560px">Same shop, same skill. Different operating system. This is the typical Monday — before and after AXY goes live.</p>
+    </div>
+    <div class="day-grid rv d1">
+      <!-- TODAY -->
+      <div class="day-col">
+        <div class="day-col-hdr">
+          <div class="day-col-ttl">Today</div>
+          <div class="day-col-tag bad">Manual ops</div>
+        </div>
+        <div class="day-row"><div class="day-time">6:30</div><div class="day-text"><strong>Wake up, open WhatsApp.</strong> 14 inquiries from last night, still unanswered. Some will have called your competitor by now.</div></div>
+        <div class="day-row"><div class="day-time">9:00</div><div class="day-text">Reply to inquiries one by one. Write quotes by hand. Phone keeps ringing while you type.</div></div>
+        <div class="day-row"><div class="day-time">12:00</div><div class="day-text">A customer reschedules. You redo the calendar by hand. Double-booking risk on Friday.</div></div>
+        <div class="day-row"><div class="day-time">17:00</div><div class="day-text">Close the shop. <strong>Manually copy-paste a review request</strong> to today's three customers.</div></div>
+        <div class="day-row"><div class="day-time">20:30</div><div class="day-text">On the couch. Three more car owners message you — you quote them from your phone.</div></div>
+      </div>
+      <!-- WITH AXY -->
+      <div class="day-col good">
+        <div class="day-col-hdr">
+          <div class="day-col-ttl">With AXY</div>
+          <div class="day-col-tag good">AI-powered</div>
+        </div>
+        <div class="day-row"><div class="day-time">9:00</div><div class="day-text">Open the dashboard. <em>12 new leads already quoted</em> by AI overnight. 4 booked themselves. You approve in 2 taps.</div></div>
+        <div class="day-row"><div class="day-time">9:10</div><div class="day-text">Start your first install of the day. <em>No phone in your hand for 3 hours.</em></div></div>
+        <div class="day-row"><div class="day-time">12:00</div><div class="day-text">Customer reschedules via their <em>self-serve link</em>. Calendar auto-updates. You only see a notification.</div></div>
+        <div class="day-row"><div class="day-time">17:00</div><div class="day-text">Close the shop. The dashboard <em>already sent</em> review requests at 16:55.</div></div>
+        <div class="day-row"><div class="day-time">20:30</div><div class="day-text"><em>You're not working.</em> AI handled 4 quotes since dinner. They're in tomorrow's pipeline.</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -878,21 +1047,132 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   </div>
 </section>
 
+<!-- ════════════ CALCULATORS (ROI + Time) ════════════ -->
+<section id="calc">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">Run your own numbers</div>
+      <h2 class="h1">What is this actually worth, for you?</h2>
+      <p class="body" style="margin-top:.9rem;max-width:560px">Tweak the inputs. The numbers update live. We've used conservative Perth automotive-services benchmarks — adjust them to match your reality.</p>
+    </div>
+    <div class="calc-grid rv d1">
+      <!-- ROI CALCULATOR -->
+      <div class="calc-card feat">
+        <div class="calc-eyebrow">Revenue lift calculator</div>
+        <div class="calc-ttl">Extra revenue, captured by AI</div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Quote requests per week</div>
+          <input type="number" id="roi-quotes" class="calc-input" min="0" max="500" value="25">
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Current quote-to-booking conversion</div>
+          <input type="number" id="roi-conv" class="calc-input" min="0" max="100" value="40">
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Average job value (AUD)</div>
+          <input type="number" id="roi-ticket" class="calc-input" min="0" max="10000" value="450">
+        </div>
+        <div class="calc-out">
+          <div class="calc-out-row"><div class="calc-out-lbl">Your annual revenue today</div><div class="calc-out-val">AUD <span id="roi-today">0</span></div></div>
+          <div class="calc-out-row"><div class="calc-out-lbl">With AXY (faster response → +30% conv.)</div><div class="calc-out-val">AUD <span id="roi-axy">0</span></div></div>
+          <div class="calc-out-big">
+            <div class="calc-out-big-lbl">Additional annual revenue</div>
+            <div class="calc-out-big-val"><span class="cur">+AUD</span><span id="roi-delta">0</span></div>
+          </div>
+          <div class="calc-payback">Premium investment <strong>AUD 5,000</strong> → payback in <strong><span id="roi-payback">0</span> days</strong></div>
+        </div>
+        <div class="calc-note">Conservative model: AI captures 30% more bookings via instant response + 24/7 availability. Real impact often higher.</div>
+      </div>
+      <!-- TIME CALCULATOR -->
+      <div class="calc-card">
+        <div class="calc-eyebrow">Time-saved calculator</div>
+        <div class="calc-ttl">Your hours, back in your pocket</div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Hrs/week answering WhatsApp &amp; calls</div>
+          <input type="number" id="t-wa" class="calc-input" min="0" max="60" value="10">
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Hrs/week writing quotes manually</div>
+          <input type="number" id="t-quote" class="calc-input" min="0" max="60" value="8">
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Hrs/week chasing follow-ups</div>
+          <input type="number" id="t-followup" class="calc-input" min="0" max="60" value="4">
+        </div>
+        <div class="calc-input-row">
+          <div class="calc-input-label">Hrs/week scheduling &amp; reschedules</div>
+          <input type="number" id="t-sched" class="calc-input" min="0" max="60" value="3">
+        </div>
+        <div class="calc-out">
+          <div class="calc-out-row"><div class="calc-out-lbl">Hours/year you spend on admin today</div><div class="calc-out-val"><span id="t-current">0</span> hrs</div></div>
+          <div class="calc-out-row"><div class="calc-out-lbl">With AXY (~84% automated)</div><div class="calc-out-val"><span id="t-axy-yearly">0</span> hrs</div></div>
+          <div class="calc-out-big">
+            <div class="calc-out-big-lbl">Hours you get back / year</div>
+            <div class="calc-out-big-val"><span id="t-saved">0</span></div>
+          </div>
+          <div class="calc-payback">That's <strong><span id="t-weeks">0</span> full work weeks</strong> back per year</div>
+        </div>
+        <div class="calc-note">Reduction modeled at 84% based on automating quoting, scheduling, reminders, and follow-ups.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ STOP DOING + COMPARISON ════════════ -->
+<section id="stop">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">What changes</div>
+      <h2 class="h1">The list of things you stop doing</h2>
+      <p class="body" style="margin-top:.9rem;max-width:560px">Most of what eats your week isn't tinting — it's the admin around tinting. Here's the load that lifts off you on day one.</p>
+    </div>
+    <div class="stop-wrap rv d1">
+      <div class="stop-item"><div class="stop-item-ico">✕</div><div class="stop-item-txt"><strong>Replying to WhatsApp at 9pm</strong> because someone wants a quote</div></div>
+      <div class="stop-item"><div class="stop-item-ico">✕</div><div class="stop-item-txt"><strong>Reopening the calendar</strong> when a customer reschedules</div></div>
+      <div class="stop-item"><div class="stop-item-ico">✕</div><div class="stop-item-txt"><strong>Copy-pasting</strong> the same quote template 30 times a week</div></div>
+      <div class="stop-item"><div class="stop-item-ico">✕</div><div class="stop-item-txt"><strong>Forgetting to ask</strong> for a Google review</div></div>
+      <div class="stop-item"><div class="stop-item-ico">✕</div><div class="stop-item-txt"><strong>Wondering</strong> "did I follow up with that fleet manager?"</div></div>
+      <div class="stop-item"><div class="stop-item-ico">✕</div><div class="stop-item-txt"><strong>Chasing payments</strong> from commercial clients</div></div>
+      <div class="stop-item"><div class="stop-item-ico">✕</div><div class="stop-item-txt"><strong>Tracking revenue</strong> in a notebook, in your head, or never</div></div>
+      <div class="stop-item"><div class="stop-item-ico">✕</div><div class="stop-item-txt"><strong>Losing leads</strong> who messaged on Sunday and went silent</div></div>
+    </div>
+
+    <!-- Manual vs AXY metrics -->
+    <div class="sh rv d2" style="margin-top:5rem">
+      <div class="pill">By the numbers</div>
+      <h2 class="h2" style="margin-top:.7rem">Manual ops vs. AXY-powered ops</h2>
+    </div>
+    <div class="cmp-table rv d3">
+      <div class="cmp-row hdr"><div>Metric</div><div>Today (manual)</div><div>With AXY</div><div style="text-align:right">Δ</div></div>
+      <div class="cmp-row"><div class="cmp-metric">First-response time</div><div class="cmp-today">~4 hrs avg</div><div class="cmp-axy">&lt; 1 minute</div><div class="cmp-delta">-99%</div></div>
+      <div class="cmp-row"><div class="cmp-metric">Quote turnaround</div><div class="cmp-today">Same day</div><div class="cmp-axy">Instant</div><div class="cmp-delta">-95%</div></div>
+      <div class="cmp-row"><div class="cmp-metric">Cold/lost-lead rate</div><div class="cmp-today">~30%</div><div class="cmp-axy">~5%</div><div class="cmp-delta">-83%</div></div>
+      <div class="cmp-row"><div class="cmp-metric">Hours/week on admin</div><div class="cmp-today">~25 hrs</div><div class="cmp-axy">~4 hrs</div><div class="cmp-delta">-84%</div></div>
+      <div class="cmp-row"><div class="cmp-metric">Live visibility on revenue</div><div class="cmp-today">None</div><div class="cmp-axy">Realtime dashboard</div><div class="cmp-delta">∞</div></div>
+      <div class="cmp-row"><div class="cmp-metric">After-hours / weekend response</div><div class="cmp-today">Zero</div><div class="cmp-axy">24/7 automated</div><div class="cmp-delta">+100%</div></div>
+      <div class="cmp-row"><div class="cmp-metric">Customer review request</div><div class="cmp-today">Forgotten 70% of time</div><div class="cmp-axy">Auto-sent every job</div><div class="cmp-delta">+233%</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ PRICING ════════════ -->
 <section id="pricing">
   <div class="c">
     <div class="sh rv">
-      <div class="pill">05 — Investment</div>
+      <div class="pill">05 — Investment · Founding Partner rate</div>
       <h2 class="h1">Three growth tiers, or build your own</h2>
-      <p class="body" style="margin-top:.8rem;max-width:540px">All prices in AUD, GST excl. Payment terms 50% on kick-off — 50% on delivery. Start from a preset, then tweak it to fit Proline.</p>
+      <p class="body" style="margin-top:.8rem;max-width:580px">Prices below are our <strong style="color:var(--text);font-weight:500">founding partner rate</strong> — locked in for the first 5 Perth clients of 2026. Market rate (in strikethrough) is what local agencies quote for the same scope. All prices AUD, GST excl. Pay 50% on kick-off, 50% on delivery — or split over months (see each tier).</p>
     </div>
     <div class="price-grid">
       <div class="pc rv d1">
         <div class="pc-badge def">Foundation</div>
         <div class="pc-name">Essentials</div>
         <div class="pc-tag">Brand + Site. The premium baseline.</div>
+        <div class="market-rate"><span class="lbl">Market rate</span>AUD 7,500</div>
         <div class="pc-price"><span class="pc-curr">AUD</span>3,000</div>
+        <div class="market-rate-saved">You save 60%</div>
         <div class="pc-note">one-off · 3-week delivery</div>
+        <div class="payment-plan-line">Or <strong>AUD 1,000 deposit + 2× AUD 1,000/mo</strong></div>
         <div class="pc-hr"></div>
         <ul class="pcf">
           <li class="y">Full Brand Identity Kit</li>
@@ -912,8 +1192,11 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <div class="pc-badge pop">⭑ Most picked</div>
         <div class="pc-name">Premium</div>
         <div class="pc-tag">Marketing live + AI. Growth from day one.</div>
+        <div class="market-rate"><span class="lbl">Market rate</span>AUD 13,500</div>
         <div class="pc-price"><span class="pc-curr">AUD</span>5,000</div>
-        <div class="pc-note">one-off · 4-week delivery · optional monthly</div>
+        <div class="market-rate-saved">You save 63%</div>
+        <div class="pc-note">one-off · 4-week delivery</div>
+        <div class="payment-plan-line">Or <strong>AUD 1,500 deposit + 3× AUD 1,200/mo</strong></div>
         <div class="pc-hr"></div>
         <ul class="pcf">
           <li class="y">Everything in Essentials</li>
@@ -932,21 +1215,24 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
       <div class="pc rv d3">
         <div class="pc-badge def">Full Stack</div>
         <div class="pc-name">Prestige</div>
-        <div class="pc-tag">The complete ecosystem. All in.</div>
-        <div class="pc-price"><span class="pc-curr">AUD</span>8,000</div>
+        <div class="pc-tag">The complete ecosystem. AI photo quotes. Fleet portal. All in.</div>
+        <div class="market-rate"><span class="lbl">Market rate</span>AUD 24,000</div>
+        <div class="pc-price"><span class="pc-curr">AUD</span>12,000</div>
+        <div class="market-rate-saved">You save 50%</div>
         <div class="pc-note">one-off · 6-week delivery · priority support</div>
+        <div class="payment-plan-line">Or <strong>AUD 3,000 deposit + 6× AUD 1,500/mo</strong></div>
         <div class="pc-hr"></div>
         <ul class="pcf">
           <li class="y">Everything in Premium</li>
-          <li class="y">WhatsApp Business automation</li>
-          <li class="y">AI email autoresponder</li>
+          <li class="y">WhatsApp Business AI receptionist</li>
           <li class="y">Revenue + CRM dashboard</li>
-          <li class="y">Instant tint quote calculator</li>
-          <li class="y">Booking email automations</li>
+          <li class="y"><strong style="color:var(--text)">AI Quote-by-photo</strong> (vision AI)</li>
+          <li class="y"><strong style="color:var(--text)">Fleet client portal</strong> (commercial)</li>
+          <li class="y">Mobile PWA — dashboard as app</li>
+          <li class="y">Auto-generated monthly PDF report</li>
+          <li class="y">Priority support — first 90 days</li>
+          <li class="y">AI email autoresponder + booking automations</li>
           <li class="y">Training &amp; onboarding (2h live)</li>
-          <li class="y">Priority support — first 30 days</li>
-          <li class="y">Dashboard updates 1 year</li>
-          <li class="y">Performance reports (monthly)</li>
         </ul>
         <button class="pc-btn" data-preset="prestige">Load Prestige ↓</button>
       </div>
@@ -1009,6 +1295,17 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
           <label class="cfg-opt"><input type="checkbox" data-price="500" data-id="inventory"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Materials inventory<span class="cfg-opt-sub">Track film/PPF/wrap stock per SKU</span></span><span class="cfg-price">AUD 500</span></label>
           <label class="cfg-opt"><input type="checkbox" data-price="300" data-id="training"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Training &amp; onboarding (2h live)<span class="cfg-opt-sub">Walkthrough + dedicated Q&amp;A</span></span><span class="cfg-price">AUD 300</span></label>
         </div>
+        <!-- Prestige Plus — premium add-ons -->
+        <div class="cfg-group" style="grid-column:1/-1;background:linear-gradient(180deg,rgba(200,255,71,.025),transparent)">
+          <div class="cfg-group-ttl">Prestige Plus · premium add-ons</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0 2rem">
+            <label class="cfg-opt"><input type="checkbox" data-price="1500" data-id="ai_photo_quote"><span class="cfg-cbox"></span><span class="cfg-opt-txt">AI Quote-by-photo (vision AI)<span class="cfg-opt-sub">Customer sends car photo → instant tint quote</span></span><span class="cfg-price">AUD 1,500</span></label>
+            <label class="cfg-opt"><input type="checkbox" data-price="1200" data-id="fleet_portal"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Fleet client portal<span class="cfg-opt-sub">Login for Uber/taxi/commercial — bundled billing</span></span><span class="cfg-price">AUD 1,200</span></label>
+            <label class="cfg-opt"><input type="checkbox" data-price="400" data-id="monthly_report"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Monthly PDF performance report<span class="cfg-opt-sub">Auto-generated, branded — sent every 1st</span></span><span class="cfg-price">AUD 400</span></label>
+            <label class="cfg-opt"><input type="checkbox" data-price="500" data-id="priority_support"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Priority support · 90 days<span class="cfg-opt-sub">Direct WhatsApp · &lt;4hr response · monthly call</span></span><span class="cfg-price">AUD 500</span></label>
+            <label class="cfg-opt"><input type="checkbox" data-price="400" data-id="pwa"><span class="cfg-cbox"></span><span class="cfg-opt-txt">Mobile PWA (installable app)<span class="cfg-opt-sub">Dashboard on your phone homescreen</span></span><span class="cfg-price">AUD 400</span></label>
+          </div>
+        </div>
       </div>
       <!-- Monthly add-ons -->
       <div class="cfg-monthly-section">
@@ -1047,6 +1344,92 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
       <div class="tl-step"><div class="tl-dot"></div><div class="tl-wk">Week 3–4</div><div class="tl-ttl">Site &amp; Content</div><ul class="tl-list"><li>Design &amp; wireframes</li><li>Website build</li><li>Copywriting</li><li>Quote calculator setup</li></ul></div>
       <div class="tl-step"><div class="tl-dot"></div><div class="tl-wk">Week 5</div><div class="tl-ttl">AI &amp; Automation</div><ul class="tl-list"><li>Email flows setup</li><li>Chatbot training</li><li>Dashboard config</li><li>End-to-end testing</li></ul></div>
       <div class="tl-step"><div class="tl-dot"></div><div class="tl-wk">Week 6</div><div class="tl-ttl">Launch &amp; Ads</div><ul class="tl-list"><li>Site goes live</li><li>Ads activation</li><li>Training &amp; onboarding</li><li>Monitoring setup</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FUTURE-PACE (November 2026) ════════════ -->
+<section id="future">
+  <div class="future-bg">2026</div>
+  <div class="c" style="position:relative;z-index:1">
+    <div class="sh rv">
+      <div class="pill">Picture this</div>
+      <h2 class="h1">Proline Tinting, six months from now</h2>
+      <p class="future-intro">It's <strong>November 2026</strong>. You went live with AXY at the start of June. Here's what your shop looks like now.</p>
+    </div>
+    <div class="future-list rv d1">
+      <div class="future-bullet">
+        <div class="future-arrow">→</div>
+        <div class="future-body">
+          <div class="future-head">You take your first 3-day weekend in four years.</div>
+          <div class="future-sub">The AI receptionist handles <strong>26 inquiries</strong> while you're in Margaret River. You come back to a full week pre-booked. Zero panic.</div>
+        </div>
+      </div>
+      <div class="future-bullet">
+        <div class="future-arrow">→</div>
+        <div class="future-body">
+          <div class="future-head">The dashboard shows +37% revenue vs. May 2026.</div>
+          <div class="future-sub">Not because you work more — because <strong>no lead falls through the cracks</strong> anymore. Every quote answered &lt; 1 min. Every follow-up sent automatically.</div>
+        </div>
+      </div>
+      <div class="future-bullet">
+        <div class="future-arrow">→</div>
+        <div class="future-body">
+          <div class="future-head">Three of Perth's biggest fleet operators are recurring clients.</div>
+          <div class="future-sub">They book via the <strong>Fleet Portal</strong> — multiple vehicles, scheduled installs, bundled invoicing. You quote them once. The system handles the rest.</div>
+        </div>
+      </div>
+      <div class="future-bullet">
+        <div class="future-arrow">→</div>
+        <div class="future-body">
+          <div class="future-head">You hire your first installer apprentice.</div>
+          <div class="future-sub">Because the admin layer is <strong>solved</strong>, your time goes back into the craft. Training the next installer. Doubling your install capacity without doubling your stress.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ ABOUT / FOUNDER + CASE ════════════ -->
+<section id="about">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">Who's behind this</div>
+      <h2 class="h1">Built by founders, proven on a real pilot</h2>
+    </div>
+    <div class="about-grid rv d1">
+      <!-- FOUNDER -->
+      <div class="about-card">
+        <div class="about-eyebrow">The founder</div>
+        <div class="founder-row">
+          <div class="founder-pic">SM</div>
+          <div>
+            <div class="founder-name">Samuel Marta</div>
+            <div class="founder-role">Founder · AXY Studio</div>
+          </div>
+        </div>
+        <div class="founder-bio">I build AI receptionist systems for service businesses where <strong>missed messages = missed revenue</strong>. The same engine that runs the Vitruvian pilot in Dubai is what we'd deploy for Proline — adapted for tinting, PPF, and fleet workflows.</div>
+        <div class="founder-bio">I work hands-on with the first cohort of clients. You won't get passed to an account manager. You get the founder building your system, training it on your FAQs, and answering your WhatsApp when something needs tuning.</div>
+        <div class="founder-credit">Perth WA · operating across Europe + APAC · 1st Perth founding partner cohort 2026</div>
+      </div>
+      <!-- VITRUVIAN CASE -->
+      <div class="about-card feat">
+        <div class="about-eyebrow">Pilot client · proof</div>
+        <div class="founder-row">
+          <div class="founder-pic" style="background:linear-gradient(135deg,#60A5FA,#86efac);color:#fff;font-weight:700;font-size:.95rem">V</div>
+          <div>
+            <div class="founder-name">Vitruvian Italian Physiotherapy</div>
+            <div class="founder-role">Dubai · live since April 2026</div>
+          </div>
+        </div>
+        <div class="case-stats">
+          <div class="case-stat"><div class="case-stat-l">Messages handled</div><div class="case-stat-v"><span class="accent">150+</span></div></div>
+          <div class="case-stat"><div class="case-stat-l">Bookings auto-created</div><div class="case-stat-v"><span class="accent">38</span></div></div>
+          <div class="case-stat"><div class="case-stat-l">Human escalations</div><div class="case-stat-v"><span class="accent">2</span></div></div>
+          <div class="case-stat"><div class="case-stat-l">Owner hrs saved/week</div><div class="case-stat-v"><span class="accent">~6</span></div></div>
+        </div>
+        <div class="case-quote">"We went from answering messages until 11pm to a dashboard the team checks once a day. The AI handles 95% of inbound on its own."<span class="case-quote-by">— Dr. Marco T., Founder · Vitruvian (Dubai)</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1097,7 +1480,7 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 const PRESETS = {
   essentials: ['brand_kit','site_5','booking','seo','gbp'],
   premium:    ['brand_kit','site_5','booking','seo','gbp','gads','mads','ai_chat','dash_appt'],
-  prestige:   ['brand_kit','site_5','booking','seo','gbp','gads','mads','ai_chat','dash_appt','wa_auto','ai_email','dash_revenue','email_auto','quote_calc']
+  prestige:   ['brand_kit','site_5','booking','seo','gbp','gads','mads','ai_chat','dash_appt','wa_auto','ai_email','dash_revenue','email_auto','quote_calc','ai_photo_quote','fleet_portal','monthly_report','priority_support','pwa']
 };
 const totalEl = document.getElementById('cfg-total');
 const totalWrap = document.getElementById('cfg-total-wrap');
@@ -1133,6 +1516,44 @@ document.getElementById('cfg-reset').addEventListener('click', ()=>{
   document.querySelectorAll('.cfg-wrap input[type=checkbox]').forEach(cb=>cb.checked=false);
   recalc();
 });
+
+// ── ROI CALCULATOR ──
+function roiRecalc(){
+  const quotes = +document.getElementById('roi-quotes').value || 0;
+  const conv   = +document.getElementById('roi-conv').value || 0;
+  const ticket = +document.getElementById('roi-ticket').value || 0;
+  const today   = quotes * (conv/100) * ticket * 52;
+  const convAxy = Math.min(100, conv * 1.3);
+  const withAxy = quotes * (convAxy/100) * ticket * 52;
+  const delta   = Math.max(0, withAxy - today);
+  document.getElementById('roi-today').textContent = Math.round(today).toLocaleString('en-US');
+  document.getElementById('roi-axy').textContent   = Math.round(withAxy).toLocaleString('en-US');
+  document.getElementById('roi-delta').textContent = Math.round(delta).toLocaleString('en-US');
+  const payback = delta > 0 ? Math.max(1, Math.round(5000 / (delta/365))) : '∞';
+  document.getElementById('roi-payback').textContent = payback;
+}
+
+// ── TIME CALCULATOR ──
+function timeRecalc(){
+  const ids = ['t-wa','t-quote','t-followup','t-sched'];
+  const weekly = ids.reduce((s,id)=>s+(+document.getElementById(id).value||0), 0);
+  const yearly = weekly * 52;
+  const saved  = Math.round(yearly * 0.84);
+  const remain = yearly - saved;
+  document.getElementById('t-current').textContent   = yearly.toLocaleString('en-US');
+  document.getElementById('t-axy-yearly').textContent = remain.toLocaleString('en-US');
+  document.getElementById('t-saved').textContent     = saved.toLocaleString('en-US');
+  document.getElementById('t-weeks').textContent     = Math.round(saved/40);
+}
+
+['roi-quotes','roi-conv','roi-ticket'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', roiRecalc);
+});
+['t-wa','t-quote','t-followup','t-sched'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', timeRecalc);
+});
+roiRecalc();
+timeRecalc();
 </script>
 </body>
 </html>
