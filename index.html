@@ -577,6 +577,140 @@ section{padding:6rem 0}
 .faq-a-inner code{background:var(--surface2);padding:.12rem .4rem;border-radius:4px;font-size:.82em;color:var(--text);font-family:'DM Sans',sans-serif}
 
 /* ══════════════════════════════════════════
+   INFO ICONS + MODAL
+══════════════════════════════════════════ */
+.info-btn{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:rgba(200,255,71,.08);border:1px solid rgba(200,255,71,.22);color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;font-size:.62rem;line-height:1;cursor:pointer;flex-shrink:0;transition:all .18s;margin-left:.5rem;vertical-align:middle;padding:0}
+.info-btn:hover{background:var(--accent);color:var(--ink);transform:scale(1.12)}
+.info-btn.lg{width:22px;height:22px;font-size:.75rem}
+
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);z-index:200;display:none;align-items:center;justify-content:center;padding:1.5rem;opacity:0;transition:opacity .22s}
+.modal-backdrop.open{display:flex;opacity:1}
+.modal-card{background:var(--surface);border:1px solid var(--border3);border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 30px 60px rgba(0,0,0,.6);transform:translateY(20px) scale(.97);transition:transform .25s cubic-bezier(.2,.8,.35,1)}
+.modal-backdrop.open .modal-card{transform:translateY(0) scale(1)}
+.modal-hdr{padding:1.4rem 1.8rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.modal-eyebrow{font-family:'Syne',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.modal-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;line-height:1.2;letter-spacing:-.02em;color:var(--text)}
+.modal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-size:1.2rem;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .18s;font-family:'Syne',sans-serif;line-height:1}
+.modal-close:hover{background:var(--surface2);color:var(--text);border-color:var(--border3)}
+.modal-body{padding:1.3rem 1.8rem 1.6rem;font-size:.85rem;line-height:1.7;color:var(--muted)}
+.modal-body strong{color:var(--text);font-weight:500}
+.modal-body p{margin-bottom:.9rem}
+.modal-body p:last-child{margin-bottom:0}
+.modal-body ul{margin:.7rem 0 1rem;padding-left:1.3rem}
+.modal-body li{margin-bottom:.45rem;line-height:1.6}
+.modal-body .price-tag{display:inline-flex;align-items:baseline;gap:.3rem;background:var(--accent-bg);color:var(--accent);padding:.35rem .75rem;border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:-.005em;border:1px solid rgba(200,255,71,.18)}
+.modal-body .price-tag .cur{font-size:.6rem;font-weight:600}
+.modal-body .callout{background:var(--bg2);border-left:3px solid var(--accent);padding:.85rem 1rem;border-radius:0 8px 8px 0;margin:.9rem 0;font-size:.8rem;color:var(--text);line-height:1.6}
+.modal-body .callout strong{color:var(--accent)}
+.modal-foot{padding:1rem 1.8rem 1.4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:.6rem}
+
+/* Make svc cards clickable */
+.svc.clickable{cursor:pointer}
+.svc.clickable::after{content:'i';position:absolute;top:1rem;right:1rem;width:18px;height:18px;border-radius:50%;background:rgba(200,255,71,.08);border:1px solid rgba(200,255,71,.22);color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;font-size:.62rem;display:flex;align-items:center;justify-content:center;transition:all .18s;font-style:italic}
+.svc.clickable:hover::after{background:var(--accent);color:var(--ink);transform:scale(1.15)}
+
+/* Make pricing tier badges clickable for info */
+.pc-info-trigger{position:absolute;top:1.1rem;right:1.1rem;cursor:pointer;z-index:2}
+.pc{position:relative}
+
+/* ══════════════════════════════════════════
+   DASHBOARD INTERACTIVE NAV
+══════════════════════════════════════════ */
+.dsn{user-select:none}
+.dash-view{display:none;animation:fadeIn .28s cubic-bezier(.2,.8,.35,1)}
+.dash-view.a{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Bookings view */
+.bk-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;flex-wrap:wrap;gap:.6rem}
+.bk-tabs{display:flex;gap:.4rem;background:var(--bg2);padding:.25rem;border-radius:7px;border:1px solid var(--border)}
+.bk-tab{font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .8rem;border-radius:5px;color:var(--muted);cursor:pointer;transition:all .18s;border:none;background:transparent}
+.bk-tab.a{background:var(--accent);color:var(--ink)}
+.bk-cal{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:grid;grid-template-columns:50px repeat(7,1fr)}
+.bk-cal-h{padding:.5rem .35rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.bk-cal-h:last-child{border-right:none}
+.bk-cal-h.time{background:var(--surface)}
+.bk-cal-r{padding:.4rem .3rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:.58rem;color:var(--dim);min-height:42px;position:relative}
+.bk-cal-r:nth-child(8n){border-right:none}
+.bk-cal-r.time{background:var(--surface);color:var(--muted);font-family:'Syne',sans-serif;font-weight:600;font-size:.55rem;letter-spacing:.05em;text-align:center;display:flex;align-items:center;justify-content:center}
+.bk-slot{background:var(--accent-bg);border:1px solid rgba(200,255,71,.25);border-radius:4px;padding:.32rem .45rem;font-size:.55rem;color:var(--text);line-height:1.25;cursor:pointer;transition:all .18s}
+.bk-slot:hover{background:var(--accent);color:var(--ink)}
+.bk-slot strong{display:block;font-weight:600;font-size:.55rem;color:var(--accent)}
+.bk-slot:hover strong{color:var(--ink)}
+.bk-slot.blue{background:rgba(96,165,250,.12);border-color:rgba(96,165,250,.3)}
+.bk-slot.blue strong{color:#60A5FA}
+.bk-slot.orange{background:rgba(251,146,60,.12);border-color:rgba(251,146,60,.3)}
+.bk-slot.orange strong{color:#FB923C}
+
+/* Clients view */
+.cl-search{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:.5rem .8rem;color:var(--text);font-size:.75rem;width:100%;margin-bottom:.9rem;outline:none}
+.cl-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-bottom:1.1rem}
+.cl-kpi{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.75rem .85rem}
+.cl-kpi-l{font-family:'Syne',sans-serif;font-weight:700;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.25rem}
+.cl-kpi-v{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-.02em;line-height:1}
+.cl-tbl{background:var(--bg2);border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.cl-row{display:grid;grid-template-columns:1.4fr 1.4fr .9fr .9fr .7fr;padding:.7rem 1rem;border-bottom:1px solid var(--border);font-size:.7rem;align-items:center}
+.cl-row:last-child{border-bottom:none}
+.cl-row.hdr{background:var(--surface);font-family:'Syne',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cl-tag{display:inline-block;font-size:.55rem;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:.08em;padding:.18rem .4rem;border-radius:4px}
+.cl-tag.vip{background:var(--accent-bg);color:var(--accent)}
+.cl-tag.reg{background:rgba(96,165,250,.1);color:#60A5FA}
+.cl-tag.new{background:rgba(255,255,255,.05);color:var(--muted)}
+
+/* Revenue view */
+.rv-big{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.3rem;margin-bottom:.9rem;display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap}
+.rv-big-l{}
+.rv-big-lbl{font-family:'Syne',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.rv-big-v{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;letter-spacing:-.04em;line-height:1}
+.rv-big-delta{font-size:.7rem;color:var(--accent);margin-top:.4rem;font-weight:500}
+.rv-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem}
+.rv-mini-c{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.75rem .85rem}
+.rv-mini-l{font-size:.58rem;color:var(--dim);font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem}
+.rv-mini-v{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.015em}
+
+/* Settings view */
+.set-grp{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:1rem 1.1rem;margin-bottom:.7rem}
+.set-grp-t{font-family:'Syne',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
+.set-row{display:flex;justify-content:space-between;align-items:center;padding:.45rem 0;border-bottom:1px solid var(--border);font-size:.72rem}
+.set-row:last-child{border-bottom:none}
+.set-l{color:var(--text)}
+.set-l small{display:block;font-size:.62rem;color:var(--dim);margin-top:.1rem}
+.set-tog{width:34px;height:18px;background:var(--accent);border-radius:999px;position:relative;flex-shrink:0}
+.set-tog::after{content:'';position:absolute;top:2px;right:2px;width:14px;height:14px;background:var(--ink);border-radius:50%}
+.set-tog.off{background:var(--border2)}
+.set-tog.off::after{right:auto;left:2px;background:var(--muted)}
+.set-conn{display:flex;align-items:center;gap:.45rem;font-size:.65rem;color:var(--muted)}
+.set-conn .dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 6px rgba(200,255,71,.45)}
+
+/* ══════════════════════════════════════════
+   WHY PRESTIGE
+══════════════════════════════════════════ */
+#why-prestige{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);position:relative;overflow:hidden}
+.why-intro{font-size:.95rem;color:var(--muted);margin-top:.7rem;max-width:600px;line-height:1.65}
+.why-intro strong{color:var(--accent);font-weight:500}
+.why-tagline{font-family:'Syne',sans-serif;font-weight:700;font-size:1.45rem;line-height:1.25;letter-spacing:-.025em;color:var(--text);max-width:600px;margin-top:1.5rem}
+.why-tagline em{font-style:normal;color:var(--accent)}
+.why-grid{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.why-card{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:1.7rem 1.7rem;position:relative;transition:transform .25s,border-color .25s}
+.why-card:hover{transform:translateY(-3px);border-color:rgba(200,255,71,.28)}
+.why-card.wide{grid-column:1/-1;background:linear-gradient(135deg,rgba(200,255,71,.04),rgba(96,165,250,.02));border-color:rgba(200,255,71,.2)}
+.why-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;color:rgba(200,255,71,.13);position:absolute;top:1.1rem;right:1.5rem;line-height:1;letter-spacing:-.04em}
+.why-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.015em;margin-bottom:.7rem}
+.why-price{display:inline-block;font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.06em;background:var(--accent-bg);color:var(--accent);padding:.22rem .55rem;border-radius:4px;margin-bottom:.85rem;border:1px solid rgba(200,255,71,.18)}
+.why-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.why-side{}
+.why-side-l{font-family:'Syne',sans-serif;font-weight:700;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.why-side-l.bad{color:#FF8A8A}
+.why-side-l.good{color:var(--accent)}
+.why-side-t{font-size:.77rem;color:var(--muted);line-height:1.6}
+.why-side-t strong{color:var(--text);font-weight:500}
+.why-roi{margin-top:1rem;padding-top:.95rem;border-top:1px dashed var(--border2);font-size:.7rem;color:var(--accent);font-family:'Syne',sans-serif;font-weight:600;letter-spacing:.02em}
+.why-tldr{background:linear-gradient(180deg,var(--surface),rgba(200,255,71,.03));border:1px solid rgba(200,255,71,.18);border-radius:14px;padding:2rem 2.2rem;margin-top:2.5rem;text-align:center}
+.why-tldr-t{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.025em;line-height:1.25;margin-bottom:.7rem}
+.why-tldr-t .accent{color:var(--accent)}
+.why-tldr-s{font-size:.82rem;color:var(--muted);line-height:1.7;max-width:540px;margin:0 auto}
+
+/* ══════════════════════════════════════════
    TIMELINE
 ══════════════════════════════════════════ */
 #timeline{}
@@ -611,6 +745,9 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   .stop-wrap{grid-template-columns:1fr;gap:0}
   .about-grid{grid-template-columns:1fr}
   .how-grid{grid-template-columns:1fr 1fr;gap:.85rem}
+  .why-grid{grid-template-columns:1fr}
+  .cl-row{grid-template-columns:1.4fr 1.4fr .9fr .7fr;font-size:.66rem;padding:.6rem .8rem}
+  .cl-row .cl-row-spent{display:none}
   .cmp-row{grid-template-columns:1.4fr 1fr 1fr .6fr;padding:.9rem 1.1rem;font-size:.75rem}
   .future-bullet{grid-template-columns:32px 1fr;gap:1rem}
   .price-grid{grid-template-columns:1fr;gap:.9rem}
@@ -821,32 +958,33 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
       <div class="pill">02 — What's inside</div>
       <h2 class="h1">Five pillars of your ecosystem</h2>
     </div>
+    <p class="body" style="margin-top:-2rem;margin-bottom:2rem;font-size:.74rem;color:var(--dim);letter-spacing:.06em">↓ Click any pillar for the full breakdown</p>
     <div class="svc-grid rv d1">
-      <div class="svc">
+      <div class="svc clickable" data-info-id="brand_identity">
         <div class="svc-num">01</div>
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <div class="svc-name">Brand Identity</div>
         <div class="svc-desc">Logo, palette, typography, guidelines and a visual system that travels across vehicles, signage and digital.</div>
       </div>
-      <div class="svc">
+      <div class="svc clickable" data-info-id="service_website">
         <div class="svc-num">02</div>
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         <div class="svc-name">Website</div>
         <div class="svc-desc">Premium site with instant quote calculator, before/after gallery and Perth-focused local SEO.</div>
       </div>
-      <div class="svc">
+      <div class="svc clickable" data-info-id="service_marketing">
         <div class="svc-num">03</div>
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
         <div class="svc-name">Marketing</div>
         <div class="svc-desc">Google &amp; Meta Ads with retargeting, plus a content strategy for Instagram and TikTok reels.</div>
       </div>
-      <div class="svc">
+      <div class="svc clickable" data-info-id="service_ai">
         <div class="svc-num">04</div>
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
         <div class="svc-name">AI &amp; Automation</div>
         <div class="svc-desc">WhatsApp + web chatbot that quotes tinting jobs and books installs 24/7. Follow-ups on autopilot.</div>
       </div>
-      <div class="svc">
+      <div class="svc clickable" data-info-id="service_dashboard">
         <div class="svc-num">05</div>
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--accent)" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
         <div class="svc-name">Dashboard</div>
@@ -925,33 +1063,33 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
     <!-- ── TAB: DASHBOARD ── -->
     <div class="tp" id="tab-dash">
       <div class="dash-wrap rv">
-        <!-- Sidebar -->
+        <!-- Sidebar (clickable to swap main view) -->
         <div class="dash-sb">
           <div class="dash-sb-logo"><div class="dash-sb-logo-dot"></div>Proline Studio</div>
           <div class="dsb-section">Main</div>
-          <div class="dsn a">
+          <div class="dsn a" data-view="dashboard">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
             Dashboard
           </div>
-          <div class="dsn">
+          <div class="dsn" data-view="bookings">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
             Bookings
           </div>
-          <div class="dsn">
+          <div class="dsn" data-view="clients">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
             Clients
           </div>
           <div class="dsb-section">Finance</div>
-          <div class="dsn">
+          <div class="dsn" data-view="revenue">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             Revenue
           </div>
-          <div class="dsn">
+          <div class="dsn" data-view="dashboard">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             Analytics
           </div>
           <div class="dsb-section">System</div>
-          <div class="dsn">
+          <div class="dsn" data-view="settings">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
             Settings
           </div>
@@ -965,6 +1103,8 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
             </div>
             <button class="dash-today-btn">+ New booking</button>
           </div>
+          <!-- ── DASHBOARD VIEW ── -->
+          <div class="dash-view a" id="dv-dashboard">
           <!-- KPIs -->
           <div class="kpis">
             <div class="kpi"><div class="kpi-l">Revenue Today</div><div class="kpi-v">$1,840</div><div class="kpi-c">↑ 12% vs yesterday</div></div>
@@ -1019,6 +1159,137 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
                 <div><div class="appt-client">Emma H.</div><div class="appt-car">Porsche Cayenne · PPF Front</div></div>
                 <div class="badge badge-wait">Booked</div>
               </div>
+            </div>
+          </div>
+          </div>
+          <!-- ── BOOKINGS VIEW ── -->
+          <div class="dash-view" id="dv-bookings">
+            <div class="bk-toolbar">
+              <div class="bk-tabs">
+                <button class="bk-tab a">Week</button>
+                <button class="bk-tab">Day</button>
+                <button class="bk-tab">Month</button>
+              </div>
+              <button class="dash-today-btn">+ Add booking</button>
+            </div>
+            <div class="bk-cal">
+              <div class="bk-cal-h time">Time</div>
+              <div class="bk-cal-h">Mon 18</div>
+              <div class="bk-cal-h">Tue 19</div>
+              <div class="bk-cal-h">Wed 20</div>
+              <div class="bk-cal-h">Thu 21</div>
+              <div class="bk-cal-h">Fri 22</div>
+              <div class="bk-cal-h">Sat 23</div>
+              <div class="bk-cal-h">Sun 24</div>
+              <div class="bk-cal-r time">08:00</div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>James W.</strong>Tesla · Tint</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r"><div class="bk-slot blue"><strong>Office Co</strong>Comm. Tint</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>Mike D.</strong>Hilux · Wrap</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r" style="background:rgba(0,0,0,.2);color:var(--dim)">Closed</div>
+              <div class="bk-cal-r time">11:00</div>
+              <div class="bk-cal-r"><div class="bk-slot blue"><strong>Sarah K.</strong>Office tint</div></div>
+              <div class="bk-cal-r"><div class="bk-slot orange"><strong>Fleet · Uber</strong>4 vehicles</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>Adam T.</strong>Audi · PPF</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>Emma H.</strong>Cayenne · PPF</div></div>
+              <div class="bk-cal-r" style="background:rgba(0,0,0,.2);color:var(--dim)">Closed</div>
+              <div class="bk-cal-r time">14:00</div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>Mike D.</strong>Hilux · Wrap</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>Liam B.</strong>BMW · Tint</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r"><div class="bk-slot blue"><strong>Mall WA</strong>Storefronts</div></div>
+              <div class="bk-cal-r"><div class="bk-slot orange"><strong>Fleet · Taxi</strong>2 vehicles</div></div>
+              <div class="bk-cal-r" style="background:rgba(0,0,0,.2);color:var(--dim)">Closed</div>
+              <div class="bk-cal-r time">16:00</div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>Emma H.</strong>Cayenne</div></div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>Noah M.</strong>Ranger</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r"><div class="bk-slot"><strong>Olivia P.</strong>MG · Tint</div></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r"></div>
+              <div class="bk-cal-r" style="background:rgba(0,0,0,.2);color:var(--dim)">Closed</div>
+            </div>
+            <div style="margin-top:1rem;display:flex;gap:1.5rem;font-size:.62rem;color:var(--muted)">
+              <span style="display:flex;align-items:center;gap:.4rem"><span style="width:10px;height:10px;background:rgba(200,255,71,.4);border-radius:2px"></span>Auto bookings</span>
+              <span style="display:flex;align-items:center;gap:.4rem"><span style="width:10px;height:10px;background:rgba(96,165,250,.4);border-radius:2px"></span>Commercial</span>
+              <span style="display:flex;align-items:center;gap:.4rem"><span style="width:10px;height:10px;background:rgba(251,146,60,.4);border-radius:2px"></span>Fleet</span>
+            </div>
+          </div>
+          <!-- ── CLIENTS VIEW ── -->
+          <div class="dash-view" id="dv-clients">
+            <input class="cl-search" placeholder="Search clients by name, vehicle, service…" type="text">
+            <div class="cl-kpis">
+              <div class="cl-kpi"><div class="cl-kpi-l">Total clients</div><div class="cl-kpi-v">284</div></div>
+              <div class="cl-kpi"><div class="cl-kpi-l">Repeat rate</div><div class="cl-kpi-v">38%</div></div>
+              <div class="cl-kpi"><div class="cl-kpi-l">Top spender</div><div class="cl-kpi-v">$4,820</div></div>
+            </div>
+            <div class="cl-tbl">
+              <div class="cl-row hdr"><div>Client</div><div>Service line</div><div>Last visit</div><div class="cl-row-spent">Total spent</div><div>Status</div></div>
+              <div class="cl-row"><div>Sarah K.</div><div>Commercial tint × 3</div><div>15 May</div><div class="cl-row-spent">$4,820</div><div><span class="cl-tag vip">VIP</span></div></div>
+              <div class="cl-row"><div>Uber Fleet WA</div><div>Auto tint · 12 cars</div><div>14 May</div><div class="cl-row-spent">$3,200</div><div><span class="cl-tag vip">Fleet</span></div></div>
+              <div class="cl-row"><div>James W.</div><div>Tesla full tint + PPF</div><div>18 May</div><div class="cl-row-spent">$2,140</div><div><span class="cl-tag reg">Regular</span></div></div>
+              <div class="cl-row"><div>Mike D.</div><div>Hilux wrap</div><div>18 May</div><div class="cl-row-spent">$1,650</div><div><span class="cl-tag new">New</span></div></div>
+              <div class="cl-row"><div>Mall WA</div><div>Storefront tint × 4</div><div>12 May</div><div class="cl-row-spent">$1,400</div><div><span class="cl-tag reg">Regular</span></div></div>
+              <div class="cl-row"><div>Emma H.</div><div>Porsche PPF front</div><div>17 May</div><div class="cl-row-spent">$1,200</div><div><span class="cl-tag new">New</span></div></div>
+              <div class="cl-row"><div>Liam B.</div><div>BMW M3 ceramic tint</div><div>16 May</div><div class="cl-row-spent">$680</div><div><span class="cl-tag new">New</span></div></div>
+            </div>
+          </div>
+          <!-- ── REVENUE VIEW ── -->
+          <div class="dash-view" id="dv-revenue">
+            <div class="rv-big">
+              <div class="rv-big-l">
+                <div class="rv-big-lbl">Revenue · May 2026</div>
+                <div class="rv-big-v">$28,400</div>
+                <div class="rv-big-delta">↑ 8% vs April · ↑ 31% vs May 2025</div>
+              </div>
+              <div class="rv-mini">
+                <div class="rv-mini-c"><div class="rv-mini-l">Avg ticket</div><div class="rv-mini-v">$680</div></div>
+                <div class="rv-mini-c"><div class="rv-mini-l">Jobs done</div><div class="rv-mini-v">42</div></div>
+              </div>
+            </div>
+            <div class="dc" style="margin:0">
+              <div class="dc-title">Revenue by service line<span class="dc-period">May 2026</span></div>
+              <div style="margin-top:.8rem">
+                <div class="rev-bar"><div class="rev-bar-label"><span>Paint Protection Film (PPF)</span><span>$12,000 · 42%</span></div><div class="rev-track"><div class="rev-fill" style="width:100%"></div></div></div>
+                <div class="rev-bar"><div class="rev-bar-label"><span>Auto Tinting</span><span>$9,400 · 33%</span></div><div class="rev-track"><div class="rev-fill" style="width:78%"></div></div></div>
+                <div class="rev-bar"><div class="rev-bar-label"><span>Vehicle Wrapping</span><span>$5,200 · 18%</span></div><div class="rev-track"><div class="rev-fill" style="width:43%"></div></div></div>
+                <div class="rev-bar"><div class="rev-bar-label"><span>Commercial Tinting</span><span>$1,800 · 7%</span></div><div class="rev-track"><div class="rev-fill" style="width:15%"></div></div></div>
+              </div>
+              <div class="chart" style="margin-top:1.3rem">
+                <div class="bar-col"><div class="bar-val">$5.2k</div><div class="bar-track"><div class="bar" style="height:38%;background:rgba(200,255,71,.32)"></div></div><div class="bar-day">W1</div></div>
+                <div class="bar-col"><div class="bar-val">$6.8k</div><div class="bar-track"><div class="bar" style="height:50%;background:rgba(200,255,71,.4)"></div></div><div class="bar-day">W2</div></div>
+                <div class="bar-col"><div class="bar-val">$7.4k</div><div class="bar-track"><div class="bar" style="height:55%;background:rgba(200,255,71,.45)"></div></div><div class="bar-day">W3</div></div>
+                <div class="bar-col"><div class="bar-val">$9.0k</div><div class="bar-track"><div class="bar" style="height:67%;background:var(--accent)"></div></div><div class="bar-day">W4</div></div>
+              </div>
+              <div style="margin-top:1rem;font-size:.68rem;color:var(--muted)">Top client this month: <strong style="color:var(--text)">Sarah K. (Mall WA)</strong> · $4,820 · 3 commercial tints</div>
+            </div>
+          </div>
+          <!-- ── SETTINGS VIEW ── -->
+          <div class="dash-view" id="dv-settings">
+            <div class="set-grp">
+              <div class="set-grp-t">AI Receptionist</div>
+              <div class="set-row"><div class="set-l">AI active on WhatsApp<small>Currently handling inbound 24/7</small></div><div class="set-tog"></div></div>
+              <div class="set-row"><div class="set-l">Auto-reply on website chat<small>Bookings + quotes via web chatbot</small></div><div class="set-tog"></div></div>
+              <div class="set-row"><div class="set-l">Email autoresponder<small>Drafts replies in your inbox for approval</small></div><div class="set-tog off"></div></div>
+              <div class="set-row"><div class="set-l">AI quote-by-photo (vision AI)<small>Customer sends car photo → instant quote</small></div><div class="set-tog"></div></div>
+            </div>
+            <div class="set-grp">
+              <div class="set-grp-t">Notifications</div>
+              <div class="set-row"><div class="set-l">Push notification when new booking<small>Mobile PWA push alerts</small></div><div class="set-tog"></div></div>
+              <div class="set-row"><div class="set-l">Daily summary email at 8am<small>Yesterday's revenue + today's bookings</small></div><div class="set-tog"></div></div>
+              <div class="set-row"><div class="set-l">SMS alert on escalation<small>When AI hands off to you</small></div><div class="set-tog off"></div></div>
+            </div>
+            <div class="set-grp">
+              <div class="set-grp-t">Connected services</div>
+              <div class="set-row"><div class="set-l">WhatsApp Business<small>+61 ___ ___ ___</small></div><div class="set-conn"><span class="dot"></span>Connected</div></div>
+              <div class="set-row"><div class="set-l">Google Calendar<small>bookings@prolinetinting.com.au</small></div><div class="set-conn"><span class="dot"></span>Connected</div></div>
+              <div class="set-row"><div class="set-l">Stripe (payments)<small>For deposits and invoicing</small></div><div class="set-conn"><span class="dot"></span>Connected</div></div>
+              <div class="set-row"><div class="set-l">Google Ads + Meta Ads<small>Performance synced daily</small></div><div class="set-conn"><span class="dot"></span>Connected</div></div>
             </div>
           </div>
         </div>
@@ -1230,6 +1501,121 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   </div>
 </section>
 
+<!-- ════════════ WHY PRESTIGE ════════════ -->
+<section id="why-prestige">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">The case for Prestige</div>
+      <h2 class="h1">Why most owners pick the top tier</h2>
+      <p class="why-intro">Premium fixes your <strong>website</strong>. Prestige fixes your <strong>business</strong>. Here's the honest case for the AUD 7,000 jump.</p>
+      <div class="why-tagline">If 80% of your leads come via WhatsApp,<br>and Premium's AI lives only on your website —<br><em>you're capturing the wrong 20%.</em></div>
+    </div>
+
+    <div class="why-grid rv d1">
+      <!-- 1. WhatsApp -->
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-price">+AUD 1,000 · WhatsApp AI Receptionist</div>
+        <div class="why-name">Where your leads actually live</div>
+        <div class="why-row">
+          <div class="why-side">
+            <div class="why-side-l bad">With Premium</div>
+            <div class="why-side-t">Website chatbot handles inquiries — <strong>but only the visitors who reach your website</strong>. WhatsApp messages still pile up. You reply manually at night.</div>
+          </div>
+          <div class="why-side">
+            <div class="why-side-l good">With Prestige</div>
+            <div class="why-side-t">AI responds on WhatsApp in &lt;5s. Quotes given. Bookings made. <strong>While you sleep.</strong> Same engine, where the actual conversation happens.</div>
+          </div>
+        </div>
+        <div class="why-roi">→ Realistic impact: +25–35% lead capture on WhatsApp alone</div>
+      </div>
+
+      <!-- 2. AI Photo Quote -->
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-price">+AUD 1,500 · AI Quote-by-Photo</div>
+        <div class="why-name">The killer demo on every call</div>
+        <div class="why-row">
+          <div class="why-side">
+            <div class="why-side-l bad">With Premium</div>
+            <div class="why-side-t">Customer photo → you open it, eyeball the m², calculate manually, type quote. <strong>8–12 minutes per request, 30+ requests/week.</strong></div>
+          </div>
+          <div class="why-side">
+            <div class="why-side-l good">With Prestige</div>
+            <div class="why-side-t">Customer sends photo. <strong>Vision AI</strong> identifies car, calculates film m², suggests type, quotes — in 10 seconds. You only see "booked."</div>
+          </div>
+        </div>
+        <div class="why-roi">→ 4–5 hours/week reclaimed · faster quotes = higher close rate</div>
+      </div>
+
+      <!-- 3. Fleet Portal -->
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-price">+AUD 1,200 · Fleet Client Portal</div>
+        <div class="why-name">A revenue stream you can't tap today</div>
+        <div class="why-row">
+          <div class="why-side">
+            <div class="why-side-l bad">With Premium</div>
+            <div class="why-side-t">Fleet inquiry (Uber drivers, taxi co, courier): "Can you do 12 cars?" → you spend a whole afternoon coordinating, never close the second contract.</div>
+          </div>
+          <div class="why-side">
+            <div class="why-side-l good">With Prestige</div>
+            <div class="why-side-t">Fleet manager logs in. Sees their vehicles. Books all installs at once. <strong>Bundled monthly invoicing.</strong> You quote once. They self-serve forever.</div>
+          </div>
+        </div>
+        <div class="why-roi">→ One fleet contract = AUD 5,000–15,000/yr recurring · 3 fleets = your Premium investment paid back 4× over</div>
+      </div>
+
+      <!-- 4. Revenue + CRM Dashboard -->
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <div class="why-price">+AUD 800 · Revenue + CRM Dashboard</div>
+        <div class="why-name">Decisions backed by data, not gut</div>
+        <div class="why-row">
+          <div class="why-side">
+            <div class="why-side-l bad">With Premium</div>
+            <div class="why-side-t">Bookings calendar (you see who's coming today). <strong>But no revenue insight, no client lifetime value, no service-mix data.</strong> You guess what to push.</div>
+          </div>
+          <div class="why-side">
+            <div class="why-side-l good">With Prestige</div>
+            <div class="why-side-t">Live revenue chart by service line. Top spenders flagged. Lapsed clients surfaced for re-engagement. <strong>You know which film type makes you the most money.</strong></div>
+          </div>
+        </div>
+        <div class="why-roi">→ Identify your highest-margin service in week 1 · pivot marketing toward it</div>
+      </div>
+
+      <!-- 5. Wide card: Priority support + PWA + Email + Monthly -->
+      <div class="why-card wide">
+        <div class="why-num">05</div>
+        <div class="why-price">+AUD 2,500 · The polish layer</div>
+        <div class="why-name">All the things that compound over time</div>
+        <div class="why-row" style="grid-template-columns:1fr 1fr 1fr;border-top:none;padding-top:0;margin-top:0">
+          <div class="why-side">
+            <div class="why-side-l good">AI email autoresponder</div>
+            <div class="why-side-t">Drafts replies to <code style="font-size:.72rem">bookings@</code> using your prices. Save 5–8 hrs/week.</div>
+          </div>
+          <div class="why-side">
+            <div class="why-side-l good">Booking automations</div>
+            <div class="why-side-t">Confirmation · 48h reminder · post-install care · review request. All hands-off.</div>
+          </div>
+          <div class="why-side">
+            <div class="why-side-l good">Mobile PWA + monthly report</div>
+            <div class="why-side-t">Dashboard as app on your phone. PDF performance report every 1st.</div>
+          </div>
+        </div>
+        <div class="why-roi" style="margin-top:1.2rem">→ Plus: 90-day priority support (3× longer than Premium's 30 days). By day 90 the system runs the way you want.</div>
+      </div>
+
+    </div>
+
+    <!-- TL;DR -->
+    <div class="why-tldr rv d2">
+      <div class="why-tldr-t">In one sentence:<br>Premium <em>digitises</em> your business.<br><span class="accent">Prestige transforms it.</span></div>
+      <div class="why-tldr-s">If your goal is "modern website + some ads + a chatbot" → Premium is plenty. If your goal is "stop being the bottleneck in every quote, capture every WhatsApp lead 24/7, and open a B2B fleet revenue stream" → Prestige is the only option. The extra AUD 7,000 buys 5 features worth AUD 6,500 individually, plus 3× longer hand-holding. Most owners we work with pick Prestige once they've seen this breakdown.</div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ STOP DOING + COMPARISON ════════════ -->
 <section id="stop">
   <div class="c">
@@ -1277,24 +1663,20 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
     </div>
     <div class="price-grid">
       <div class="pc rv d1">
+        <button class="info-btn lg pc-info-trigger" data-info-id="tier_essentials" type="button" aria-label="More info about Essentials">i</button>
         <div class="pc-badge def">Foundation</div>
         <div class="pc-name">Essentials</div>
         <div class="pc-tag">Brand + Site. The premium baseline.</div>
         <div class="market-rate"><span class="lbl">Market rate</span>AUD 7,500</div>
         <div class="pc-price"><span class="pc-curr">AUD</span>3,000</div>
         <div class="market-rate-saved">You save 60%</div>
-        <div class="pc-note">one-off · 3-week delivery</div>
+        <div class="pc-note">3-week delivery · single payment</div>
         <div class="milestones">
-          <div class="milestones-ttl">Payment in 2 milestones</div>
+          <div class="milestones-ttl" data-info-id="milestone_ess" style="cursor:pointer">Payment terms<button class="info-btn" data-info-id="milestone_ess" type="button" style="margin-left:.45rem">i</button></div>
           <div class="mst-row">
             <div class="mst-num">1</div>
-            <div class="mst-when">On signature<small>Kickoff call + brief approved</small></div>
-            <div class="mst-amt">AUD 1,500</div>
-          </div>
-          <div class="mst-row">
-            <div class="mst-num">2</div>
-            <div class="mst-when">On launch day<small>Website live + Google Profile active</small></div>
-            <div class="mst-amt">AUD 1,500</div>
+            <div class="mst-when">At signature (day 0)<small>Full payment upfront — we kick off immediately</small></div>
+            <div class="mst-amt">AUD 3,000</div>
           </div>
         </div>
         <div class="pc-hr"></div>
@@ -1313,6 +1695,7 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <button class="pc-btn" data-preset="essentials">Load Essentials ↓</button>
       </div>
       <div class="pc feat rv d2">
+        <button class="info-btn lg pc-info-trigger" data-info-id="tier_premium" type="button" aria-label="More info about Premium">i</button>
         <div class="pc-badge pop">⭑ Most picked</div>
         <div class="pc-name">Premium</div>
         <div class="pc-tag">Marketing live + AI. Growth from day one.</div>
@@ -1321,10 +1704,10 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <div class="market-rate-saved">You save 63%</div>
         <div class="pc-note">4-week delivery · 30-day priority support</div>
         <div class="milestones">
-          <div class="milestones-ttl">Payment in 2 milestones</div>
+          <div class="milestones-ttl" data-info-id="milestone_prem" style="cursor:pointer">Payment in 2 milestones<button class="info-btn" data-info-id="milestone_prem" type="button" style="margin-left:.45rem">i</button></div>
           <div class="mst-row">
             <div class="mst-num">1</div>
-            <div class="mst-when">Brand approved (week 2)<small>Logo + brand kit signed off by you</small></div>
+            <div class="mst-when">At signature (day 0)<small>Kickoff call + work begins immediately</small></div>
             <div class="mst-amt">AUD 2,500</div>
           </div>
           <div class="mst-row">
@@ -1349,6 +1732,7 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <button class="pc-btn prim" data-preset="premium">Load Premium ↓</button>
       </div>
       <div class="pc rv d3">
+        <button class="info-btn lg pc-info-trigger" data-info-id="tier_prestige" type="button" aria-label="More info about Prestige">i</button>
         <div class="pc-badge def">Full Stack</div>
         <div class="pc-name">Prestige</div>
         <div class="pc-tag">The complete ecosystem. AI photo quotes. Fleet portal. All in.</div>
@@ -1357,10 +1741,10 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <div class="market-rate-saved">You save 50%</div>
         <div class="pc-note">6-week delivery · 90-day priority support</div>
         <div class="milestones">
-          <div class="milestones-ttl">Payment in 3 milestones</div>
+          <div class="milestones-ttl" data-info-id="milestone_prest" style="cursor:pointer">Payment in 3 milestones<button class="info-btn" data-info-id="milestone_prest" type="button" style="margin-left:.45rem">i</button></div>
           <div class="mst-row">
             <div class="mst-num">1</div>
-            <div class="mst-when">Brand approved (week 2)<small>Logo + brand kit signed off by you</small></div>
+            <div class="mst-when">At signature (day 0)<small>Kickoff call + work begins immediately</small></div>
             <div class="mst-amt">AUD 4,000</div>
           </div>
           <div class="mst-row">
@@ -1687,6 +2071,23 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   </div>
 </section>
 
+<!-- ════════════ INFO MODAL ════════════ -->
+<div class="modal-backdrop" id="info-modal">
+  <div class="modal-card">
+    <div class="modal-hdr">
+      <div>
+        <div class="modal-eyebrow" id="modal-eyebrow">Feature</div>
+        <div class="modal-ttl" id="modal-ttl">Title</div>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-foot">
+      <button class="btn-g" id="modal-foot-close">Got it</button>
+    </div>
+  </div>
+</div>
+
 <footer>
   <span>© 2026 · Confidential proposal</span>
   <span>Proline Tinting · Tint · Wrap · Protect · Perth WA</span>
@@ -1795,6 +2196,351 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const item = btn.closest('.faq-item');
     item.classList.toggle('open');
+  });
+});
+
+// ── INFO MODAL ──
+const tag = (cur, amt) => `<span class="price-tag"><span class="cur">${cur}</span>${amt}</span>`;
+const callout = (txt) => `<div class="callout">${txt}</div>`;
+
+const INFO = {
+  // ─── SERVICE CARDS ───
+  brand_identity: { eyebrow:'Service pillar', title:'Brand Identity Kit', body:`
+    <p>Your complete visual identity — logo, colours, fonts, design system. The face Proline shows the world, designed from scratch.</p>
+    <p><strong>What you get delivered:</strong></p>
+    <ul>
+      <li>Primary logo + variants (full colour, monochrome, reversed) in .ai .svg .png .pdf</li>
+      <li>Full colour palette with hex/RGB/CMYK values for digital + print</li>
+      <li>Licensed font pairing (heading + body)</li>
+      <li>Branded patterns, textures, vehicle livery templates, signage layouts</li>
+      <li>Social media post templates (Canva), business card, invoice, email signature</li>
+      <li>Brand guidelines PDF — your future-self reference</li>
+    </ul>
+    ${callout('<strong>Why it matters for Proline:</strong> Your current branding is good but it\'s the brand of a tinting installer. A proper identity positions you as a Perth premium specialist — same tier of trust a Porsche owner expects. Perception drives price tolerance.')}
+  `},
+  service_website: { eyebrow:'Service pillar', title:'Premium Custom Website', body:`
+    <p>A bespoke 5-page site built from scratch — no Squarespace template, no WordPress shortcut. Designed specifically for tinting/PPF/wrap customers.</p>
+    <ul>
+      <li>Pages: Home · Services · Gallery · About · Contact (+ optional Pricing, Testimonials)</li>
+      <li>Hand-coded on Vercel edge CDN → loads under 1 second globally</li>
+      <li>Mobile-first design (80%+ of your visitors are on phone)</li>
+      <li>SEO-optimised structure with schema markup</li>
+      <li>Lighthouse performance score 90+ guaranteed</li>
+      <li>Hosting + domain included free for year 1</li>
+    </ul>
+    ${callout('<strong>vs your current site:</strong> Squarespace loads in 3-5 seconds. Google penalises slow sites in search rankings. A custom site = better SEO = more free traffic for "tinting Perth" searches.')}
+  `},
+  service_marketing: { eyebrow:'Service pillar', title:'Paid Marketing Setup', body:`
+    <p>Google Ads + Meta Ads (Instagram/Facebook) configured to find Perth car owners actively shopping for tinting, PPF, or wraps.</p>
+    <ul>
+      <li>Competitor keyword research + bidding strategy</li>
+      <li>Search campaigns: "tinting perth", "PPF balcatta", "ute wrap"</li>
+      <li>Meta visual campaigns: your before/after gallery shown to people researching cars</li>
+      <li>Retargeting: visitors who didn't book get followed up with ads</li>
+      <li>Conversion tracking → know which campaign booked which install</li>
+    </ul>
+    ${callout('<strong>Why it matters:</strong> Today your leads come from referrals + walk-ins. Unpredictable. Ads = lead volume you can dial up or down based on capacity. Bookable revenue.')}
+  `},
+  service_ai: { eyebrow:'Service pillar', title:'AI Receptionist + Automation', body:`
+    <p>A 24/7 AI that responds to inquiries on WhatsApp and your website. Qualifies leads, gives quotes, books installs — without you typing anything.</p>
+    <p><strong>How it learns Proline:</strong> Week 5 we run a 60-min session — I ask you the 50 most common customer questions + your pricing logic. Plug it into the AI. It speaks in your tone, uses your prices, books on your calendar.</p>
+    <ul>
+      <li>WhatsApp inquiries auto-answered in &lt;5 seconds</li>
+      <li>Quote requests pre-filled with vehicle size, film type, estimated price</li>
+      <li>Edge cases escalate to you with full context</li>
+      <li>Every conversation reviewable + correctable in 30 seconds</li>
+    </ul>
+    ${callout('<strong>Hard truth:</strong> 90% of your inquiries come outside business hours. Currently they go silent until morning. AI captures them instantly = ~30% more bookings without you working more.')}
+  `},
+  service_dashboard: { eyebrow:'Service pillar', title:'Operations Dashboard', body:`
+    <p>A custom control panel for your business. Bookings, revenue, clients, inventory — everything in one place, on any device.</p>
+    <ul>
+      <li>Visual booking calendar with status updates</li>
+      <li>Live revenue tracking — daily, weekly, monthly</li>
+      <li>Revenue by service line (tint vs PPF vs wrap) — see what makes you most money</li>
+      <li>Client CRM with full history and lifetime value</li>
+      <li>Materials inventory per film SKU with low-stock alerts</li>
+      <li>Mobile PWA option — installable on your phone homescreen</li>
+    </ul>
+    ${callout('<strong>vs today:</strong> No more revenue in a notebook. No more "did I quote that guy last week?" Real data drives real decisions.')}
+  `},
+
+  // ─── PRICING TIERS ───
+  tier_essentials: { eyebrow:'Pricing tier', title:'Essentials — The Foundation', body:`
+    <p>${tag('AUD','3,000')} one-off · 3-week delivery · single payment at signature</p>
+    <p><strong>What's in:</strong> Brand Identity Kit · 5-page custom website · Online booking · Local SEO Perth · Google Business Profile · Year 1 hosting free.</p>
+    <p><strong>What's NOT in:</strong> Ads · AI chatbot · WhatsApp automation · Dashboard · Marketing campaigns.</p>
+    <p><strong>Who picks Essentials:</strong> Owners who already have a strong referral base and just need a credible online presence. You're modernising, not transforming. Your phone stays in your hand for inquiries — but at least the website looks the part.</p>
+    ${callout('<strong>Market rate for this scope at Perth agencies:</strong> AUD 7,500. You\'re saving 60% as a founding partner.')}
+  `},
+  tier_premium: { eyebrow:'Pricing tier · most picked', title:'Premium — Growth Engine', body:`
+    <p>${tag('AUD','5,000')} · 4-week delivery · payment in 2 milestones · 30-day priority support</p>
+    <p><strong>What's in:</strong> Everything in Essentials + Google Ads + Meta Ads + Website AI Chatbot + Bookings Dashboard + Analytics/Pixel tracking.</p>
+    <p><strong>What's NOT in:</strong> WhatsApp AI (where most leads actually are) · Revenue + CRM dashboard · AI Quote-by-photo · Fleet portal · AI email autoresponder.</p>
+    <p><strong>Who picks Premium:</strong> Owners ready to actively grow. You want predictable lead flow from ads, you want the website to qualify and book leads while you sleep, you want some operational data.</p>
+    ${callout('<strong>The limit of Premium:</strong> AI lives on the WEBSITE. But 80% of your leads come via WhatsApp. Premium captures the website 20%. Prestige captures the WhatsApp 80%.')}
+  `},
+  tier_prestige: { eyebrow:'Pricing tier · full stack', title:'Prestige — Operational Transformation', body:`
+    <p>${tag('AUD','12,000')} · 6-week delivery · payment in 3 milestones · 90-day priority support</p>
+    <p><strong>What's in:</strong> Everything in Premium + WhatsApp AI Receptionist + AI Quote-by-photo (vision AI) + Fleet client portal + Revenue+CRM dashboard + AI email autoresponder + Mobile PWA + Monthly auto-PDF report + Booking email automations.</p>
+    <p><strong>Who picks Prestige:</strong> Owners who want to TRANSFORM operations, not just digitise. You want to free 25 hrs/week, open a B2B recurring revenue stream (fleets), run the business from your phone, and stop being the bottleneck in every quote.</p>
+    ${callout('<strong>The argument for the extra AUD 7,000 over Premium:</strong> 5 features that individually cost AUD 1,000–1,500 each at agency rates, PLUS 3x longer hand-holding. Total standalone value: ~AUD 15,000. See the "Why Prestige" section below for the case-by-case breakdown.')}
+  `},
+
+  // ─── CONFIGURATOR FEATURES ───
+  brand_kit: { eyebrow:'Brand & Identity', title:'Full Brand Identity Kit', body:`
+    <p>${tag('AUD','1,200')} · one-off</p>
+    <p>The complete brand package: primary logo + 3 variants, full colour palette, licensed fonts, branded patterns, templates for social/business cards/invoices/email signatures, brand guidelines PDF.</p>
+    <p><strong>What you get day 1:</strong> Source files (.ai .svg .png .pdf) you own forever. Hand them to any future designer, printer, or signage supplier.</p>
+    ${callout('Custom logo + brand work alone runs AUD 1,500–3,000 at Perth agencies. This is everything bundled at founding rate.')}
+  `},
+  livery: { eyebrow:'Brand & Identity', title:'Vehicle livery & signage templates', body:`
+    <p>${tag('AUD','400')} · one-off</p>
+    <p>Vehicle decal designs for your ute/van + signage layouts for your Balcatta shop. Print-ready files any local signage supplier can produce in 48h.</p>
+    <p><strong>Why this matters:</strong> Your own vehicle is a 24/7 rolling billboard. Looking professional on the road = trust on the install bench.</p>
+  `},
+  site_5: { eyebrow:'Website', title:'5-page custom website', body:`
+    <p>${tag('AUD','1,000')} · one-off</p>
+    <p>Home, Services, Gallery, About, Contact. Hand-coded on Vercel edge CDN. Mobile-first. Lighthouse 90+. Year 1 hosting included.</p>
+    <p>Designed specifically around the Proline customer journey: tinting/PPF/wrap browsing → instant quote → book.</p>
+    ${callout('Market rate for a 5-page custom site in Perth: AUD 3,500–5,500. Founding rate locks 70% saving.')}
+  `},
+  site_7: { eyebrow:'Website', title:'Upgrade to 7-page site', body:`
+    <p>${tag('AUD','500')} · add-on</p>
+    <p>Adds Pricing and Testimonials pages to the base site. Pricing page = transparent self-serve. Testimonials = social proof that converts at 25-40% higher rate than no-testimonials sites.</p>
+  `},
+  booking: { eyebrow:'Website', title:'Online booking widget', body:`
+    <p>${tag('AUD','300')} · one-off</p>
+    <p>Embedded booking form on your website. Customer picks service + time slot. Auto-confirmation email. Syncs with your Google Calendar in real-time.</p>
+    <p>Buffer time between slots configurable so installs don't overlap. Block out hours/days when you're closed.</p>
+  `},
+  quote_calc: { eyebrow:'Website', title:'Instant tint quote calculator', body:`
+    <p>${tag('AUD','300')} · one-off</p>
+    <p>Interactive calculator embedded on the site. Customer picks vehicle (Sedan/SUV/Ute/Van), film type (Ceramic/Standard/Premium), windows count → gets an instant price estimate.</p>
+    ${callout('<strong>Why it matters:</strong> Most car owners "want a feel for the price" before contacting. With this they self-select. You stop getting time-waster inquiries.')}
+  `},
+  gallery: { eyebrow:'Website', title:'Before/after interactive gallery', body:`
+    <p>${tag('AUD','200')} · one-off</p>
+    <p>Slider-based comparison gallery. Filter by service. Lightbox for full-screen. Easy to add new installs via the dashboard.</p>
+    <p>Visual proof beats every word of marketing copy. This is your highest-converting page.</p>
+  `},
+  seo: { eyebrow:'SEO & Local', title:'Local SEO — Perth', body:`
+    <p>${tag('AUD','300')} · one-off</p>
+    <p>Schema markup, geo-targeting in metadata, optimised titles and descriptions for "tinting perth", "PPF balcatta", "ute wrap WA". Sitemap submitted to Google Search Console.</p>
+    ${callout('<strong>Real impact:</strong> Rank in the top 5 Google results for local searches = free leads forever. Worth months of paid ads.')}
+  `},
+  gbp: { eyebrow:'SEO & Local', title:'Google Business Profile setup', body:`
+    <p>${tag('AUD','200')} · one-off</p>
+    <p>Set up + optimise your GBP listing. Hours, photos, services, response templates. Configure automatic review request after each install (linked from the dashboard).</p>
+    <p>Result: you appear in Google Maps "near me" searches and your star rating starts climbing.</p>
+  `},
+  gads: { eyebrow:'Marketing', title:'Google Ads setup', body:`
+    <p>${tag('AUD','500')} · one-off setup (ad spend is separate — your budget, your call)</p>
+    <p>Two campaigns built: Search (people typing "tinting perth") + Display (banners on relevant car/auto sites). Keyword research, ad copy, conversion tracking — all configured.</p>
+    <p>Standard recommended ad budget for Perth tinting: AUD 30–60/day. You control the dial.</p>
+  `},
+  mads: { eyebrow:'Marketing', title:'Meta Ads setup (Instagram + Facebook)', body:`
+    <p>${tag('AUD','500')} · one-off setup</p>
+    <p>Visual-first campaigns showing your before/after installs to Perth car owners. Targeted by interests (luxury cars, 4WD, fleet operators) + location (Perth metro).</p>
+    <p>Best for awareness + retargeting. Search is for high-intent, Meta is for "create the want."</p>
+  `},
+  retarget: { eyebrow:'Marketing', title:'Retargeting setup', body:`
+    <p>${tag('AUD','400')} · one-off setup</p>
+    <p>Visitors who land on your site but don't book get followed up with ads on Meta/Google showing your best work + a discount/incentive.</p>
+    ${callout('Typical recapture rate: 15–30% of "almost converted" traffic. Cheapest conversions you\'ll ever buy.')}
+  `},
+  analytics: { eyebrow:'Marketing', title:'GA4 + Pixel tracking', body:`
+    <p>${tag('AUD','300')} · one-off</p>
+    <p>Google Analytics 4 + Meta Pixel configured on every page. Every page view, form submission, quote request, booking tracked.</p>
+    <p>Shows you in plain English: "These 3 ads drove 80% of your bookings last month." No more guessing.</p>
+  `},
+  ai_chat: { eyebrow:'AI & Automation', title:'Website AI Chatbot (24/7)', body:`
+    <p>${tag('AUD','700')} · one-off setup</p>
+    <p>Always-on chat bubble on your website. Answers FAQs (pricing, services, hours, location), qualifies leads, and books installs autonomously.</p>
+    <p>If the customer asks something the AI can't handle, it politely escalates to you with the full conversation context.</p>
+    ${callout('<strong>Limit:</strong> This is the WEBSITE chatbot. For WhatsApp coverage you need the WhatsApp AI Receptionist (Prestige).')}
+  `},
+  wa_auto: { eyebrow:'AI & Automation · key feature', title:'WhatsApp Business AI Receptionist', body:`
+    <p>${tag('AUD','1,000')} · one-off setup</p>
+    <p><strong>THE killer feature for Proline.</strong> Connects to your WhatsApp Business number. Every customer message gets an AI response in &lt;5 seconds — quotes, info, booking — even at 11pm on Sunday.</p>
+    <p>Trained on your services and prices. Escalates only the genuinely complex cases to you.</p>
+    ${callout('<strong>Why this is so valuable:</strong> 80% of automotive service inquiries in Australia happen on WhatsApp. Without this you\'re manually typing replies. With this they\'re handled while you sleep.')}
+  `},
+  ai_email: { eyebrow:'AI & Automation', title:'AI email autoresponder', body:`
+    <p>${tag('AUD','500')} · one-off setup</p>
+    <p>Auto-drafts replies to your <code>bookings@prolinetinting.com.au</code> inbox using your pricing logic and FAQs. You review + approve before sending (or set to fully autonomous).</p>
+    <p>Saves 5–8 hrs/week of repetitive email writing.</p>
+  `},
+  email_auto: { eyebrow:'AI & Automation', title:'Booking email automations', body:`
+    <p>${tag('AUD','400')} · one-off setup</p>
+    <p>Four-stage email flow tied to each booking:</p>
+    <ul>
+      <li>Confirmation email immediately on booking</li>
+      <li>Reminder 48h before install</li>
+      <li>Day-after care instructions (drives review rate)</li>
+      <li>Review request 3 days post-install (link to Google)</li>
+    </ul>
+    <p>All branded Proline. Set and forget.</p>
+  `},
+  dash_appt: { eyebrow:'Dashboard', title:'Bookings module', body:`
+    <p>${tag('AUD','300')} · one-off</p>
+    <p>Visual booking calendar with day/week/month views. Status badges (booked, in progress, done, canceled). Alerts when you're risking overbooking. Drag-and-drop rescheduling.</p>
+    <p>Replaces the Google Calendar + sticky notes + WhatsApp tetris you're doing today.</p>
+  `},
+  dash_revenue: { eyebrow:'Dashboard · key feature', title:'Revenue + CRM module', body:`
+    <p>${tag('AUD','800')} · one-off</p>
+    <p>The "business owner" layer. Daily/weekly/monthly revenue charts. Revenue split by service line (tint vs PPF vs wrap). Client CRM with history, lifetime value, last visit.</p>
+    <p>Spot trends: which services to push, which clients lapsed, which weeks were strongest, what's your repeat rate.</p>
+    ${callout('<strong>Without this</strong> you guess what makes money. <strong>With this</strong> you know — and pivot accordingly.')}
+  `},
+  inventory: { eyebrow:'Dashboard', title:'Materials inventory', body:`
+    <p>${tag('AUD','500')} · one-off</p>
+    <p>Track every film/PPF/wrap SKU stocked at your shop. Quantity remaining, alerts when below threshold, auto-deduct when a job uses material. Reorder list one click away.</p>
+    <p>Stop the "out of stock at 8am Monday" panic.</p>
+  `},
+  training: { eyebrow:'Onboarding', title:'Training & onboarding (2h live)', body:`
+    <p>${tag('AUD','300')} · one-off · launch day</p>
+    <p>Live 2-hour walkthrough of every module: bookings, revenue, AI dashboard, settings. Live Q&A. Recorded for future reference. Plus a written quick-reference guide.</p>
+  `},
+  ai_photo_quote: { eyebrow:'Prestige Plus · game-changer', title:'AI Quote-by-photo (vision AI)', body:`
+    <p>${tag('AUD','1,500')} · one-off · Prestige-only</p>
+    <p><strong>This is the feature that opens new ground.</strong> Customer sends a photo of their car via WhatsApp or web form. Vision AI identifies make/model/year, calculates total window m², suggests film type, and replies with an instant accurate quote — all in &lt;10 seconds.</p>
+    <p>70%+ of quote requests start "how much for [photo of my car]?" Currently you eyeball it manually. This automates the slowest part of your sales funnel.</p>
+    ${callout('<strong>Conservative impact:</strong> if you handle 30 such requests/week and this saves 8 min each, that\'s 4 hours/week back + faster response = higher conversion.')}
+  `},
+  fleet_portal: { eyebrow:'Prestige Plus · revenue unlock', title:'Fleet client portal', body:`
+    <p>${tag('AUD','1,200')} · one-off · Prestige-only</p>
+    <p>Custom B2B portal for commercial clients: Uber driver fleets, taxi companies, courier services, real estate agencies with company cars. They log in, see all their vehicles, book installs across the fleet, get bundled monthly invoicing.</p>
+    ${callout('<strong>Revenue impact:</strong> Opens a B2B recurring channel that\'s currently impossible to handle manually. A single fleet client typically = AUD 5,000–15,000/yr recurring. Three of them = your Premium investment recovered 4x over.')}
+  `},
+  monthly_report: { eyebrow:'Prestige Plus', title:'Monthly auto-generated PDF report', body:`
+    <p>${tag('AUD','400')} · one-off setup · Prestige-only</p>
+    <p>Branded Proline PDF emailed to you on the 1st of every month. Revenue summary, top services, top clients, lead pipeline, conversion trends, AI-generated recommendations.</p>
+    <p>Like having a CFO on retainer — without the AUD 8,000/mo cost.</p>
+  `},
+  priority_support: { eyebrow:'Prestige Plus', title:'Priority support · 90 days', body:`
+    <p>${tag('AUD','500')} · one-off · Prestige-only</p>
+    <p>First 90 days post-launch: direct WhatsApp line to me, sub-4-hour response time business hours, monthly check-in call to refine the system.</p>
+    <p>Three times longer than Premium's 30-day window. By day 90 the system is dialled in for your exact rhythm.</p>
+  `},
+  pwa: { eyebrow:'Prestige Plus', title:'Mobile PWA (installable on phone)', body:`
+    <p>${tag('AUD','400')} · one-off · Prestige-only</p>
+    <p>Progressive Web App version of the dashboard. Install it on your iPhone/Android homescreen — looks and feels exactly like a native app. Push notifications when new bookings come in. Cached data works offline.</p>
+    <p>Open your dashboard with one tap from your homescreen instead of typing a URL.</p>
+  `},
+  photo: { eyebrow:'One-off add-on', title:'Professional photo shoot', body:`
+    <p>${tag('AUD','800')} · one-off · half-day on site</p>
+    <p>Half-day shoot at your Balcatta shop. Captures: install process, finished work, your team, your shop's vibe. Photos used across the website, social media, ads.</p>
+    <p>Worth more than 100 stock photos. This is what your "About" page and Meta Ads should look like.</p>
+  `},
+  ads_mgmt_mo: { eyebrow:'Monthly retainer', title:'Ads management · AUD 600/month', body:`
+    <p>Ongoing Google + Meta Ads management. Weekly performance monitoring, A/B tests on copy and creatives, budget rebalancing toward best-performing campaigns. Monthly performance report.</p>
+    <p>Typical lift over self-managed: +30–40% ROAS (return on ad spend).</p>
+    ${callout('Cancel anytime. Month-to-month, no lock-in.')}
+  `},
+  social_mo: { eyebrow:'Monthly retainer', title:'Social content management · AUD 400/month', body:`
+    <p>Monthly content production: 8 Instagram/Facebook posts + 4 short-form reels (TikTok/Reels) per month. Captions written in your brand voice. Best-of installs showcased.</p>
+    <p>You stop trying to remember to post.</p>
+  `},
+  maint_mo: { eyebrow:'Monthly retainer', title:'Site maintenance · AUD 200/month', body:`
+    <p>Ongoing site maintenance: security updates, weekly backups, dependency upgrades, content edits (text/photos), minor design tweaks. Unlimited tickets within reason.</p>
+    <p>Optional but recommended — the web doesn't stand still and your competitors aren't.</p>
+  `},
+
+  // ─── PAYMENT MILESTONES ───
+  milestone_ess: { eyebrow:'Payment terms', title:'Essentials — Single payment', body:`
+    <p>${tag('AUD','3,000')} · paid in full at signature</p>
+    <p>Essentials is a fast-turnaround build (3 weeks) so it's billed as a single payment at kickoff. Work begins same day.</p>
+    <p>You get: brand kit + custom website + bookings widget + local SEO + Google Business Profile + year 1 hosting.</p>
+    ${callout('<strong>Why single payment:</strong> Short delivery window doesn\'t need milestone splits. Lower friction.')}
+  `},
+  milestone_prem: { eyebrow:'Payment terms', title:'Premium — 2 milestones', body:`
+    <p>${tag('AUD','5,000')} total · split into 2 payments of AUD 2,500</p>
+    <ul>
+      <li><strong>Milestone 1 — Day 0 (at signature):</strong> AUD 2,500. Work begins immediately, kickoff call same day.</li>
+      <li><strong>Milestone 2 — Launch day (week 4):</strong> AUD 2,500. Paid only after website + AI chatbot + Ads are live and approved by you.</li>
+    </ul>
+    ${callout('<strong>You\'re protected:</strong> milestone 2 is only invoiced after you sign off on the deliverable. If something\'s wrong, we fix it first — you never pay before approval.')}
+  `},
+  milestone_prest: { eyebrow:'Payment terms', title:'Prestige — 3 milestones', body:`
+    <p>${tag('AUD','12,000')} total · split into 3 payments of AUD 4,000</p>
+    <ul>
+      <li><strong>Milestone 1 — Day 0 (at signature):</strong> AUD 4,000. Kickoff + brand work begins same day.</li>
+      <li><strong>Milestone 2 — Week 4:</strong> AUD 4,000. Paid after website + dashboard go live and are approved by you.</li>
+      <li><strong>Milestone 3 — Week 6 (full launch):</strong> AUD 4,000. Paid after WhatsApp AI + Fleet portal + AI Quote-by-photo are active.</li>
+    </ul>
+    ${callout('Each milestone is gated by your approval. If we miss the agreed launch date on our side, milestone 3 is refunded — on-time delivery guarantee.')}
+  `}
+};
+
+function openModal(id){
+  const data = INFO[id];
+  if(!data) return;
+  document.getElementById('modal-eyebrow').textContent = data.eyebrow || 'Feature';
+  document.getElementById('modal-ttl').textContent = data.title;
+  document.getElementById('modal-body').innerHTML = data.body;
+  document.getElementById('info-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  document.getElementById('info-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-foot-close').addEventListener('click', closeModal);
+document.getElementById('info-modal').addEventListener('click', e=>{
+  if(e.target.id === 'info-modal') closeModal();
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape') closeModal();
+});
+document.addEventListener('click', e=>{
+  const trigger = e.target.closest('[data-info-id]');
+  if(trigger){
+    e.preventDefault();
+    e.stopPropagation();
+    openModal(trigger.dataset.infoId);
+  }
+});
+
+// ── AUTO-INJECT INFO BUTTONS ON CONFIGURATOR FEATURES ──
+document.querySelectorAll('.cfg-opt input[data-id]').forEach(cb=>{
+  const id = cb.dataset.id;
+  if(!INFO[id]) return;
+  const label = cb.closest('.cfg-opt');
+  if(!label || label.querySelector('.info-btn')) return;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'info-btn';
+  btn.dataset.infoId = id;
+  btn.textContent = 'i';
+  btn.setAttribute('aria-label', 'More info');
+  btn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    openModal(id);
+  });
+  const priceSpan = label.querySelector('.cfg-price');
+  if(priceSpan) label.insertBefore(btn, priceSpan);
+  else label.appendChild(btn);
+});
+
+// ── DASHBOARD INTERACTIVE NAV ──
+document.querySelectorAll('.dsn[data-view]').forEach(nav=>{
+  nav.addEventListener('click', ()=>{
+    const view = nav.dataset.view;
+    document.querySelectorAll('.dsn').forEach(n=>n.classList.remove('a'));
+    nav.classList.add('a');
+    document.querySelectorAll('.dash-view').forEach(v=>v.classList.remove('a'));
+    const target = document.getElementById('dv-'+view);
+    if(target) target.classList.add('a');
+  });
+});
+// Bookings tab switcher
+document.querySelectorAll('.bk-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    tab.parentElement.querySelectorAll('.bk-tab').forEach(t=>t.classList.remove('a'));
+    tab.classList.add('a');
   });
 });
 </script>
