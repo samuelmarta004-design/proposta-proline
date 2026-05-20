@@ -515,6 +515,68 @@ section{padding:6rem 0}
 .case-quote-by{display:block;font-size:.65rem;color:var(--muted);margin-top:.55rem;font-style:normal;letter-spacing:.05em}
 
 /* ══════════════════════════════════════════
+   HOW IT WORKS (4 simple steps)
+══════════════════════════════════════════ */
+#how{}
+.how-intro{font-size:.95rem;color:var(--muted);margin-top:.7rem;max-width:560px;line-height:1.65}
+.how-intro strong{color:var(--text);font-weight:500}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem;position:relative}
+.how-step{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:1.8rem 1.5rem;position:relative;transition:transform .25s,border-color .25s}
+.how-step:hover{transform:translateY(-4px);border-color:rgba(200,255,71,.25)}
+.how-step-num{position:absolute;top:1.2rem;right:1.3rem;font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;color:rgba(200,255,71,.12);line-height:1;letter-spacing:-.04em}
+.how-step-ico{width:42px;height:42px;background:var(--accent-bg);border:1px solid rgba(200,255,71,.18);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+.how-step-ico svg{width:20px;height:20px;stroke:var(--accent)}
+.how-step-when{font-family:'Syne',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.how-step-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;line-height:1.2;letter-spacing:-.015em;margin-bottom:.7rem}
+.how-step-desc{font-size:.78rem;color:var(--muted);line-height:1.65}
+.how-step-desc strong{color:var(--text);font-weight:500}
+
+/* ══════════════════════════════════════════
+   PAYMENT MILESTONES (inside pricing cards)
+══════════════════════════════════════════ */
+.milestones{margin-top:.85rem;padding-top:.95rem;border-top:1px dashed var(--border2)}
+.milestones-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem}
+.milestones-ttl::before{content:'';width:4px;height:4px;background:var(--accent);border-radius:50%}
+.mst-row{display:grid;grid-template-columns:22px 1fr auto;gap:.6rem;align-items:flex-start;padding:.5rem 0;border-bottom:1px solid var(--border)}
+.mst-row:last-child{border-bottom:none}
+.mst-num{width:20px;height:20px;border-radius:50%;background:var(--accent-bg);border:1px solid rgba(200,255,71,.22);color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;font-size:.6rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.mst-when{font-size:.72rem;color:var(--text);line-height:1.45;font-weight:400}
+.mst-when small{display:block;font-size:.63rem;color:var(--muted);margin-top:.12rem;line-height:1.4}
+.mst-amt{font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;color:var(--accent);white-space:nowrap;letter-spacing:-.005em}
+
+/* ══════════════════════════════════════════
+   BUILD YOUR OWN — callout above configurator
+══════════════════════════════════════════ */
+.byo-callout{margin-top:2rem;background:linear-gradient(135deg,rgba(200,255,71,.04),rgba(96,165,250,.025));border:1px dashed rgba(200,255,71,.28);border-radius:14px;padding:1.5rem 1.7rem;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.byo-l{flex:1;min-width:240px}
+.byo-tag{font-family:'Syne',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.byo-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-.015em;margin-bottom:.3rem}
+.byo-desc{font-size:.78rem;color:var(--muted);line-height:1.55;max-width:480px}
+.byo-r{flex-shrink:0}
+
+/* ══════════════════════════════════════════
+   FAQ ACCORDION
+══════════════════════════════════════════ */
+#faq{background:var(--bg2)}
+.faq-list{margin-top:2.8rem;border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:var(--surface)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;background:transparent;border:none;padding:1.3rem 1.7rem;text-align:left;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:400;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:background .18s}
+.faq-q:hover{background:rgba(255,255,255,.015)}
+.faq-q-txt{flex:1;line-height:1.4}
+.faq-q-txt strong{font-weight:500;color:var(--text)}
+.faq-icon{width:22px;height:22px;border-radius:50%;background:var(--accent-bg);border:1px solid rgba(200,255,71,.18);color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s cubic-bezier(.2,.8,.35,1)}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--accent);color:var(--ink)}
+.faq-item.open .faq-q{background:rgba(200,255,71,.018)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.2,.8,.35,1);padding:0 1.7rem}
+.faq-item.open .faq-a{max-height:600px;padding:0 1.7rem 1.4rem}
+.faq-a-inner{font-size:.85rem;line-height:1.7;color:var(--muted);padding-top:.3rem;border-top:1px solid var(--border);padding-top:1.05rem}
+.faq-a-inner strong{color:var(--text);font-weight:500}
+.faq-a-inner ul{margin-top:.7rem;padding-left:1.2rem}
+.faq-a-inner li{margin-bottom:.4rem;line-height:1.6}
+.faq-a-inner code{background:var(--surface2);padding:.12rem .4rem;border-radius:4px;font-size:.82em;color:var(--text);font-family:'DM Sans',sans-serif}
+
+/* ══════════════════════════════════════════
    TIMELINE
 ══════════════════════════════════════════ */
 #timeline{}
@@ -548,6 +610,7 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   .calc-grid{grid-template-columns:1fr}
   .stop-wrap{grid-template-columns:1fr;gap:0}
   .about-grid{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr 1fr;gap:.85rem}
   .cmp-row{grid-template-columns:1.4fr 1fr 1fr .6fr;padding:.9rem 1.1rem;font-size:.75rem}
   .future-bullet{grid-template-columns:32px 1fr;gap:1rem}
   .price-grid{grid-template-columns:1fr;gap:.9rem}
@@ -570,6 +633,10 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
 @media(max-width:640px){
   .c{padding:0 1.2rem}
   section{padding:4rem 0}
+  .how-grid{grid-template-columns:1fr}
+  .byo-callout{flex-direction:column;text-align:center;align-items:flex-start}
+  .faq-q{padding:1.1rem 1.3rem;font-size:.85rem}
+  .faq-item.open .faq-a{padding:0 1.3rem 1.2rem}
   .tl{grid-template-columns:1fr}
   .flist{grid-template-columns:1fr}
   .wfs-hero{grid-template-columns:1fr}
@@ -697,6 +764,51 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <div class="day-row"><div class="day-time">12:00</div><div class="day-text">Customer reschedules via their <em>self-serve link</em>. Calendar auto-updates. You only see a notification.</div></div>
         <div class="day-row"><div class="day-time">17:00</div><div class="day-text">Close the shop. The dashboard <em>already sent</em> review requests at 16:55.</div></div>
         <div class="day-row"><div class="day-time">20:30</div><div class="day-text"><em>You're not working.</em> AI handled 4 quotes since dinner. They're in tomorrow's pipeline.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ HOW IT WORKS (4 simple steps) ════════════ -->
+<section id="how">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">No tech jargon</div>
+      <h2 class="h1">How this actually works — in 4 simple steps</h2>
+      <p class="how-intro">You don't need to know what's under the hood. Here's what your side looks like, from the day you say yes to the day the system pays for itself.</p>
+    </div>
+    <div class="how-grid rv d1">
+      <!-- Step 1 -->
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <div class="how-step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <div class="how-step-when">Day 1 · 30 minutes</div>
+        <div class="how-step-ttl">We meet, you talk</div>
+        <div class="how-step-desc">One call. You tell me how Proline works today — your services, your prices, your customers, your headaches. <strong>I take notes. You don't prepare anything.</strong> At the end you have a clear picture of what we'll build.</div>
+      </div>
+      <!-- Step 2 -->
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <div class="how-step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <div class="how-step-when">Weeks 1–6</div>
+        <div class="how-step-ttl">I build, you approve</div>
+        <div class="how-step-desc">Every Friday I send you what's done that week. <strong>Logo on week 2. Website preview on week 3. AI receptionist demo on week 5.</strong> You say "yes" or "tweak this." Three revision rounds included on logo + site.</div>
+      </div>
+      <!-- Step 3 -->
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <div class="how-step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+        <div class="how-step-when">Week 6 · Launch day</div>
+        <div class="how-step-ttl">You go live</div>
+        <div class="how-step-desc">Website goes live. AI receptionist activates on your WhatsApp number. Dashboard opens on your phone. <strong>I give you a 2-hour walkthrough — same morning.</strong> You leave knowing exactly how to use everything.</div>
+      </div>
+      <!-- Step 4 -->
+      <div class="how-step">
+        <div class="how-step-num">04</div>
+        <div class="how-step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="how-step-when">From week 7 onwards</div>
+        <div class="how-step-ttl">You grow, I stay around</div>
+        <div class="how-step-desc">The system runs itself. Priority support is included (30/90 days depending on package). After that, optional retainer or pay-only-when-needed. <strong>Year 1 hosting is free. From year 2: under AUD 50/mo.</strong></div>
       </div>
     </div>
   </div>
@@ -1172,7 +1284,19 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <div class="pc-price"><span class="pc-curr">AUD</span>3,000</div>
         <div class="market-rate-saved">You save 60%</div>
         <div class="pc-note">one-off · 3-week delivery</div>
-        <div class="payment-plan-line">Or <strong>AUD 1,000 deposit + 2× AUD 1,000/mo</strong></div>
+        <div class="milestones">
+          <div class="milestones-ttl">Payment in 2 milestones</div>
+          <div class="mst-row">
+            <div class="mst-num">1</div>
+            <div class="mst-when">On signature<small>Kickoff call + brief approved</small></div>
+            <div class="mst-amt">AUD 1,500</div>
+          </div>
+          <div class="mst-row">
+            <div class="mst-num">2</div>
+            <div class="mst-when">On launch day<small>Website live + Google Profile active</small></div>
+            <div class="mst-amt">AUD 1,500</div>
+          </div>
+        </div>
         <div class="pc-hr"></div>
         <ul class="pcf">
           <li class="y">Full Brand Identity Kit</li>
@@ -1195,8 +1319,20 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <div class="market-rate"><span class="lbl">Market rate</span>AUD 13,500</div>
         <div class="pc-price"><span class="pc-curr">AUD</span>5,000</div>
         <div class="market-rate-saved">You save 63%</div>
-        <div class="pc-note">one-off · 4-week delivery</div>
-        <div class="payment-plan-line">Or <strong>AUD 1,500 deposit + 3× AUD 1,200/mo</strong></div>
+        <div class="pc-note">4-week delivery · 30-day priority support</div>
+        <div class="milestones">
+          <div class="milestones-ttl">Payment in 2 milestones</div>
+          <div class="mst-row">
+            <div class="mst-num">1</div>
+            <div class="mst-when">Brand approved (week 2)<small>Logo + brand kit signed off by you</small></div>
+            <div class="mst-amt">AUD 2,500</div>
+          </div>
+          <div class="mst-row">
+            <div class="mst-num">2</div>
+            <div class="mst-when">Launch day (week 4)<small>Website + AI chatbot + Ads live</small></div>
+            <div class="mst-amt">AUD 2,500</div>
+          </div>
+        </div>
         <div class="pc-hr"></div>
         <ul class="pcf">
           <li class="y">Everything in Essentials</li>
@@ -1219,8 +1355,25 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
         <div class="market-rate"><span class="lbl">Market rate</span>AUD 24,000</div>
         <div class="pc-price"><span class="pc-curr">AUD</span>12,000</div>
         <div class="market-rate-saved">You save 50%</div>
-        <div class="pc-note">one-off · 6-week delivery · priority support</div>
-        <div class="payment-plan-line">Or <strong>AUD 3,000 deposit + 6× AUD 1,500/mo</strong></div>
+        <div class="pc-note">6-week delivery · 90-day priority support</div>
+        <div class="milestones">
+          <div class="milestones-ttl">Payment in 3 milestones</div>
+          <div class="mst-row">
+            <div class="mst-num">1</div>
+            <div class="mst-when">Brand approved (week 2)<small>Logo + brand kit signed off by you</small></div>
+            <div class="mst-amt">AUD 4,000</div>
+          </div>
+          <div class="mst-row">
+            <div class="mst-num">2</div>
+            <div class="mst-when">Website + Dashboard live (week 4)<small>Site online, dashboard on your phone</small></div>
+            <div class="mst-amt">AUD 4,000</div>
+          </div>
+          <div class="mst-row">
+            <div class="mst-num">3</div>
+            <div class="mst-when">Full stack live (week 6)<small>WhatsApp AI + Fleet portal + AI photo quote active</small></div>
+            <div class="mst-amt">AUD 4,000</div>
+          </div>
+        </div>
         <div class="pc-hr"></div>
         <ul class="pcf">
           <li class="y">Everything in Premium</li>
@@ -1235,6 +1388,18 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
           <li class="y">Training &amp; onboarding (2h live)</li>
         </ul>
         <button class="pc-btn" data-preset="prestige">Load Prestige ↓</button>
+      </div>
+    </div>
+
+    <!-- ── BUILD YOUR OWN — callout ── -->
+    <div class="byo-callout rv d3">
+      <div class="byo-l">
+        <div class="byo-tag">Option 4 · fully custom</div>
+        <div class="byo-ttl">Or build exactly what you need.</div>
+        <div class="byo-desc">Tick only the features that matter for Proline. Skip what you don't want. Add what's missing. The total updates live as you click — no commitment, no signup. If you're between two presets, this is for you.</div>
+      </div>
+      <div class="byo-r">
+        <a href="#configurator" class="btn-p">Open the configurator ↓</a>
       </div>
     </div>
 
@@ -1434,6 +1599,76 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   </div>
 </section>
 
+<!-- ════════════ FAQ ════════════ -->
+<section id="faq">
+  <div class="c">
+    <div class="sh rv">
+      <div class="pill">Before you ask</div>
+      <h2 class="h1">Everything you might be wondering</h2>
+      <p class="body" style="margin-top:.9rem;max-width:560px">Plain English. Click any question to expand. No fine print, no hidden anything.</p>
+    </div>
+    <div class="faq-list rv d1">
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>Do I need to be technical to use any of this?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. I handle every setup, integration and configuration. On launch day you get a <strong>2-hour live walkthrough</strong> — same morning the system goes live. From that moment forward, the only thing you see is a clean dashboard: bookings, revenue, today's jobs. If something needs changing, you ping me in WhatsApp.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>What if I want to stop mid-project?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">You only pay milestones <strong>after</strong> they're delivered and approved by you. If you decide to stop after milestone 1, you've paid milestone 1 — nothing more. The work already paid for is yours to keep (logo files, brand kit, etc.). No exit fees, no penalties, no lock-in.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>What if I don't love the first design?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Three full revision rounds are included for the logo, three more for the website. We don't move to the next milestone until you're happy. If after three rounds something's still off, we book a 30-min call to align — included, not billed extra.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>Who owns the website and the code?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">You. 100%. Logo files, brand kit, website source code, dashboard codebase — all yours. I can hand over the full GitHub repository at any time, no questions asked. <strong>You're never locked in to me.</strong></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>What if the AI says something wrong to a customer?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">The AI is trained <strong>only on your information</strong> — your services, your prices, your FAQs, your tone. It doesn't invent answers. If a question isn't covered, it politely escalates to you ("I'll have Daniel get back to you within X hours"). Every conversation is reviewable in your dashboard. You can correct any answer in 30 seconds — and the AI remembers the correction forever.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>Can I add or remove features later?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Any module from the configurator can be added later at the <strong>same per-feature price</strong> you see today (locked for 12 months as a founding partner). If you start with Premium and want to add Fleet portal six months in, that's just AUD 1,200 — no renegotiation, no upselling, no surprise.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>How does the AI learn my business?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Week 5 we sit down for a 60-min session: I ask you the 50 most common questions you get from customers, plus your pricing logic by vehicle type, film type, etc. I plug that into the AI. By launch day it answers like you would. <strong>After launch it gets smarter every week</strong> — you flag any answer in the dashboard, it self-corrects.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>What does it cost me after year 1?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Hosting and domain are <strong>free for the first 12 months</strong> (included in any package). From month 13: <strong>under AUD 50/mo for hosting + domain combined</strong>. That's the only mandatory recurring cost. AI usage is currently included with no hidden per-message fees up to typical SMB volumes (we'll set a fair-use threshold together if needed).</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>What happens after the priority support window ends?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">After the included support window (30 days on Premium · 90 days on Prestige), you have three options — pick whichever fits:
+        <ul>
+          <li><strong>Option A — Pay-per-incident</strong> (AUD 120/hr, billed in 30-min blocks). You only pay when you need me. Good fit if the system runs smoothly and you rarely need changes.</li>
+          <li><strong>Option B — Light retainer (AUD 200/mo)</strong>. Unlimited support tickets, monthly 30-min check-in, response within 24h business hours. Predictable cost for peace of mind.</li>
+          <li><strong>Option C — Managed retainer (AUD 350/mo)</strong>. Everything in B + monthly Google/Meta Ads optimisation + content tweaks + small feature additions. Best if you want ads &amp; growth handled too.</li>
+        </ul>
+        Switch between options anytime. No commitment.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-q-txt"><strong>What if you don't deliver on time?</strong></span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner"><strong>On-time delivery guarantee.</strong> If I miss the agreed launch date (week 4 for Premium · week 6 for Prestige) for any reason on my side, you get the last milestone payment refunded in full. The schedule is mine to honour, not yours. Delays caused by waiting on your approval (logo sign-off, content) don't count — but I'll always flag it ahead of time so you know.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ CTA ════════════ -->
 <section id="cta">
   <div class="cta-glow"></div>
@@ -1554,6 +1789,14 @@ function timeRecalc(){
 });
 roiRecalc();
 timeRecalc();
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  });
+});
 </script>
 </body>
 </html>
