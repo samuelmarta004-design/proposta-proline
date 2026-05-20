@@ -532,6 +532,23 @@ section{padding:6rem 0}
 .how-step-desc strong{color:var(--text);font-weight:500}
 
 /* ══════════════════════════════════════════
+   EXPANDABLE FEATURE LIST (in #details)
+══════════════════════════════════════════ */
+.flist-x{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
+.flist-x.one{grid-template-columns:1fr}
+.fx-item{border-bottom:1px solid var(--border)}
+.fx-btn{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:.7rem;background:transparent;border:none;cursor:pointer;padding:.7rem 0;color:var(--text);text-align:left;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:400;line-height:1.45;transition:color .15s}
+.fx-btn:hover{color:var(--accent)}
+.fx-txt{flex:1;display:flex;align-items:flex-start;gap:.55rem}
+.fx-txt::before{content:'';width:3px;height:3px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:.5rem}
+.fx-icon{width:18px;height:18px;border-radius:50%;background:rgba(200,255,71,.08);border:1px solid rgba(200,255,71,.22);color:var(--accent);font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;line-height:1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .22s cubic-bezier(.2,.8,.35,1);margin-top:.18rem}
+.fx-item.open .fx-icon{transform:rotate(45deg);background:var(--accent);color:var(--ink)}
+.fx-desc{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.2,.8,.35,1)}
+.fx-item.open .fx-desc{max-height:400px}
+.fx-desc-inner{font-size:.73rem;line-height:1.65;color:var(--muted);padding:.1rem 0 .85rem .9rem;border-left:2px solid rgba(200,255,71,.22);margin-left:.1rem}
+.fx-desc-inner strong{color:var(--text);font-weight:500}
+
+/* ══════════════════════════════════════════
    PAYMENT MILESTONES (inside pricing cards)
 ══════════════════════════════════════════ */
 .milestones{margin-top:.85rem;padding-top:.95rem;border-top:1px dashed var(--border2)}
@@ -748,6 +765,7 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
   .why-grid{grid-template-columns:1fr}
   .cl-row{grid-template-columns:1.4fr 1.4fr .9fr .7fr;font-size:.66rem;padding:.6rem .8rem}
   .cl-row .cl-row-spent{display:none}
+  .flist-x{grid-template-columns:1fr;gap:0}
   .cmp-row{grid-template-columns:1.4fr 1fr 1fr .6fr;padding:.9rem 1.1rem;font-size:.75rem}
   .future-bullet{grid-template-columns:32px 1fr;gap:1rem}
   .price-grid{grid-template-columns:1fr;gap:.9rem}
@@ -1381,51 +1399,81 @@ footer{border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;jus
     <div class="sh rv">
       <div class="pill">04 — In detail</div>
       <h2 class="h1">Everything you get</h2>
+      <p class="body" style="margin-top:.9rem;max-width:520px;font-size:.74rem;letter-spacing:.04em">↓ Click any item for a plain-English explanation of what it does for Proline.</p>
     </div>
     <div class="detail-grid rv d1">
+
+      <!-- ── BRAND IDENTITY KIT ── -->
       <div class="dcard">
         <div class="dcard-ttl">Brand Identity Kit</div>
-        <ul class="flist">
-          <li>Primary logo + variants (.ai .svg .png)</li><li>Full colour palette</li>
-          <li>Licensed typography selection</li><li>Branded patterns &amp; textures</li>
-          <li>Brand guidelines PDF</li><li>Vehicle livery &amp; signage templates</li>
-          <li>Social media templates (Canva)</li><li>Business card &amp; invoice templates</li>
+        <ul class="flist-x">
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Primary logo + variants (.ai .svg .png)</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Your logo delivered in <strong>5 formats</strong>: full colour, monochrome (black + white), reversed for dark backgrounds, plus icon-only mark for social. Files in .ai (Adobe), .svg (web), .png (transparent), .pdf (print). You own them forever.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Full colour palette</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Primary, secondary and accent colours defined for digital + print + signage. Each with <strong>hex, RGB, CMYK and Pantone codes</strong> — your signage supplier and your web designer use the exact same colour. No "the blue looks different on the van" issues.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Licensed typography selection</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Two licensed fonts paired (one for headlines, one for body text). <strong>Commercial license</strong> included — covers use on your site, signage, ads, anywhere. No future legal issues from "borrowed" fonts.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Branded patterns &amp; textures</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Custom geometric patterns and textures aligned with your brand. Used as backgrounds, dividers, accents — on the website, signage, social media, and merch. Makes everything feel <strong>visually consistent</strong>.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Brand guidelines PDF</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">A 15-page reference PDF: how to use the logo, minimum sizes, what NOT to do, colour rules, typography rules. Hand it to <strong>any future designer or printer</strong> and they know exactly what to do — Proline always looks like Proline.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Vehicle livery &amp; signage templates</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Print-ready designs for your <strong>ute/van decals + your Balcatta shop signage</strong>. Any local signage supplier can produce these in 48h. Your own vehicle becomes a rolling billboard.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Social media templates (Canva)</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Editable templates for <strong>Instagram posts, stories, reels covers, Facebook ads</strong>. You edit text/swap images in Canva (free tool), publish in 30 seconds. No more "I don't know what to post" — you just fill in the template.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Business card &amp; invoice templates</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Branded business card (front + back, print-ready) + invoice template (Word/PDF) + email signature. Add your details, send or print, done. Looks like a real business from day one.</div></div></li>
         </ul>
       </div>
+
+      <!-- ── PREMIUM WEBSITE ── -->
       <div class="dcard">
         <div class="dcard-ttl">Premium Website</div>
-        <ul class="flist">
-          <li>100% custom design — zero templates</li><li>5 pages: Home, Services, Gallery, About, Contact</li>
-          <li>Instant tint quote calculator</li><li>Interactive before/after gallery</li>
-          <li>Local SEO optimised for Perth</li><li>Google Business Profile setup</li>
-          <li>Mobile-first &amp; 90+ Lighthouse score</li><li>Hosting + domain 1 year included</li>
+        <ul class="flist-x">
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">100% custom design — zero templates</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Designed <strong>specifically around the Proline customer journey</strong>: tinting/PPF/wrap browsing → instant quote → book. No drag-and-drop template that looks like the other 1,000 Perth tinting sites.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">5 pages: Home, Services, Gallery, About, Contact</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner"><strong>Home:</strong> your pitch in 5 seconds. <strong>Services:</strong> each pillar broken down with pricing. <strong>Gallery:</strong> before/after with filters. <strong>About:</strong> your story + team. <strong>Contact:</strong> form + map + booking widget.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Instant tint quote calculator</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Visitor picks vehicle (Sedan/SUV/Ute/Van) + film type + window count → <strong>instant price estimate</strong> before they even contact you. Filters out time-wasters automatically. People who commit through this convert at 2x the rate.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Interactive before/after gallery</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Slider comparison — drag the divider to see before/after on each install. Filter by service type (tint/PPF/wrap). Lightbox for full-screen. <strong>Best converting page</strong> on the site — visual proof beats every word of marketing copy.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Local SEO optimised for Perth</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Schema markup, geo-targeting, optimised titles and descriptions for <strong>"tinting perth", "PPF balcatta", "ute wrap WA"</strong>. Goal: rank in the top 5 for local searches = free leads forever, worth months of paid ads.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Google Business Profile setup</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Your GBP set up + optimised: hours, photos, services, automatic review request after each install. Result: you appear in <strong>Google Maps "near me" searches</strong> with a 5-star rating climbing.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Mobile-first &amp; 90+ Lighthouse score</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner"><strong>80% of your visitors browse on phone.</strong> Site is built mobile-first, loads in under 1 second on 4G, scores 90+ on Google's Lighthouse audit. Google rewards fast sites with higher search ranking — direct SEO boost.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Hosting + domain 1 year included</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Hosting on Vercel's global edge CDN + your <strong>prolinetinting.com.au domain renewal</strong> — paid for year 1. From year 2: under AUD 50/month, the only mandatory recurring cost.</div></div></li>
         </ul>
       </div>
+
+      <!-- ── MARKETING SETUP ── -->
       <div class="dcard">
         <div class="dcard-ttl">Marketing Setup</div>
-        <ul class="flist">
-          <li>Google Ads — local intent campaigns</li><li>Meta Ads setup + first campaigns</li>
-          <li>Retargeting site visitors</li><li>Facebook Pixel + GA4 configured</li>
-          <li>Analytics &amp; conversion tracking</li><li>Instagram content strategy (1 month)</li>
+        <ul class="flist-x">
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Google Ads — local intent campaigns</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Search campaigns targeting people typing <strong>"tinting perth", "ute wrap balcatta", "paint protection film perth"</strong>. People actively searching = ready to buy. The highest-intent lead source you can build.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Meta Ads setup + first campaigns</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Instagram + Facebook campaigns showing your <strong>before/after gallery</strong> to Perth car owners. Visual-first creatives. Targets car enthusiasts, fleet operators, luxury vehicle owners. Best for awareness + retargeting.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Retargeting site visitors</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Visitors who saw your site but didn't book get followed up across Instagram/Facebook/Google with ads showing your best work. Typically <strong>recaptures 15–30%</strong> of "almost converted" traffic. Cheapest conversions you'll buy.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Facebook Pixel + GA4 configured</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Conversion tracking installed on every page: <strong>every booking, quote request, page view tracked</strong>. You know exactly which ad sent which customer — and which ads to kill vs scale.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Analytics &amp; conversion tracking</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">GA4 + custom dashboards showing in plain English: <strong>"These 3 ads drove 80% of your bookings last month."</strong> Pivot ad spend toward winners, kill the losers. No more gut-feel marketing.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Instagram content strategy (1 month)</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">First-month content plan: <strong>8 posts + 4 reels</strong> mapped out by theme (educational, before/after, behind-scenes, testimonials). Captions written, ready to publish. Gets you past the "I don't know what to post" wall.</div></div></li>
         </ul>
       </div>
+
+      <!-- ── AI & AUTOMATION ── -->
       <div class="dcard">
         <div class="dcard-ttl">AI &amp; Automation</div>
-        <ul class="flist">
-          <li>WhatsApp + web AI chatbot (24/7)</li><li>Instant tint quotes by photo</li>
-          <li>Booking confirmation emails</li><li>48h appointment reminders</li>
-          <li>Follow-up + Google review request</li><li>Lapsed client re-engagement flow</li>
+        <ul class="flist-x">
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">WhatsApp + web AI chatbot (24/7)</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">AI on your website AND on your WhatsApp number, answering customer questions instantly — <strong>pricing, services, availability, booking</strong> — at any hour. Escalates only the complex cases to you. Captures all the leads that currently go silent after-hours.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Instant tint quotes by photo</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Customer sends a photo of their car via WhatsApp. <strong>Vision AI identifies the make/model, calculates film area, suggests film type, and gives an instant accurate quote in &lt;10 seconds</strong>. Automates the slowest part of your sales funnel (currently 8–12 min/quote).</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Booking confirmation emails</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">The moment a customer books, an automatic <strong>branded confirmation email</strong> is sent with date, service, location, what to bring, and your contact info. No more "did you receive my booking?" messages.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">48h appointment reminders</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Automatic SMS + email reminder <strong>48 hours before the install</strong>. Result: no-shows drop by 60%+ (the universal benchmark for reminder automation). More booked time = more revenue.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Follow-up + Google review request</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Day after install: branded thank-you email with <strong>care instructions</strong>. Day +3: gentle review request with one-click link to your Google Business Profile. Your star rating grows on autopilot.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Lapsed client re-engagement flow</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Clients who haven't been back in 6+ months get a personalised <strong>"check-in" email</strong> with a tasteful incentive (small discount or complimentary aftercare wash). Wins back ~10–15% of dormant clients automatically.</div></div></li>
         </ul>
       </div>
+
+      <!-- ── OPERATIONS DASHBOARD ── -->
       <div class="dcard full">
         <div class="dcard-ttl">Custom Operations Dashboard</div>
-        <ul class="flist">
-          <li>Visual booking calendar</li><li>Job status: queued / in progress / done</li>
-          <li>Daily &amp; monthly revenue tracking</li><li>Revenue by service line (tint / PPF / wrap)</li>
-          <li>Materials inventory per film SKU</li><li>Fleet client repeat-job tracking</li>
-          <li>Automated booking alerts</li><li>Works on any device — phone, tablet, desktop</li>
+        <ul class="flist-x">
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Visual booking calendar</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Day/week/month views of every booking. <strong>Drag and drop to reschedule</strong>. Click any booking to see customer details, vehicle, service, notes. Replaces the Google Calendar + sticky notes + WhatsApp tetris you're doing today.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Job status: queued / in progress / done</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Track each install through its lifecycle. Owner and installer both see status in realtime. <strong>No more "is the tinting finished on that Hilux yet?"</strong> — the dashboard shows you, with timestamps.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Daily &amp; monthly revenue tracking</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Live revenue counter for <strong>today, this week, this month</strong>. Compares to last week/month/year automatically. See if you're on track to hit goals — no spreadsheets, no manual math.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Revenue by service line (tint / PPF / wrap)</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Breaks down revenue by service type so you know exactly which line makes the most money. <strong>Pivot marketing dollars toward the highest-margin service.</strong> Identify which line to push, hire for, expand.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Materials inventory per film SKU</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Track stock for every roll of film, PPF, wrap material. <strong>Alerts when stock drops below threshold</strong>. Auto-deducts when a job is logged. Stop the "out of stock at 8am Monday" panic.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Fleet client repeat-job tracking</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Commercial clients (Uber fleets, taxi co, courier services) tracked separately: <strong>how many vehicles, last service date, total spent, next due</strong>. Identify your top B2B customers and nurture them.</div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Automated booking alerts</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Push notification when a new booking comes in, when a customer reschedules, when a job is marked done, when revenue hits a milestone. <strong>You stay in control without staring at the dashboard.</strong></div></div></li>
+          <li class="fx-item"><button class="fx-btn" type="button"><span class="fx-txt">Works on any device — phone, tablet, desktop</span><span class="fx-icon">+</span></button><div class="fx-desc"><div class="fx-desc-inner">Responsive web app + optional installable PWA (Prestige tier). <strong>Open it on your phone in the workshop</strong>, on tablet at reception, on desktop at home. Same data, always synced.</div></div></li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
@@ -2196,6 +2244,13 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const item = btn.closest('.faq-item');
     item.classList.toggle('open');
+  });
+});
+
+// ── DETAILS LIST EXPANDABLE ──
+document.querySelectorAll('.fx-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    btn.closest('.fx-item').classList.toggle('open');
   });
 });
 
